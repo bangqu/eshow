@@ -1,0 +1,64 @@
+﻿@charset "utf-8";
+
+/*帐号管理*/
+
+/*上传头像*/
+#uploadfaceimg{padding:20px 20px 0 20px;clear:both;}
+#uploadfaceimg .title{width:270px;padding-bottom:3px;font-size:14px;font-weight:bold;border-bottom:1px solid #ddd;}
+#uploadfaceimg .avatar{width:100px;height:100px;float:left;padding:4px;margin-top:15px;background:#fff;border:1px solid #ddd;}
+
+/*-- 帐号管理 --*/
+#profile_form {padding:0 20px 0 10px;clear:both;}
+#profile_form ul{float:left;padding:30px 0 0 10px;position:relative;overflow:hidden;}
+#profile_form li{width:700px;float:left;margin-bottom:10px;list-style-type:none;}
+#profile_form .inputtext{width:213px;height:18px;float:left;border:1px solid #ccc;font-family:Arial, Helvetica, sans-serif;}
+#profile_form .inputtext2{width:213px;height:18px;float:left;border:1px solid #999;font-family:Arial, Helvetica, sans-serif;}
+#profile_form .inputdroplist{width:80px;height:25px;float:left;border:1px solid #ccc;font-family:Arial, Helvetica, sans-serif;}
+#profile_form .l{width:80px;height:26px;line-height:26px;float:left;padding-right:5px;text-align:right;font-size:12px;}
+#profile_form .r{height:26px;line-height:26px;float:left;}
+#profile_form .c{clear:both}
+#profile_form .top{width:590px;float:left;padding:20px 0 5px 0;font-size:14px;font-weight:bold;border-bottom:1px solid #ddd;}
+.box_ok{position:absolute;text-indent:25px;overflow:hidden;background:url(../images/box_ok.gif) no-repeat;}
+.box_warn{position:absolute;text-indent:25px;overflow:hidden;background:url(../images/box_warn.gif) no-repeat;}
+.box_loading{position:absolute;height:30px;width:30px;text-indent: 20px;background:url(../images/ui/loading.gif) no-repeat;}
+.box_error{position:absolute;background:url(../images/box_error_bl.gif) no-repeat 6px bottom;}
+.box_error_outer{background:url(../images/box_error_br.gif) no-repeat right bottom;}
+.box_error_inner{padding-left:5px;background:url(../images/box_error_tl.gif) no-repeat left top;}
+.box_error p{padding:12px 18px 18px 20px;margin:0;background:url(../images/box_error_tr.gif) no-repeat right top;}
+
+
+/*隐私设置*/
+#setprivacy{padding:0 20px 0 10px;clear:both;}
+#setprivacy a{text-decoration:underline;}
+#setprivacy .top{width:590px;float:left;padding:20px 0 5px 0;font-size:14px;font-weight:bold;border-bottom:1px solid #ddd;}
+#setprivacy .bot{width:590px;float:left;margin-top:30px;padding-top:10px;border-top:1px solid #ddd;}
+#setprivacy .info{width:590px;float:left;padding:10px 0 10px 0;color:#999;}
+#setprivacy .column1{width:590px;float:left;padding:10px 0;}
+#setprivacy .column1 .l{width:160px;font-size:12px;padding-top:3px;}
+#setprivacy .column1 .r{width:330px;}
+#setprivacy .column1 .r select{width:120px;}
+#setprivacy .column2{width:300px;float:left;padding:5px 0;}
+
+/*应用管理*/
+#applist{padding:0 20px 0 10px;clear:both;}
+#applist li{width:730px;float:left;padding:30px 0 10px 0;border-bottom:1px solid #ddd;clear:both;}
+#applist .icon{width:80px;height:80px;float:left;padding-right:10px;}
+#applist .l{width:460px;}
+#applist .title{font-size:14px;font-weight:bold;display:block;}
+#applist .info{display:block;}
+#applist .r{padding-top:20px;}
+#installapp{padding:17px 20px 0 10px;clear:both;}
+#installapp .top{color:#666;font-size:14px;font-weight:bold;}
+#installapp .cont{width:560px;float:left;padding:30px 0 10px 0;border-bottom:1px solid #ddd;clear:both;}
+#installapp .icon{width:80px;height:80px;float:left;padding-right:10px;}
+#installapp .l{width:460px;}
+#installapp .title{font-size:14px;color:#359;font-weight:bold;display:block;}
+#installapp .info{display:block;}
+#installapp .tips{width:560px;float:left; padding-top:10px;text-align:center;}
+#myapp{padding:20px 20px 0 10px;clear:both;}
+#myapp .top{font-size:14px;font-weight:bold;}
+#myapp ul{width:550px;margin-top:10px;border-top:1px solid #ddd;}
+#myapp li{width:550px;float:left;padding:10px 0;border-bottom:1px solid #ddd;}
+#myapp li .l{padding-left:10px;font-size:14px;font-weight:bold;}
+#myapp li .r a{margin-right:20px;display:inline;}
+#myapp li img{margin:0 5px 0 0;vertical-align:middle;}

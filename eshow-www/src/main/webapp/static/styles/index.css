@@ -1,0 +1,178 @@
+@charset "utf-8";
+body{
+	color:999;
+	font-size:12px;
+	}
+
+*,ul,li,img {
+	margin:0;
+	padding:0;
+	border: 0px;
+	list-style: none;
+}
+
+a{
+ text-decoration:none;
+ color:#999;
+ }	
+ 
+.left{
+	float:left;
+	} 
+.w980{
+	width:980px;
+	margin:0 auto;
+	}
+/*****----color---******/
+.bg_a{
+	padding:0 8px;
+	color:#333333;
+	background-color:#0cf;
+	display: block;
+	}
+
+/*****----header---******/
+.header{
+	padding-top:30px;
+	}
+.logo{
+	width:360px;
+	height:70px;
+	}
+
+.nav{
+	padding-top:30px;
+	height:20px;
+		}
+.nav li{
+	padding:0 3px;
+	float:left;
+	}		
+.nav_r{
+	text-align:right;
+	width:80px;
+	float:right;
+	}
+.banner {
+	margin: 0px 20px 0 20px;	
+}
+	
+.wrapper{	
+	float:left;
+	width:100%;
+	background:url(../images/bg-body.png) repeat-y;
+	}
+.wrap_top{
+	height:6px;
+	width:980px;
+	background-image:url(../images/bg-top-hr.png);
+	background-repeat:no-repeat;
+}
+
+.wrap_bottom{
+	height:10px;
+	width:980px;
+	background-image:url(../images/bg-btm-hr.png);
+	background-repeat:no-repeat;
+}
+
+
+
+#foot {
+	color: #888;
+	font-size: 12px;
+	margin-bottom: 50px;
+	text-align:center;
+}
+
+#foot p {
+	font-size: 12px;
+	float:left;
+	padding: 0px;
+	margin: 10px 0px;
+}
+
+#foot a {
+	color: #888;
+	text-decoration: none;
+}
+
+#foot a:hover {
+	color: #08c;
+	text-decoration: none;
+}
+
+
+ul.pipe {
+	float:left;
+	width: 70%;
+	padding: 0px;
+	margin: 10px 0 10px 40px;
+}
+
+ul.pipe li {
+	border-left: 1px solid #d0d0d0;
+	display: inline;
+	float: left;
+	font-size: 12px;
+	list-style: none;
+	margin: 0px 10px 0px 0px;
+	padding-left: 10px;
+}
+
+
+
+
+#comp-table {
+	background-color: #e5e4e4;
+	text-align: center;
+}
+
+#comp-table th {
+	background: #fff;
+	color: #000;
+}
+
+#comp-table td {
+	background: #fff;
+	height: 32px;
+}
+
+img.ftr {
+	border: 1px solid #e5e4e4;
+}
+
+#buckets-list {
+	clear: both;
+	margin-top: 20px;
+}
+
+#buckets-list a {
+	display: block;
+	float: left;
+	height: 200px;
+	margin-bottom: 32px;
+	padding-left: 29px;
+	width: 123px;
+}
+
+#buckets-list a strong {
+	display: block;
+	margin: 5px 0px;
+}
+
+#buckets-list a span {
+	display: block;
+	color: #000 !important;
+	font-size: 12px;
+}
+
+.kb .meta {
+	color: #999;
+	font-size: 12px;
+}
+
+.kb .from {
+	color: green;
+	font-size: 11px;
+}

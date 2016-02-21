@@ -1,0 +1,249 @@
+p {
+	margin-left: 20px;
+}
+
+#comp-table {
+	background-color: #e5e4e4;
+	text-align: center;
+}
+
+#comp-table th {
+	background: #fff;
+	color: #000;
+}
+
+#comp-table td {
+	background: #fff;
+	height: 32px;
+}
+
+img.ftr {
+	border: 1px solid #e5e4e4;
+}
+
+#buckets-list {
+	clear: both;
+	margin-top: 20px;
+}
+
+#buckets-list a {
+	display: block;
+	float: left;
+	height: 200px;
+	margin-bottom: 32px;
+	padding-left: 29px;
+	width: 123px;
+}
+
+#buckets-list a strong {
+	display: block;
+	margin: 5px 0px;
+}
+
+#buckets-list a span {
+	display: block;
+	color: #000 !important;
+	font-size: 12px;
+}
+
+.kb .meta {
+	color: #999;
+	font-size: 12px;
+}
+
+.kb .from {
+	color: green;
+	font-size: 11px;
+}
+
+div.titledecoratline {
+	margin: 5px 0px 5px 0px;
+	background-image: url('../images/background.jpg');
+	background-repeat: no-repeat;
+	background-position: -143px -1043px;
+	width: 495px;
+	height: 7px;
+	overflow: hidden;
+	padding: 0px 0px 0px 0px;
+	display: block;
+}
+
+div.introtitle {
+	font-family: 黑体, Verdana;
+	font-size: 16px;
+}
+
+div.realintro {
+	padding: 15px 15px 15px 15px;
+	font-family: Tahoma, SimSun, Verdana;
+	font-size: 12px;
+	color: #666666;
+}
+
+#introcontainer a {
+	text-decoration: none;
+	color: #729613;
+}
+
+#introcontainer {
+	width: 560px;
+	margin-left: 10px;
+	padding: 15px 15px 15px 15px;
+	line-height: 120%;
+}
+
+div.realintro {
+	padding: 15px 15px 15px 15px;
+	font-family: Tahoma, SimSun, Verdana;
+	font-size: 12px;
+	color: #666666;
+}
+
+#centercontainer {
+	text-align: left;
+	width: 950px;
+	margin-top: 6px;
+	padding-top: 3px;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+
+#navcontainer {
+	width: 920px;
+}
+
+#sidecontainer {
+	width: 280px;
+	float: right;
+	margin-right: 22px;
+	margin-top: 12px;
+}
+
+div.sideblock {
+	width: 270px;
+	color: #2c2c2c;
+	margin: 5px 5px 32px 5px;
+}
+
+div.friendlinks a {
+	font-family: "SimSun", "Lucida Sans Unicode", "Lucida Grande",
+		Sans-Serif;
+	font-size: 12px;
+	color: #3399FF;
+}
+
+table.btable {
+	border-collapse: collapse;
+	font-family: "SimSun", "Lucida Sans Unicode", "Lucida Grande",
+		Sans-Serif;
+	font-size: 12px;
+	margin: 20px;
+	text-align: left;
+	width: 480px;
+}
+
+table.btable th {
+	-moz-background-clip: border;
+	-moz-background-inline-policy: continuous;
+	-moz-background-origin: padding;
+	background: #B9C9FE url(../images/gradhead.png) repeat-x scroll 0 0;
+	border-bottom: 1px solid #FFFFFF;
+	border-top: 2px solid #D3DDFF;
+	color: #003399;
+	font-size: 13px;
+	font-weight: normal;
+	padding: 8px;
+}
+
+table.btable td {
+	-moz-background-clip: border;
+	-moz-background-inline-policy: continuous;
+	-moz-background-origin: padding;
+	background: #E8EDFF url(../images/gradback.png) repeat-x scroll 0 0;
+	border-bottom: 1px solid #FFFFFF;
+	border-top: 1px solid #FFFFFF;
+	color: #666699;
+	padding: 8px;
+}
+
+table.oemtable {
+	border-collapse: collapse;
+	font-family: "SimSun", "Lucida Sans Unicode", "Lucida Grande",
+		Sans-Serif;
+	font-size: 12px;
+	margin: 2px;
+	text-align: left;
+	width: 100%;
+}
+
+table.oemtable th {
+	-moz-background-clip: border;
+	-moz-background-inline-policy: continuous;
+	-moz-background-origin: padding;
+	background: #e2e2e2 url(../images/gradhead.png) repeat-x scroll 0 0;
+	border-bottom: 1px solid #FFFFFF;
+	border-top: 2px solid #D3DDdd;
+	color: #003399;
+	font-size: 13px;
+	font-weight: normal;
+	padding: 8px;
+}
+
+table.oemtable td {
+	-moz-background-clip: border;
+	-moz-background-inline-policy: continuous;
+	-moz-background-origin: padding;
+	background: #e2e2e2 url(../images/gradback.png) repeat-x scroll 0 0;
+	border-bottom: 1px solid #FFFFFF;
+	border-top: 1px solid #FFFFFF;
+	color: #666699;
+	padding-left: 8px;
+	padding-top: auto;
+	padding-right: auto;
+	height: 30px;
+}
+
+table.oemtable td a {
+	color: #729613;
+}
+
+table.oemtable td a:hover {
+	font-size: 16px;
+}
+
+td.svnmsg {
+	width: 120px;
+	height: 50px;
+}
+
+td.svnmsg div {
+	position: relative;
+}
+
+td.svnmsg div a {
+	display: block;
+	width: 120px;
+	color: #111111 !important;
+	height: 32px;
+	overflow: auto;
+	font-size: 12px;
+}
+
+td.svnmsg div a:hover {
+	display: block;
+	position: absolute;
+	top: -14px;
+	left: 4px;
+	color: #111111 !important;
+	width: 220px;
+	height: auto;
+	background-color: #E8EDFF;
+	border: 1px solid #454545;
+	z-index: 8999;
+	min-height: 39px
+}
+
+span.stablevertxt {
+	color: green;
+	font-weight: 200;
+}

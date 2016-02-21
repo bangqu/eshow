@@ -1,0 +1,53 @@
+body{padding:0;margin:0;font-size: 14px;color:#666;font-family:"Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;}
+ul,li,dl,dt,dd{list-style: none;padding:0;margin:0;}
+h1,h2,h3,h4,p,dt,tr,ol{padding:0;margin:0;font-weight: normal;}
+tr {display: table-row;vertical-align: inherit;border-color: inherit;}
+td, th {display: table-cell;vertical-align: inherit;}
+table {border-collapse: collapse;border-spacing: 0;}
+img{border:none;}
+a:hover,a{text-decoration: none;color:#999}
+a:hover{color:#0099cc;}
+.none{display: none;}
+.del{text-decoration:line-through;}
+.h-un a:hover,.h-un{text-decoration: underline;}
+.clearfix:before,.clearfix:after {display: table;content: " ";}
+.clearfix:after {clear: both;}
+.center-block {display: block; margin-right: auto;margin-left: auto;}
+.pl {float: left !important;}
+.pr,.fr{float: right !important;}
+.tr{text-align: right;}
+.m-t10{margin-top: 10px;}
+.m-b10{margin-bottom: 10px;}
+.font18px{font-size: 18px;}
+.fontred{color: #cc0000;font-family: Arial, Helvetica, sans-serif}
+.arial{font-family: Arial, Helvetica, sans-serif;}
+.hide { display: none !important;}
+.show { display: block !important;}
+.p10{padding:10px;}
+.yahei{font-family: microsoft yahei}
+.wp{width:1200px;margin:0 auto;}
+.sd{width: 230px}
+.font30px{font-size: 30px;}
+.mn{width: 970px;min-height:700px;}
+.red{color:#e3383a;}
+.red a{color:#e3383a;}
+.gray{color:gray;}
+ 
+
+.wp{width:1220px;}
+.topbar{height:40px;line-height: 40px;background:#eee;}
+.header{border-bottom:3px solid #e70012;margin-bottom:15px;font-family: microsoft yahei;background: #Fff}
+.header .logo{width:170px;padding-top:12px;}
+.header .nav{float: left;font-size: 15px;}
+.header .nav li{padding-top:20px;margin-left:10px;float:left;}
+.header .nav li a{height:36px;padding:0 10px;float:left;line-height:36px;display: inline-block;margin-top:16px;}
+.header .nav li a.active,.header .nav li a:hover{background: #e70012;color:#fff;border-top-right-radius: 5px;border-top-left-radius: 5px;}
+
+
+
+.showimg li{margin:10px 12px 10px 0;width:280px;height:220px;border:1px solid #ddd;padding:10px 10px 0 10px;float:left}
+.showimg li a{display:inline-block;}
+.showimg li span{display:block;height:30px;line-height: 30px;text-align:center;}
+.showimg li img{width:280px;height:190px;}
+.showbig{left:50%;position:fixed;top:200px;background:#fff;width:600px;margin-left:-300px;border:1px solid #ddd;padding:15px;}
+.showbig a{display:inline-block;width:20px;height:20px;text-align: center; background:red;color:#fff;position: absolute;right:0;top:-0;}

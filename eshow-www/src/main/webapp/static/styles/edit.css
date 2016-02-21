@@ -1,0 +1,5 @@
+﻿/*添加编辑页面，需要时请单独引用*/
+#edit{padding:30px 0 0 0;position:relative;}
+#edit p{clear:both;overflow:hidden;padding:5px 0;}
+#edit .l{width:90px;padding-top:8px;font-size:14px;text-align:right;}
+#edit .r{float:left;height:400}

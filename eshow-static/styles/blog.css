@@ -1,0 +1,45 @@
+
+.narrowcolumn {
+	padding:15px;
+	width:700px;
+	}
+
+.post {
+	margin: 0 0 120px;
+	text-align: justify;
+	line-height:20px;
+	}
+
+.post hr {
+	display: block;
+	}
+
+.post ul{
+	padding:10px 0;
+	font-size:14px;
+	line-height:20px;
+	}
+.entry{
+	color:#999;
+	font-size:12px;
+	}	
+	
+	
+#sidebar{
+	float:left;
+	width:230px;
+	padding:20px 0 0 20px;
+	line-height:25px;
+	}
+#sidebar li{	
+		
+}
+.title{
+	float:left;
+	width:100%;
+	font-size:16px;
+	text-align:center;
+}
+p{
+
+	}

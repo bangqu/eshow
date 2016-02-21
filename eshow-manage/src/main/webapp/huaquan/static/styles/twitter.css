@@ -1,0 +1,374 @@
+﻿@charset "utf-8";
+
+* {
+	margin: 0px;
+}
+
+#twitterTop {
+	color: #999;
+	font-size: 14px;
+	font-weight: bold;
+	margin-bottom: 20px;
+	margin-left: -10px;
+}
+
+#twitterMsg {
+	color: #999;
+	d font-size: 12px;
+}
+
+#twitterCreate {
+	width: 408px;
+	float: left;
+	padding: 20px 10px;
+}
+
+#twittersUser {
+	padding: 20px 10px;
+	margin-left: -20px;
+}
+
+#twittersUser ul {
+	padding-top: 10px;
+	border-bottom: 0px solid #ddd;
+}
+
+#twittersUser li {
+	border-top: 0px solid #ddd;
+	margin-top: -15px;
+}
+
+#twittersUser .info {
+	height: 22px;
+	line-height: 22px;
+	padding: 0 10px;
+	background: #f3f3f3;
+}
+
+#twittersUser .msg {
+	float: left;
+	color: #999;
+	padding-right: 20px;
+	margin-top: 20px;
+}
+
+#twittersUser .tips {
+	float: right;
+	color: #ddd;
+}
+
+#twittersUser .tips a {
+	color: #999;
+}
+
+#twittersUser .contxt {
+	line-height: 20px;
+	padding: 3px 10px 10px 10px;
+	font-size: 12px;
+	clear: both;
+	word-break: break-all;
+}
+
+#twittersFriend {
+	padding: 20px 10px;
+}
+
+#twittersFriend ul {
+	
+}
+
+#twittersFriend li {
+	border-top: 0px solid #ddd;
+	margin-left: -20px;
+	margin-top: -15px;
+}
+
+#twittersFriend .info {
+	height: 22px;
+	line-height: 22px;
+	background: #f3f3f3;
+}
+
+#twittersFriend .msg {
+	float: left;
+	color: #999;
+	padding: 0 10px 0 12px;
+}
+
+#twittersFriend .msg a {
+	text-decoration: underline;
+}
+
+#twittersFriend .tips {
+	float: right;
+	color: #ddd;
+}
+
+#twittersFriend .tips a {
+	color: #999;
+}
+
+#twittersFriend .cont {
+	height: auto !important;
+	height: 60px;
+	min-height: 60px;
+	padding: 7px 0 10px 0;
+	font-size: 12px;
+	clear: both;
+	position: relative;
+}
+
+#twittersFriend .contxt {
+	line-height: 20px;
+	padding-left: 78px;
+	display: block;
+	clear: both;
+	word-break: break-all;
+}
+
+#twittersFriend .avatar {
+	width: 50px;
+	height: 50px;
+	padding: 2px;
+	border: 0px solid #ccc;
+	position: absolute;
+	top: 10px;
+	left: 10px;
+}
+
+ul,li {
+	list-style: none;
+}
+
+img {
+	border: none medium;
+}
+
+#mainTab {
+	postion: left;
+	background: url(../images/icon-column.gif) repeat-x -5px -55px;
+	height: 30px;
+	margin-left: -20px;
+}
+
+#mainTab ul {
+	background: url(../images/icon-column.gif) no-repeat -5px -55px;
+	float: left
+}
+
+#mainTab li {
+	text-align: center;
+	line-height: 30px;
+	display: inline;
+	background: url(../images/icon-column.gif) #eee repeat-x 0px -210px;
+	float: left;
+	height: 30px;
+	font-size: 14px;
+	margin-right: 0px
+}
+
+#mainTab li a {
+	display: block;
+	background: url(../images/icon-column.gif) no-repeat right -120px;
+	height: 30px;
+	color: #333;
+	text-decoration: none
+}
+
+#mainTab li a:hover {
+	text-decoration: underline
+}
+
+#mainTab span {
+	width: 100px;
+	background: url(../images/icon-column.gif) no-repeat 0px -90px;
+	float: left;
+	height: 30px
+}
+
+#mainTab .txt2 {
+	width: 74px
+}
+
+#mainTab .txt3 {
+	width: 87px
+}
+
+#mainTab .txt4 {
+	width: 100px
+}
+
+#mainTab .txt5 {
+	width: 113px
+}
+
+#mainTab .on {
+	background: url(../images/icon-column.gif) #fff repeat-x 0px -240px
+}
+
+#mainTab .on SPAN {
+	background: url(../images/icon-column.gif) no-repeat 0px -150px
+}
+
+#mainTab .on A {
+	background: url(../images/icon-column.gif) no-repeat right -180px;
+	height: 30px;
+	color: #333
+}
+
+#mainTab .navbnt {
+	display: inline;
+	background: none transparent scroll repeat 0% 0%;
+	float: left;
+	margin-left: 10px;
+	padding-top: 2px
+}
+
+#mainTab .navbnt A {
+	border-bottom: #ac0a08 1px solid;
+	text-align: center;
+	border-left: #f5a3a5 1px solid;
+	line-height: 27px;
+	width: 80px;
+	font-family: Tahoma;
+	background: #d20911;
+	height: 24px;
+	color: #fff;
+	overflow: hidden;
+	border-top: #f5a3a5 1px solid;
+	border-right: #ac0a08 1px solid
+}
+
+#mainTab .navbnt a:hover {
+	border-bottom: #c00a08 1px solid;
+	border-left: #fbadac 1px solid;
+	background: #e20c13;
+	border-top: #fbadac 1px solid;
+	border-right: #c00a08 1px solid;
+	text-decoration: none
+}
+
+#mainTab .navtxt {
+	line-height: 18px;
+	display: inline;
+	background: none transparent scroll repeat 0% 0%;
+	float: left;
+	height: 18px;
+	margin-left: 15px;
+	font-size: 12px;
+	font-weight: bold;
+	margin-top: 5px;
+}
+
+#mainTab .navtxt a {
+	display: inline;
+	background: none transparent scroll repeat 0% 0%;
+	color: #c00;
+	text-decoration: none
+}
+
+#mainTab .bnt1 {
+	postion: absolute;
+	text-align: center;
+	line-height: 27px;
+	display: inline;
+	background: url(../images/icon_bnt1.gif) #eee repeat-x 0px 0px;
+	height: 27px;
+	font-size: 14px;
+	top: 0px;
+	right: 0px;
+	margin-right: 0px
+}
+
+#mainTab .bnt1 span {
+	padding-left: 3px;
+	background: url(../images/icon_bnt1.gif) no-repeat 0px -27px;
+	float: left;
+	height: 27px
+}
+
+#mainTab .bnt1 a {
+	display: block;
+	font-family: Tahoma;
+	background: url(../images/icon_bnt1.gif) no-repeat right -54px;
+	height: 27px;
+	color: #fff;
+	text-decoration: none
+}
+
+.commenta {
+	postion: relative;
+	padding-bottom: 10px;
+	padding-left: 20px;
+	display: block;
+	clear: both;
+	overflow: hidden;
+	padding-top: 10px
+}
+
+.commenta_avatar {
+	border-bottom: #ccc 0px solid;
+	postion: absolute;
+	border-left: #ccc 0px solid;
+	padding-bottom: 2px;
+	padding-left: 2px;
+	width: 50px;
+	padding-right: 0px;
+	height: 50px;
+	border-top: #ccc 0px solid;
+	top: 10px;
+	border-right: #ccc 0px solid;
+	padding-top: 0px;
+	left: 10px
+}
+
+.commenta_cont {
+	padding-left: 60px;
+	margin-top: -55px;
+}
+
+.commenta_info {
+	padding-bottom: 0px;
+	padding-left: 5px;
+	padding-right: 5px;
+	background: #f7f7f7;
+	height: 18px;
+	color: #999;
+	border-top: #ddd 1px solid;
+	padding-top: 5px
+}
+
+.commenta_info .r {
+	color: #ddd
+}
+
+.commenta_info .r A {
+	color: #999;
+	text-decoration: underline
+}
+
+.comment_textarea {
+	padding-bottom: 0px;
+	padding-left: 20px;
+	padding-right: 10px;
+	padding-top: 10px
+}
+
+.comment_textarea .textarea {
+	width: 500px;
+	height: 120px
+}
+
+.comment_textarea .textarea2 {
+	width: 500px;
+	HEIGHT: 120px
+}
+
+.comment_textarea .button {
+	text-align: right;
+	padding-bottom: 5px;
+	padding-left: 0px;
+	width: 508px;
+	padding-right: 0px;
+	padding-top: 5px
+}

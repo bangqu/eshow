@@ -1,0 +1,291 @@
+#composerHome {
+	POSITION: relative; WIDTH: 560px; FLOAT: left; OVERFLOW: hidden
+}
+#composerHome .l {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 5px; WIDTH: 120px; PADDING-RIGHT: 0px; FLOAT: left; PADDING-TOP: 2px
+}
+#composerHome .r {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 0px; WIDTH: 430px; PADDING-RIGHT: 0px; FLOAT: right; PADDING-TOP: 2px
+}
+#composerHome .avatar {
+	BORDER-BOTTOM: #ddd 1px solid; BORDER-LEFT: #ddd 1px solid; PADDING-BOTTOM: 4px; PADDING-LEFT: 4px; WIDTH: 100px; PADDING-RIGHT: 4px; BACKGROUND: #fff; FLOAT: left; HEIGHT: 100px; BORDER-TOP: #ddd 1px solid; BORDER-RIGHT: #ddd 1px solid; PADDING-TOP: 4px
+}
+#composerHome .nav {
+	WIDTH: 116px; FLOAT: left; COLOR: #ddd; FONT-SIZE: 12px; PADDING-TOP: 5px
+}
+#composerHome .nav A {
+	COLOR: #999; FONT-SIZE: 12px; TEXT-DECORATION: underline
+}
+#composerHome .nav EM {
+	FONT-STYLE: normal; COLOR: #ccc; TEXT-DECORATION: underline
+}
+#composerHome .nav P {
+	PADDING-LEFT: 2px; HEIGHT: 20px
+}
+#composerHome .subnav {
+	PADDING-BOTTOM: 11px; PADDING-LEFT: 5px; WIDTH: 520px; PADDING-RIGHT: 0px; FLOAT: left; PADDING-TOP: 5px
+}
+#composerHome .subnav P {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 19px; PADDING-RIGHT: 14px; FLOAT: left; HEIGHT: 16px; PADDING-TOP: 2px
+}
+#composerHome .subnav A {
+	TEXT-DECORATION: underline
+}
+#composerHome .subnav .twitter {
+	BACKGROUND: url(../images/app_list_twitters.gif) no-repeat
+}
+#composerHome .subnav .analysis {
+	BACKGROUND: url(../images/app_list_analysis2.gif) no-repeat
+}
+#composerHome .subnav .stock {
+	BACKGROUND: url(../images/app_list_stock.gif) no-repeat
+}
+#composerHome .subnav .securities {
+	BACKGROUND: url(../images/app_list_securities.gif) no-repeat
+}
+#composerHome .subnav .match {
+	BACKGROUND: url(../images/app_list_match.gif) no-repeat
+}
+#composerHome .status {
+	BORDER-BOTTOM: #e0e0e0 1px solid; PADDING-BOTTOM: 5px; LINE-HEIGHT: 24px
+}
+#composerHome .info {
+	PADDING-BOTTOM: 5px; LINE-HEIGHT: 24px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: #666; PADDING-TOP: 3px
+}
+#composerHome .info P {
+	FLOAT: left
+}
+#composerHome .asset {
+	POSITION: absolute; HEIGHT: 50px; TOP: 28px; LEFT: 320px
+}
+#composerHome .asset P {
+	PADDING-LEFT: 14px; HEIGHT: 25px
+}
+#composerHome .asset .money {
+	BACKGROUND: url(../images/icon_money2.gif) no-repeat 0px 3px
+}
+#composerHome .asset .income {
+	BACKGROUND: url(../images/icon_income.gif) no-repeat 0px 3px
+}
+#composerHome .help A {
+	MARGIN: 5px 0px 0px 5px; WIDTH: 15px; DISPLAY: block; BACKGROUND: url(../images/icon_help.gif) no-repeat 0px 0px; FLOAT: left; HEIGHT: 15px
+}
+#composerHome .help A:hover {
+	BACKGROUND: url(../images/icon_help.gif) no-repeat 0px -15px
+}
+#composerHome .medal {
+	POSITION: absolute; WIDTH: 200px; HEIGHT: 32px; TOP: 115px; LEFT: 320px
+}
+#composerHome .medal A {
+	TEXT-ALIGN: center; WIDTH: 20px; DISPLAY: block; FLOAT: left; HEIGHT: 33px; COLOR: #fff; FONT-SIZE: 10px; MARGIN-RIGHT: 10px; TEXT-DECORATION: none
+}
+#composerPrivacy {
+	BORDER-BOTTOM: #ffba43 1px solid; BORDER-LEFT: #ffba43 1px solid; PADDING-BOTTOM: 0px; LINE-HEIGHT: 36px; MARGIN-TOP: 20px; PADDING-LEFT: 28px; PADDING-RIGHT: 8px; BACKGROUND: url(../images/icon_privacy.gif) #fdffce no-repeat 9px 9px; HEIGHT: 36px; COLOR: #666; BORDER-TOP: #ffba43 1px solid; BORDER-RIGHT: #ffba43 1px solid; PADDING-TOP: 0px
+}
+.feed {
+	PADDING-BOTTOM: 10px; WIDTH: 560px; FLOAT: left
+}
+.feed LI {
+	BORDER-BOTTOM: #eee 1px solid; POSITION: relative; PADDING-BOTTOM: 8px; LINE-HEIGHT: 20px; PADDING-LEFT: 0px; WIDTH: 560px; PADDING-RIGHT: 0px; OVERFLOW: hidden; PADDING-TOP: 8px
+}
+.feed LI A {
+	TEXT-DECORATION: underline
+}
+.feed LI A:hover {
+	TEXT-DECORATION: underline
+}
+.feed .icon {
+	BACKGROUND-IMAGE: url(../images/icon-app.gif); MARGIN: 2px 6px 0px 0px; WIDTH: 16px; BACKGROUND-REPEAT: no-repeat; FLOAT: left; HEIGHT: 16px
+}
+.feed .subject {
+	WIDTH: 440px; FLOAT: left
+}
+.feed .contxt {
+	COLOR: #999
+}
+.feed .contxt A {
+	COLOR: #666; TEXT-DECORATION: underline
+}
+.feed .conttxt {
+	COLOR: #999
+}
+.feed .conttxt A {
+	COLOR: #666; TEXT-DECORATION: underline
+}
+.feed .time {
+	POSITION: absolute; COLOR: #999; FONT-SIZE: 10px; TOP: 8px; RIGHT: 5px
+}
+.feed .closer {
+	POSITION: absolute; WIDTH: 11px; HEIGHT: 11px; OVERFLOW: hidden; TOP: 1px; RIGHT: 5px
+}
+.feed .closer A {
+	WIDTH: 11px; DISPLAY: block; BACKGROUND: url(../images/feed_closer.gif) no-repeat; HEIGHT: 11px; OVERFLOW: hidden
+}
+.feed .closer A:hover {
+	BACKGROUND: url(../images/feed_closer.gif) no-repeat 0px -11px
+}
+.feed1 .icon {
+	BACKGROUND-POSITION: 0px -32px
+}
+.feed2 .icon {
+	BACKGROUND-POSITION: 0px -64px
+}
+.feed3 .icon {
+	BACKGROUND-POSITION: 0px -320px
+}
+.feed4 .icon {
+	BACKGROUND-POSITION: 0px -96px
+}
+.feed5 .icon {
+	BACKGROUND-POSITION: 0px -288px
+}
+.feed6 .icon {
+	BACKGROUND-POSITION: 0px -256px
+}
+.feed7 .icon {
+	BACKGROUND-POSITION: 0px -272px
+}
+.feed8 .icon {
+	BACKGROUND-POSITION: 0px -144px
+}
+.feed9 .icon {
+	BACKGROUND-POSITION: 0px -160px
+}
+.feed10 .icon {
+	BACKGROUND-POSITION: 0px -192px
+}
+.feed11 .icon {
+	BACKGROUND-POSITION: 0px -304px
+}
+#notify {
+	MARGIN-BOTTOM: 10px
+}
+#notify .top {
+	BORDER-BOTTOM: #f3f3f3 1px solid; LINE-HEIGHT: 23px; PADDING-LEFT: 25px; FONT-FAMILY: Tahoma; BACKGROUND: url(../images/icon_notify.gif) #f6f6f6 no-repeat 6px 3px; HEIGHT: 24px; COLOR: #900; BORDER-TOP: #eee 1px solid; FONT-WEIGHT: bold
+}
+#notify .topmessage {
+	PADDING-LEFT: 27px; BACKGROUND: url(../images/icon_mail2.gif) #f6f6f6 no-repeat 6px 3px
+}
+#notify UL {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 10px; PADDING-RIGHT: 0px; CLEAR: both; PADDING-TOP: 8px
+}
+#notify LI {
+	HEIGHT: 22px; COLOR: #999; CLEAR: both
+}
+#notify LI A:hover {
+	TEXT-DECORATION: underline
+}
+.sideAvatar {
+	PADDING-BOTTOM: 10px; MARGIN-BOTTOM: 10px; BACKGROUND: #fafafa; CLEAR: both
+}
+.sideAvatar .top {
+	POSITION: relative; LINE-HEIGHT: 24px; TEXT-INDENT: 10px; BACKGROUND: #f6f6f6; HEIGHT: 24px; COLOR: #900; BORDER-TOP: #eee 1px solid; FONT-WEIGHT: bold
+}
+.sideAvatar .more {
+	POSITION: absolute; TOP: 0px; RIGHT: 10px; FONT-WEIGHT: normal
+}
+.sideAvatar .more A {
+	COLOR: #666
+}
+.sideAvatar LI {
+	MARGIN: 8px 0px 0px 8px; WIDTH: 56px; DISPLAY: inline; FLOAT: left; HEIGHT: 75px; OVERFLOW: hidden
+}
+.sideAvatar .avatar {
+	BORDER-BOTTOM: #ddd 1px solid; BORDER-LEFT: #ddd 1px solid; PADDING-BOTTOM: 2px; PADDING-LEFT: 2px; WIDTH: 50px; PADDING-RIGHT: 2px; BACKGROUND: #fff; FLOAT: left; HEIGHT: 50px; OVERFLOW: hidden; BORDER-TOP: #ddd 1px solid; BORDER-RIGHT: #ddd 1px solid; PADDING-TOP: 2px
+}
+.sideAvatar .name {
+	WIDTH: 56px; FLOAT: left; OVERFLOW: hidden; PADDING-TOP: 3px
+}
+.sideAvatar .name .online {
+	WIDTH: 7px; BACKGROUND: url(../images/user_online.gif) no-repeat 0px 3px; FLOAT: left; HEIGHT: 10px
+}
+.sideAvatar .name .offline {
+	WIDTH: 7px; BACKGROUND: url(../images/user_offline.gif) no-repeat 0px 3px; FLOAT: left; HEIGHT: 10px
+}
+.sideAvatar .name A {
+	TEXT-ALIGN: center; PADDING-LEFT: 4px; WIDTH: 45px; FONT-FAMILY: Tahoma; FLOAT: left; OVERFLOW: hidden
+}
+.sideAvatar .name A:hover {
+	TEXT-DECORATION: underline
+}
+.sideAvatar .name IMG {
+	FLOAT: left; VERTICAL-ALIGN: middle; PADDING-TOP: 3px
+}
+.sideAvatar .contxt {
+	TEXT-INDENT: 10px; FLOAT: left; COLOR: #888; PADDING-TOP: 10px
+}
+.titstock {
+	BACKGROUND: url(../images/app_list_stock.gif) #f6f6f6 no-repeat 5px 4px
+}
+.titsecurities {
+	BACKGROUND: url(../images/app_list_securities.gif) #f6f6f6 no-repeat 5px 5px
+}
+.titanalysis {
+	BACKGROUND: url(../images/app_list_analysis.gif) #f6f6f6 no-repeat 5px 4px
+}
+.subtit {
+	BORDER-BOTTOM: #ddd 1px solid; PADDING-BOTTOM: 0px; LINE-HEIGHT: 24px; PADDING-LEFT: 26px; PADDING-RIGHT: 10px; HEIGHT: 22px; OVERFLOW: hidden; FONT-WEIGHT: bold; PADDING-TOP: 2px
+}
+.subtit .r A {
+	COLOR: #666; FONT-WEIGHT: normal
+}
+.subTab {
+	PADDING-BOTTOM: 0px; LINE-HEIGHT: 24px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: url(../images/icon-column.gif) #f6f6f6 repeat-x 0px -216px; HEIGHT: 24px; OVERFLOW: hidden; FONT-WEIGHT: bold; PADDING-TOP: 0px
+}
+.subTab A {
+	PADDING-BOTTOM: 0px; LINE-HEIGHT: 24px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; DISPLAY: block; FLOAT: left; HEIGHT: 24px; FONT-WEIGHT: normal; PADDING-TOP: 1px
+}
+.subTab .on {
+	BORDER-BOTTOM: #ddd 0px solid; BORDER-LEFT: #ddd 1px solid; PADDING-BOTTOM: 0px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #fff; COLOR: #333; BORDER-TOP: #ddd 1px solid; FONT-WEIGHT: bold; BORDER-RIGHT: #ddd 1px solid; PADDING-TOP: 0px
+}
+.subTab .more {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FLOAT: right; COLOR: #666; PADDING-TOP: 0px
+}
+.subTab .more:hover {
+	COLOR: #666
+}
+.subTab .feeduser {
+	PADDING-LEFT: 21px; BACKGROUND: url(../images/icon_user.gif) #fff no-repeat 8px 5px
+}
+.subTab .guestbook {
+	PADDING-LEFT: 23px; BACKGROUND: url(../images/icon_guestbook.gif) #fff no-repeat 10px 6px
+}
+.tab {
+	WIDTH: 100%
+}
+.tab TD {
+	BORDER-BOTTOM: #eee 1px solid; TEXT-ALIGN: center; LINE-HEIGHT: 30px; COLOR: #333
+}
+.tab TD A {
+	TEXT-DECORATION: underline
+}
+.tab .more A {
+	FLOAT: right; COLOR: #666
+}
+.tbg TD {
+	BACKGROUND: #fff; COLOR: #666
+}
+.analysislist {
+	
+}
+.analysislist LI {
+	BORDER-BOTTOM: #eee 1px solid; PADDING-BOTTOM: 0px; LINE-HEIGHT: 28px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; HEIGHT: 28px; PADDING-TOP: 0px
+}
+.analysislist .title {
+	WIDTH: 420px; TEXT-OVERFLOW: ellipsis; WHITE-SPACE: nowrap; FLOAT: left; OVERFLOW: hidden
+}
+.analysislist .time {
+	FLOAT: right; COLOR: #999; FONT-SIZE: 11px
+}
+
+/*注册界面*/
+#register{width:980px;float:left;position:relative;overflow:hidden;background:#fff;}
+#registerBg{width:977px;float:left;overflow:hidden;border:1px solid #ccc;}
+#register .txtul{float:left;padding:30px 0 30px 25px;position:relative;overflow:hidden;}
+#register .txtul a{text-decoration:underline;}
+#register .txtul li{width:700px;float:left;margin-bottom:20px;list-style-type:none;}
+#register .inputtext{width:210px;height:25px;line-height:25px;float:left;border:1px solid #ccc;font-family:Arial, Helvetica, sans-serif;padding:0 3px;}
+#register .inputtext2{width:210px;height:25px;line-height:25px;float:left;border:1px solid #999;font-family:Arial, Helvetica, sans-serif;padding:0 3px;}
+#register .l{width:70px;height:24px;line-height:24px;float:left;padding-top:2px;text-align:right;font-size:12px;}
+#register .r{float:left;padding-top:3px;text-align:right;}
+.iconSigh{height:20px;padding-left:20px;color:#c00;font-size:14px;background:url(../images/icon_sigh.gif) no-repeat 0 1px;}

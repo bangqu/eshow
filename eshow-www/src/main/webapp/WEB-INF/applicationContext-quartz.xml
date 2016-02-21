@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
+       default-lazy-init="true">
+
+	<!-- 要调用的工作类 -->
+	<bean id="testQuartz" class="cn.org.eshow.component.quartz.TestQuartz" />
+	
+	<!-- 定义调用对象和调用对象的方法 -->
+	<bean id="methodInvokingJobDetailEpaper" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<!-- 调用的类 -->
+		<property name="targetObject" ref="testQuartz" />
+		<!-- 调用类中的方法 -->
+		<property name="targetMethod" value="update" />
+	</bean>
+	
+	<!-- 定义触发时间 -->
+	<bean id="testQuartzTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="methodInvokingJobDetailEpaper" />
+		<property name="cronExpression" value="0 0/5 * * * ?" />
+		<!-- cron表达式 0 0 * * * ? 每小时的第0分，第0秒 -->
+		<!-- cron表达式 0 30 18 * * ? 每天18：30点触发-->
+	</bean>
+	
+	<!-- 总管理类 如果将lazy-init='false'那么容器启动就会执行调度程序  -->
+	<bean id="startQuertz" lazy-init="false" autowire="no" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<ref bean="testQuartzTrigger" />
+			</list>
+		</property>
+	</bean>
+</beans>

@@ -1,0 +1,89 @@
+@charset "utf-8";
+
+
+.mainTab {
+	padding-left:15px;
+	height: 25px;
+	border-bottom:2px #0cf solid;
+	margin-bottom:5px;
+}
+
+
+.mainTab li {
+	float:left;
+	padding-right: 10px;
+	text-align: center;
+	line-height: 25px;
+	height: 25px;
+	font-size: 14px;
+}
+
+
+#twitterTop {
+	color: #999;
+	font-size: 14px;
+	font-weight: bold;
+	margin-bottom: 20px;
+	padding:0 15px;
+
+}
+
+#twitterMsg {
+	color: #999;
+	d font-size: 12px;
+}
+
+#twitterCreate {
+	width: 408px;
+	float: left;
+	padding: 20px 10px;
+}
+
+#twittersFriend .info {
+	height: 22px;
+	line-height: 22px;
+	font-size:12px;
+	color: green;
+	padding-top:20px;
+}
+.info a{
+    font-size:12px;
+	color: green;
+}
+#twittersFriend .tips {
+	float: right;
+	color: #ddd;
+}
+
+#twittersFriend .tips a {
+	color: green;
+}
+#twittersFriend .cont {
+	height:auto;
+	padding:15px 0;
+	
+	border-bottom:1px #ddd dashed;
+	font-size: 12px;
+	clear: both;
+	position: relative;
+}
+#twittersFriend .contxt {
+	font-size:14px;
+	color:#999;
+	line-height: 20px;
+	padding-left:15px;
+	width:870px;
+	word-break: break-all;
+}
+#twittersFriend .avatar {
+	width: 50px;
+	float:left;
+	height: 50px;
+	padding: 2px;
+	border: 0px solid #ccc;
+
+}
+#twittersFriend ul{
+	padding:0 15px;
+	margin:0px;
+	}

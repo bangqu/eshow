@@ -1,0 +1,50 @@
+.footer{border-top:1px solid #ddd;margin-top:20px;padding-top:15px;}
+
+.footer .fnav .lg{float:left;width:300px;height:150px;}
+.footer .fnav dl{width:210px;float:left;padding-right:15px;}
+.footer .fnav dl dt{height:24px;margin-bottom:10px;line-height: 24px;font-size:16px;}
+.footer .fnav dl dt i{height:24px;height:24px;float: left;margin-right:9px;}
+.footer .fnav dl dd a{display:block;line-height: 25px;padding-left:34px;}
+.footer .inr {color:#888; padding:10px 0;border-top:1px solid #ddd;text-align: center;line-height: 20px;}
+
+.mt15{margin-top:15px;}
+.mt25{margin-top:25px;}
+.bor{border:1px solid #ddd}
+.side{width:160px;float:left;border:1px solid #ddd;margin-right:20px;border-bottom:0px;}
+.sinav li{border-bottom:1px solid #ddd;line-height: 32px;padding:15px 0;}
+.sinav li .gif{background:url(../images/icon_bg.gif) 5px -876px no-repeat;font-weight:bold}
+.sinav li a{display:block;padding-left:20px;margin-bottom:5px;} 
+.sinav li p a span{border:1px solid #eee;font-size:12px;background:#f5f5f5;line-height:20px;display: inline-block;padding:2px 10px;border-radius: 10px;}
+.sinav li p a:hover span{background:#eee}
+.sinav li p {padding-bottom:4px;}
+.sinav li a:hover{ }
+.main{float:left;width:750px;}
+.aboutr{float:left;width:950px;padding-left:20px;line-height:25px;padding-bottom:100px;min-height:600px}
+.aboutr h3{text-align:center;font-weight:bold;font-size:22px;padding:10px 0 18px;}
+.aboutr p{text-indent:25px;padding-bottom:10px;}
+.main .title{border-bottom:2px solid #ddd;font-size:18px;height:33px;line-height: 33px}
+.main .title span{padding-right:15px;float:left;border-bottom:2px solid red;height:33px}
+.newsr{margin-bottom:50px;}
+.newsr ul{margin:10px 0;}
+.newsr ul li{text-indent:10px;padding:5px 0;background: url(../images/list_style_square.gif) 3px 13px no-repeat;}
+.newsr ul li a{color:#777;}
+.newsr ul li a:hover{color:green;}
+.newsr ul li span{color:#999;}
+.rbar{float:right;width:260px;}
+.rbox h5{padding:5px 15px 8px;margin:0;font-size:16px;border-bottom:2px solid #ddd;}
+.rbox .new{padding:5px 0;}
+.rbox .new a{padding:0 15px;background:url(../images/icon_bg.gif) 17px -879px no-repeat;display: block;font-size:12px;line-height: 28px;text-indent: 15px;}
+.rbox .new a:hover{background:#f5f5f5 url(../images/icon_bg.gif) 18px -879px no-repeat}
+
+.newsr .ti{margin-bottom:15px;border-bottom:1px solid #ddd;padding:10px 0;}
+.newsr h2{line-height: 34px;text-align: center;font-weight: nomarl;}
+.newsr .time{text-align: center;padding:5px 0;font-size: 12px;color:#888}
+.newsr .view{line-height: 25px;font-size:14px;padding-bottom:50px;}
+.newsr .view p{padding:5px 0;text-indent:32px;}
+.newsr .view img{width:500px;}
+
+.mb10{margin-bottom:10px;}
+
+
+
+

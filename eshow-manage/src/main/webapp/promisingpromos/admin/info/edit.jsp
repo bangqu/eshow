@@ -1,0 +1,90 @@
+<%@ page language="java" errorPage="/error.jsp" pageEncoding="UTF-8"
+         contentType="text/html;charset=utf-8" %>
+<%@ include file="/common/taglibs.jsp" %>
+<%@ include file="../../common/path.jsp" %>
+<s:action name="info!view" id="view" executeResult="false"/>
+<head>
+    <title>Promisingpromos_修改信息_${view.info.title}</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="icon" href=""/>
+    <link rel="stylesheet" href="http://apps.bdimg.com/libs/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="${promisingpromosadmin}/styles/admin.css">
+    <%@ include file="../../common/style/umeditor.jsp" %>
+</head>
+<body>
+<%@ include file="../common/header.jsp" %>
+<div class="container mt">
+    <%@ include file="../common/left.jsp" %>
+    <div class="cont">
+        <ul class="breadcrumb">
+            <li><a href="${promisingpromosadmin}/">首页</a></li>
+            <li><a href="${promisingpromosadmin}/info/">信息页管理</a></li>
+            <li>修改信息</li>
+        </ul>
+        <div class="com">
+            <div class="page-header">
+                <h3 class="yahei">修改信息</h3>
+            </div>
+            <div class="com clearfix">
+                <s:form cssClass="form-horizontal" name="infoForm" id="infoForm" action="info!update.action" namespace="/"
+                        method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="redirect" value="/promisingpromos/admin/info/">
+                    <input type="hidden" name="id" value="${view.info.id}">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">信息标题</label>
+
+                        <div class="col-sm-8">
+                            <input type="text" data-errormessage="请输入你的信息标题" class="form-control"
+                                   value="${view.info.title}" id="info_title" name="info.title">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">信息URL</label>
+
+                        <div class="col-sm-8">
+                            <input type="text" data-errormessage="请输入您的信息URL！" class="form-control"
+                                   value="${view.info.url}" id="info_url" name="info.url">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="content">信息内容</label>
+
+                        <div class="col-sm-8">
+                            <textarea class="form-control" data-errormessage="内容不能超过800个字" rows="10" id="content"
+                                      name="info.content" placeholder="请输入您的信息内容！">${view.info.content}</textarea>
+                        </div>
+                        <span class="Validform_checktip"></span>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-primary">保存更改</button>
+                            <button type="button" onclick="window.history.go(-1);" class="btn">取消</button>
+                        </div>
+                    </div>
+                </s:form>
+            </div>
+        </div>
+    </div>
+</div>
+<%@ include file="../common/footer.jsp" %>
+<%@ include file="../../common/scripts.jsp" %>
+<%@ include file="/common/script/validform.jsp" %>
+<%@ include file="../../common/script/umeditor.jsp" %>
+<script type="text/javascript">
+    var ue = UM.getEditor('content', {
+        lang: /^zh/.test(navigator.language || navigator.browserLanguage || navigator.userLanguage) ? 'zh-cn' : 'en',
+        langPath: UMEDITOR_CONFIG.UMEDITOR_HOME_URL + "lang/",
+        focus: true,
+        initialFrameWidth: 563,
+        initialFrameHeight: 600
+    });
+    $(document).ready(function () {
+        $("#infoForm").Validform({
+            tiptype: 2
+        });
+    })
+</script>
+</body>
+

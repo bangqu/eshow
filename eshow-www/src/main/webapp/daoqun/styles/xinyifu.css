@@ -1,0 +1,48 @@
+.fontok{font-size:16px;line-height: 1.7em}
+.h3title{font-size:30px;font-weight: normal;padding-bottom:10px;}
+
+
+.gallery-top{padding:100px 0;}
+.gallery-top p{text-align: center;width:100%;}
+.gallery-top .tex{width:90%;margin:10px auto 0;}
+.bor-bt{border-bottom:1px solid #eee;}
+
+
+.grid2col{padding:100px 0;}
+.grid2col .first-tex{width:48%;float:left;padding-top:50px;left:20px;}
+
+.grid2col .clast{width:48%;float: right;text-align: left;}
+.grid2col .clast img{float:right;
+
+
+    position: relative;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-timing-function: ease;
+    -webkit-animation-fill-mode: both;
+    -moz-animation-duration: 1s;
+    -moz-animation-timing-function: ease;
+    -moz-animation-fill-mode: both;
+    -ms-animation-duration: 1s;
+    -ms-animation-timing-function: ease;
+    -ms-animation-fill-mode: both;
+    animation-duration: 1s;
+    animation-timing-function: ease;
+    animation-fill-mode: both;}
+
+.gridone{text-align: center;padding:100px 0;}
+.gridone p{width:90%;margin:0 auto;}
+.gridone .first-tex{padding-bottom: 120px}
+.gridone img{-webkit-transition: -webkit-transform 2s, opacity 2s;opacity:1;}
+.dhh{ -webkit-transform:rotate(39deg) scale(0.6);  opacity:0;}
+
+
+
+.fadeInDown{
+    -webkit-animation-name:fadeInDown;
+}
+
+@-webkit-keyframes fadeInDown {
+    0% { opacity: 0.0; -webkit-transform: translateX(-50px);   }
+    100% { opacity: 1; -webkit-transform: translateX(0px);  }
+}
+ 

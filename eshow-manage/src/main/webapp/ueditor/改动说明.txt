@@ -1,0 +1,8 @@
+﻿1. dialogs/image/image.js  368行 去除格式过滤
+2. Uploader.java savePath变量为空
+3. dialogs/image/image.js  282行
+4. imageUp.jsp 
+5. getRemoteImage.jsp 加入上传到又拍云代码
+6. getRemoteImage.jsp 使用lastIndexOf
+7. ueditor.config.js 默认宽度initialFrameWidth
+8. ueditor.config.js autotypeset自动排版设置

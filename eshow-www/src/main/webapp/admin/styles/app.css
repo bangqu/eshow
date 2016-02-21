@@ -1,0 +1,23 @@
+﻿@charset "utf-8";
+#twitterTop{color:#999;font-size:14px;font-weight:bold;}
+#twittersUser{padding:20px 10px;}
+#twittersUser ul{padding-top:10px;border-bottom:1px;}
+#twittersUser li{border-top:1px solid #ddd; }
+#twittersUser .info{margin-left:60px;margin-top:-52px;height:23px;line-height:23px;padding:0 10px;background:#f3f3f3; width:690px;}
+#twittersUser .info1{height:23px;line-height:23px;padding:0 10px;background:#f3f3f3;}
+#twittersUser .msg{float:left;;color:#999;padding-right:20px;}
+#twittersUser .tips{float:right;color:#ddd;}
+#twittersUser .tips a{color:#999;}
+#twittersUser .contxt1{line-height:20px;margin-left:60px;padding:10px 5px 5px 5px;font-size:12px;clear:both;word-break:break-all;}
+#twittersUser .contxt{line-height:20px;padding:3px 10px 10px 10px;font-size:12px;clear:both;word-break:break-all;}
+#twittersFriend{padding:20px 10px;}
+#twittersFriend ul{padding-top:10px;border-bottom:1px solid #ddd;}
+#twittersFriend li{border-top:1px solid #ddd;}
+#twittersFriend .info{height:22px;line-height:22px;padding:0 10px;background:#f3f3f3;}
+#twittersFriend .msg{float:left;color:#999;padding:0 10px 0 12px;}
+#twittersFriend .msg a{text-decoration:underline;}
+#twittersFriend .tips{float:right;color:#ddd;}
+#twittersFriend .tips a{color:#999;}
+#twittersFriend .cont{height:auto!important;height:60px;min-height:60px;padding:7px 0 10px 0;font-size:12px;clear:both;position:relative;}
+#twittersFriend .contxt{line-height:20px;padding-left:78px;display:block;clear:both;word-break:break-all;}
+#twittersFriend .avatar{width:50px;height:50px;padding:2px;border:1px solid #ccc;position:absolute;top:10px;left:10px;}
