@@ -6,7 +6,7 @@
 
     <groupId>cn.org.eshow</groupId>
     <artifactId>eshow-parent</artifactId>
-    <name>eshow</name>
+    <name>EShow</name>
     <version>3.0</version>
     <packaging>pom</packaging>
 
@@ -65,6 +65,43 @@
         <mmseg4j.version>1.10.0</mmseg4j.version>
 
     </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- Yinwan Dependencies -->
+            <dependency>
+                <groupId>cn.org.eshow</groupId>
+                <artifactId>eshow-core</artifactId>
+                <version>${eshow.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.org.eshow</groupId>
+                <artifactId>eshow-component</artifactId>
+                <version>${eshow.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.org.eshow</groupId>
+                <artifactId>eshow-model</artifactId>
+                <version>${eshow.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.org.eshow</groupId>
+                <artifactId>eshow-dao</artifactId>
+                <version>${eshow.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.org.eshow</groupId>
+                <artifactId>eshow-service</artifactId>
+                <version>${eshow.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.org.eshow</groupId>
+                <artifactId>yinwan-web-common</artifactId>
+                <version>${eshow.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
 
     <dependencies>
 
@@ -611,7 +648,7 @@
         <module>eshow-www</module>
     </modules>
 
-    <description>eshow</description>
+    <description>EShow</description>
     <url>http://www.eshow.org.cn</url>
     <inceptionYear>2016</inceptionYear>
     <build>
@@ -621,6 +658,15 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-deploy-plugin</artifactId>
                 <version>2.7</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
+                <configuration>
+                    <source>1.6</source>
+                    <target>1.6</target>
+                </configuration>
             </plugin>
         </plugins>
         <resources>
