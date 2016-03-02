@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/eshow-api/eshow-api.iml" filepath="$PROJECT_DIR$/eshow-api/eshow-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/eshow-component/eshow-component.iml" filepath="$PROJECT_DIR$/eshow-component/eshow-component.iml" />
+      <module fileurl="file://$PROJECT_DIR$/eshow-core/eshow-core.iml" filepath="$PROJECT_DIR$/eshow-core/eshow-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/eshow-dao/eshow-dao.iml" filepath="$PROJECT_DIR$/eshow-dao/eshow-dao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/eshow-manage/eshow-manage.iml" filepath="$PROJECT_DIR$/eshow-manage/eshow-manage.iml" />
+      <module fileurl="file://$PROJECT_DIR$/eshow-model/eshow-model.iml" filepath="$PROJECT_DIR$/eshow-model/eshow-model.iml" />
+      <module fileurl="file://$PROJECT_DIR$/eshow-parent.iml" filepath="$PROJECT_DIR$/eshow-parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/eshow-service/eshow-service.iml" filepath="$PROJECT_DIR$/eshow-service/eshow-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/eshow-web-common/eshow-web-common.iml" filepath="$PROJECT_DIR$/eshow-web-common/eshow-web-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/eshow-www/eshow-www.iml" filepath="$PROJECT_DIR$/eshow-www/eshow-www.iml" />
+    </modules>
+  </component>
+</project>

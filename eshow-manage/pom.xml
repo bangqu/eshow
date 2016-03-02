@@ -1,5 +1,7 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">  <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>cn.org.eshow</groupId>
     <artifactId>eshow-parent</artifactId>
@@ -14,14 +16,17 @@
         <dependency>
             <groupId>cn.org.eshow</groupId>
             <artifactId>eshow-service</artifactId>
+            <version>3.0</version>
         </dependency>
         <dependency>
             <groupId>cn.org.eshow</groupId>
             <artifactId>eshow-web-common</artifactId>
+            <version>3.0</version>
         </dependency>
         <dependency>
             <groupId>cn.org.eshow</groupId>
             <artifactId>eshow-component</artifactId>
+            <version>3.0</version>
         </dependency>
     </dependencies>
 
@@ -35,7 +40,7 @@
                         <contextPath>/</contextPath>
                     </webApp>
                     <contextHandlers>
-                        <contextHandler implementation="org.mortbay.jetty.webapp.WebAppContext">  
+                        <contextHandler implementation="org.mortbay.jetty.webapp.WebAppContext">
                             <resourceBase>${project.parent.basedir}/eshow-static</resourceBase>
                             <contextPath>/eshow-static</contextPath>
                         </contextHandler>

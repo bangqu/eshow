@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="eshow-www:war">
+    <output-path>$PROJECT_DIR$/eshow-www/target</output-path>
+    <root id="archive" name="eshow-www-3.0.war">
+      <element id="artifact" artifact-name="eshow-www:war exploded" />
+    </root>
+  </artifact>
+</component>

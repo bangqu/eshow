@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.chenlb.mmseg4j:mmseg4j-analysis:1.9.1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../develop/mavenhome/com/chenlb/mmseg4j/mmseg4j-analysis/1.9.1/mmseg4j-analysis-1.9.1.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$PROJECT_DIR$/../../develop/mavenhome/com/chenlb/mmseg4j/mmseg4j-analysis/1.9.1/mmseg4j-analysis-1.9.1-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../../develop/mavenhome/com/chenlb/mmseg4j/mmseg4j-analysis/1.9.1/mmseg4j-analysis-1.9.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

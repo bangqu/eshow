@@ -1,5 +1,7 @@
 package cn.org.eshow.webapp.action.response;
 
+import cn.org.eshow.model.Board;
+
 import java.util.Date;
 
 /**

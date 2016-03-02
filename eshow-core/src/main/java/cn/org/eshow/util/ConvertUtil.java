@@ -1,10 +1,10 @@
 package cn.org.eshow.util;
 
+import cn.org.eshow.model.LabelValue;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import cn.org.eshow.model.LabelValue;
 
 import java.util.Enumeration;
 import java.util.HashMap;
