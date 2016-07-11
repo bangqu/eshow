@@ -1,5 +1,4 @@
-# EShow
-EShow Java Web 开源框架
+# EShow Java Web 开源框架
 
 www.eshow.org.cn 旗下 Java Web 开源框架
 采用流行的J2EE轻量级框架（Struts2+Spring+Hibernate），基于国外开源框架Appfuse，我们可以简称Appfuse中文加强版。
