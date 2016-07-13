@@ -19,3 +19,6 @@ www.eshow.org.cn 旗下 Java Web 开源框架
 
 ####如何构建项目：
 
+使用[IntelliJ IDEA the Java IDE](https://www.jetbrains.com/idea/download/)，点击File，Open，选择项目位置，按顺序使用Maven构建项目打开即可。会自动生成项目文件，配置文件不要上传到git或者svn服务器上。如下图：
+
+![EShow Java Web Idea](http://eshow.u.qiniudn.com/eshow-web-idea.png!super.jpg)
