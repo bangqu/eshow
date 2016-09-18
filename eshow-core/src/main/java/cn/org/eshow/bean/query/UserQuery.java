@@ -10,14 +10,54 @@ import java.util.Date;
  */
 public class UserQuery extends BaseQuery {
 
+	public Date startAddTime;
+	public Date endAddTime;
+	public Date startUpdateTime;
+	public Date endUpdateTime;
 	public Date addTime;//
 	public Date updateTime;//
+	public String username;
 	public String email;//
 	public String nickname;//
 	public String website;//
     public String realname;//
 	public Integer age;//
 	public Boolean photo;//
+	public String easemobId;
+
+	public UserQuery(){}
+
+	public Date getStartAddTime() {
+		return startAddTime;
+	}
+
+	public void setStartAddTime(Date startAddTime) {
+		this.startAddTime = startAddTime;
+	}
+
+	public Date getEndAddTime() {
+		return endAddTime;
+	}
+
+	public void setEndAddTime(Date endAddTime) {
+		this.endAddTime = endAddTime;
+	}
+
+	public Date getStartUpdateTime() {
+		return startUpdateTime;
+	}
+
+	public void setStartUpdateTime(Date startUpdateTime) {
+		this.startUpdateTime = startUpdateTime;
+	}
+
+	public Date getEndUpdateTime() {
+		return endUpdateTime;
+	}
+
+	public void setEndUpdateTime(Date endUpdateTime) {
+		this.endUpdateTime = endUpdateTime;
+	}
 
 	public Date getAddTime() {
 		return addTime;
@@ -33,6 +73,14 @@ public class UserQuery extends BaseQuery {
 
 	public void setUpdateTime(Date updateTime) {
 		this.updateTime = updateTime;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public String getEmail() {
@@ -82,4 +130,12 @@ public class UserQuery extends BaseQuery {
     public void setWebsite(String website) {
         this.website = website;
     }
+
+	public String getEasemobId() {
+		return easemobId;
+	}
+
+	public void setEasemobId(String easemobId) {
+		this.easemobId = easemobId;
+	}
 }

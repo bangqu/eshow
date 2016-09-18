@@ -1,70 +1,76 @@
 package cn.org.eshow.bean.query;
 
-
 /**
  * 编码代码查询对象
  */
 public class CodeQuery extends BaseQuery {
 
-    public String type;//类型（找回密码，邮箱验证）
-    public String code;//编码
-    public String email;//邮箱
-    public Integer state;//状态
-    public Boolean enabled = Boolean.TRUE;//是否可用
-    public Integer userId;//用户ID
+	public String type;//类型
+	public Boolean enabled;//是否可用
+	public String code;//编码
+    public String mobile;//手机号码
+	public String email;//邮箱地址
+	public Integer state;//状态
+    public Integer userId;
 
-    public CodeQuery() {
-        super();
-    }
+	public CodeQuery() {
+		super();
+	}
 
-    public CodeQuery(Boolean enabled) {
-        this.enabled = enabled;
-    }
-
-    public CodeQuery(String code, Integer state) {
+    public CodeQuery(String code, String mobile, Integer state) {
         this.code = code;
+        this.mobile = mobile;
         this.state = state;
     }
 
     public String getType() {
-        return type;
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public Boolean getEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(Boolean enabled) {
+		this.enabled = enabled;
+	}
+
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
+	}
+
+    public String getMobile() {
+        return mobile;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
     }
 
-    public String getCode() {
-        return code;
-    }
+	public String getEmail() {
+		return email;
+	}
 
-    public void setCode(String code) {
-        this.code = code;
-    }
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
-    public String getEmail() {
-        return email;
-    }
+	public Integer getState() {
+		return state;
+	}
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+	public void setState(Integer state) {
+		this.state = state;
+	}
 
-    public Integer getState() {
-        return state;
-    }
-
-    public void setState(Integer state) {
-        this.state = state;
-    }
-
-    public Boolean getEnabled() {
-        return enabled;
-    }
-
-    public void setEnabled(Boolean enabled) {
-        this.enabled = enabled;
-    }
 
     public Integer getUserId() {
         return userId;
@@ -73,5 +79,4 @@ public class CodeQuery extends BaseQuery {
     public void setUserId(Integer userId) {
         this.userId = userId;
     }
-
 }

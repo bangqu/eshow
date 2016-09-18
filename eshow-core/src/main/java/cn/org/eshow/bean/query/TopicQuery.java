@@ -4,82 +4,99 @@ import java.util.Date;
 
 /**
  * Topic 查询Bean
- * 
+ *
  * @author leida
  */
-public class TopicQuery extends BaseQuery{
+public class TopicQuery extends BaseQuery {
 
-	public Date addTime;//
-	public Date updateTime;//
-	public String title;//
-	public String content;//
-	public Integer tip;//
-	public Integer state;//
-	public Integer userId;//
-	public Integer boardId;//
+    public Date startAddTime;//
+    public Date endAddTime;
+    public Date startUpdateTime;//
+    public Date endUpdateTime;
+    public String title;//
+    public String content;//
+    public Integer top;//
+    public Integer userId;//
+    public Integer boardId;//
+    public String website;//
 
-	public Date getAddTime() {
-		return addTime;
-	}
+    public Date getStartAddTime() {
+        return startAddTime;
+    }
 
-	public void setAddTime(Date addTime) {
-		this.addTime = addTime;
-	}
+    public void setStartAddTime(Date startAddTime) {
+        this.startAddTime = startAddTime;
+    }
 
-	public Date getUpdateTime() {
-		return updateTime;
-	}
+    public Date getEndAddTime() {
+        return endAddTime;
+    }
 
-	public void setUpdateTime(Date updateTime) {
-		this.updateTime = updateTime;
-	}
+    public void setEndAddTime(Date endAddTime) {
+        this.endAddTime = endAddTime;
+    }
 
-	public String getTitle() {
-		return title;
-	}
+    public Date getStartUpdateTime() {
+        return startUpdateTime;
+    }
 
-	public void setTitle(String title) {
-		this.title = title;
-	}
+    public void setStartUpdateTime(Date startUpdateTime) {
+        this.startUpdateTime = startUpdateTime;
+    }
 
-	public String getContent() {
-		return content;
-	}
+    public Date getEndUpdateTime() {
+        return endUpdateTime;
+    }
 
-	public void setContent(String content) {
-		this.content = content;
-	}
+    public void setEndUpdateTime(Date endUpdateTime) {
+        this.endUpdateTime = endUpdateTime;
+    }
 
-	public Integer getTip() {
-		return tip;
-	}
+    public String getTitle() {
+        return title;
+    }
 
-	public void setTip(Integer tip) {
-		this.tip = tip;
-	}	
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
-	public Integer getState() {
-		return state;
-	}
+    public String getContent() {
+        return content;
+    }
 
-	public void setState(Integer state) {
-		this.state = state;
-	}
+    public void setContent(String content) {
+        this.content = content;
+    }
 
-	public Integer getUserId() {
-		return userId;
-	}
+    public Integer getTop() {
+        return top;
+    }
 
-	public void setUserId(Integer userId) {
-		this.userId = userId;
-	}
+    public void setTop(Integer top) {
+        this.top = top;
+    }
 
-	public Integer getBoardId() {
-		return boardId;
-	}
+    public Integer getUserId() {
+        return userId;
+    }
 
-	public void setBoardId(Integer boardId) {
-		this.boardId = boardId;
-	};
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
 
+    public Integer getBoardId() {
+        return boardId;
+    }
+
+    public void setBoardId(Integer boardId) {
+        this.boardId = boardId;
+    }
+
+    public String getWebsite() {
+        return website;
+    }
+
+    public void setWebsite(String website) {
+        this.website = website;
+    }
 }

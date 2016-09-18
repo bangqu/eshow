@@ -4,49 +4,48 @@ import java.util.Date;
 
 /**
  * Blog 查询Bean
- * 
+ *
  * @author leida
- * 
  */
 public class BlogQuery extends BaseQuery {
 
-	public Date addTime;//
-	public Date updateTime;//
-	public String title;//
+    public Date addTime;//
+    public Date updateTime;//
+    public String title;//
     public String keyword;//
     public Boolean hasKeyword;//
     public Boolean hasImg;//
-	public String content;//
+    public String content;//
     public String img;//
     public String website;//
-	public Integer count;//
+    public Integer count;//
     public Boolean enabled;//
-	public Integer userId;//
-	public Integer categoryId;//
+    public Integer userId;//
+    public Integer categoryId;//
 
-	public Date getAddTime() {
-		return addTime;
-	}
+    public Date getAddTime() {
+        return addTime;
+    }
 
-	public void setAddTime(Date addTime) {
-		this.addTime = addTime;
-	}
+    public void setAddTime(Date addTime) {
+        this.addTime = addTime;
+    }
 
-	public Date getUpdateTime() {
-		return updateTime;
-	}
+    public Date getUpdateTime() {
+        return updateTime;
+    }
 
-	public void setUpdateTime(Date updateTime) {
-		this.updateTime = updateTime;
-	}
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
+    }
 
-	public String getTitle() {
-		return title;
-	}
+    public String getTitle() {
+        return title;
+    }
 
-	public void setTitle(String title) {
-		this.title = title;
-	}
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
     public String getKeyword() {
         return keyword;
@@ -73,12 +72,12 @@ public class BlogQuery extends BaseQuery {
     }
 
     public String getContent() {
-		return content;
-	}
+        return content;
+    }
 
-	public void setContent(String content) {
-		this.content = content;
-	}
+    public void setContent(String content) {
+        this.content = content;
+    }
 
     public String getImg() {
         return img;
@@ -89,12 +88,12 @@ public class BlogQuery extends BaseQuery {
     }
 
     public Integer getCount() {
-		return count;
-	}
+        return count;
+    }
 
-	public void setCount(Integer count) {
-		this.count = count;
-	}
+    public void setCount(Integer count) {
+        this.count = count;
+    }
 
     public String getWebsite() {
         return website;
@@ -113,20 +112,20 @@ public class BlogQuery extends BaseQuery {
     }
 
     public Integer getUserId() {
-		return userId;
-	}
+        return userId;
+    }
 
-	public void setUserId(Integer userId) {
-		this.userId = userId;
-	}
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
 
-	public Integer getCategoryId() {
-		return categoryId;
-	}
+    public Integer getCategoryId() {
+        return categoryId;
+    }
 
-	public void setCategoryId(Integer categoryId) {
-		this.categoryId = categoryId;
-	}
+    public void setCategoryId(Integer categoryId) {
+        this.categoryId = categoryId;
+    }
 
 
 }

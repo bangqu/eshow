@@ -5,25 +5,25 @@ package cn.org.eshow.exception;
  */
 public class HttpException extends AppException {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
 
-	public HttpException() {
-		super();
-	}
+    public HttpException() {
+        super();
+    }
 
-	public HttpException(String message) {
-		super(message);
-	}
+    public HttpException(String message) {
+        super(message);
+    }
 
-	public HttpException(Throwable cause) {
-		super(cause);
-	}
+    public HttpException(Throwable cause) {
+        super(cause);
+    }
 
-	public HttpException(String message, Throwable cause) {
-		super(message, cause);
-	}
+    public HttpException(String message, Throwable cause) {
+        super(message, cause);
+    }
 
 }

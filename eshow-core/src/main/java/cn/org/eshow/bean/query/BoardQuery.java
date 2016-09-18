@@ -14,6 +14,7 @@ public class BoardQuery extends BaseQuery {
 	public String name;//
 	public String description;//
 	public Integer sequence;//
+	public String website;//
 
 	public Date getAddTime() {
 		return addTime;
@@ -47,4 +48,11 @@ public class BoardQuery extends BaseQuery {
 		this.sequence = sequence;
 	}
 
+	public String getWebsite() {
+		return website;
+	}
+
+	public void setWebsite(String website) {
+		this.website = website;
+	}
 }

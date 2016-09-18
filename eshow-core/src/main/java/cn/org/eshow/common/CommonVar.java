@@ -6,55 +6,57 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 
- * @author leida
+ * 公共变量
  *
+ * @author leida
  */
 public class CommonVar {
 
-	/**
-	 * 私有构造函数
-	 */
-	private CommonVar() {}
-	
-	/**
-	 * 可用
-	 */
-	public final static Integer STATE_USE = Integer.valueOf(1);
-	
-	/**
-	 * 不可用
-	 */
-	public final static Integer STATE_UNUSE = Integer.valueOf(0);
+    /**
+     * 私有构造函数
+     */
+    private CommonVar() {
+    }
 
-	/**
-	 * 顶，收藏，访问的默认值
-	 */
-	public final static Integer DEFAULT = Integer.valueOf(0);
-	
-	/**
-	 * 默认步长
-	 */
-	public final static Integer STEP = Integer.valueOf(1);
-	
-	/**
-	 * 未审核
-	 */
-	public final static Integer TOPIC_STATE_UNAUDIT = Integer.valueOf(0);
-	
-	/**
-	 * 已通过
-	 */
-	public final static Integer TOPIC_STATE_PASS = Integer.valueOf(1);
-	
-	/**
-	 * 未通过
-	 */
-	public final static Integer TOPIC_STATE_UNPASS = Integer.valueOf(2);
-	
-	/**
-	 * 邮件发送列表
-	 */
-	public static List<SimpleMailMessage> MAIL_SEND_LIST = new ArrayList<SimpleMailMessage>();
+    /**
+     * 可用
+     */
+    public final static Integer STATE_USE = Integer.valueOf(1);
 
+    /**
+     * 不可用
+     */
+    public final static Integer STATE_UNUSE = Integer.valueOf(0);
+
+    /**
+     * 顶，收藏，访问的默认值
+     */
+    public final static Integer DEFAULT = Integer.valueOf(0);
+
+    /**
+     * 默认步长
+     */
+    public final static Integer STEP = Integer.valueOf(1);
+
+    /**
+     * CODE未使用
+     */
+    public final static Integer CODE_UNUSED = Integer.valueOf(0);
+
+    /**
+     * CODE已使用
+     */
+    public final static Integer CODE_USED = Integer.valueOf(1);
+
+    /**
+     * 邮件发送列表
+     */
+    public static List<SimpleMailMessage> MAIL_SEND_LIST = new ArrayList<SimpleMailMessage>();
+
+    /**
+     * 平台支出枚举类型
+     */
+    public enum CodeType {
+        找回密码, 手机验证, 邮箱验证
+    }
 }
