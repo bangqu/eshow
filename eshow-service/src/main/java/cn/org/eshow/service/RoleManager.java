@@ -11,11 +11,12 @@ import java.util.List;
  * @author <a href="mailto:dan@getrolling.com">Dan Kibler </a>
  */
 public interface RoleManager extends GenericManager<Role, Integer> {
+
     /**
      * {@inheritDoc}
      */
     List<Role> getRoles();
-    
+
     /**
      * {@inheritDoc}
      */
@@ -25,7 +26,7 @@ public interface RoleManager extends GenericManager<Role, Integer> {
      * {@inheritDoc}
      */
     Role saveRole(Role role);
-    
+
     /**
      * {@inheritDoc}
      */

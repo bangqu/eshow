@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 @WebService(serviceName = "PhotoService", endpointInterface = "cn.org.eshow.service.PhotoManager")
 @Service
 public class PhotoManagerImpl extends GenericManagerImpl<Photo, Integer> implements PhotoManager {
+
 	@Autowired
 	PhotoDao photoDao;
 

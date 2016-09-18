@@ -10,8 +10,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import java.util.List;
 
 /**
- * Business Service Interface to handle communication between web and
- * persistence layer.
+ * Business Service Interface to handle communication between web and persistence layer.
  *
  * @author <a href="mailto:matt@raibledesigns.com">Matt Raible</a>
  *  Modified by <a href="mailto:dan@getrolling.com">Dan Kibler </a> 
@@ -41,8 +40,7 @@ public interface UserManager extends GenericManager<User, Integer> {
      * Finds a user by their username.
      * @param username the user's username used to login
      * @return User a populated user object
-     * @throws org.springframework.security.core.userdetails.UsernameNotFoundException
-     *         exception thrown when user not found
+     * @throws org.springframework.security.core.userdetails.UsernameNotFoundException exception thrown when user not found
      */
     User getUserByUsername(String username) throws UsernameNotFoundException;
     
@@ -50,11 +48,11 @@ public interface UserManager extends GenericManager<User, Integer> {
      * Finds a user by their domain.
      * @param domain the user's domain used to login
      * @return User a populated user object
-     * @throws org.springframework.security.core.userdetails.UsernameNotFoundException
-     *         exception thrown when user not found
+     * @throws org.springframework.security.core.userdetails.UsernameNotFoundException exception thrown when user not found
      */
     User getUserByDomain(String domain) throws UsernameNotFoundException;
 
+    List<User> list(UserQuery query);
     /**
      * Retrieves a list of users, filtering with parameters on a user object
      * @param query parameters to filter on
@@ -141,4 +139,6 @@ public interface UserManager extends GenericManager<User, Integer> {
     User updatePassword(String username, String currentPassword, String recoveryToken, String newPassword, String applicationUrl) throws UserExistsException;
 
     boolean login(User user, String password);
+
+    User check(UserQuery query);
 }

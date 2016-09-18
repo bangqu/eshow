@@ -1,8 +1,8 @@
 package cn.org.eshow.service;
 
-import java.util.List;
-
 import cn.org.eshow.model.LabelValue;
+
+import java.util.List;
 
 /**
  * Business Service Interface to talk to persistence layer and
@@ -11,8 +11,10 @@ import cn.org.eshow.model.LabelValue;
  * @author <a href="mailto:matt@raibledesigns.com">Matt Raible</a>
  */
 public interface LookupManager {
-	/**
+
+    /**
      * Retrieves all possible roles from persistence layer
+     *
      * @return List of LabelValue objects
      */
     List<LabelValue> getAllRoles();

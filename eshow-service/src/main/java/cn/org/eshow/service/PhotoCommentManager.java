@@ -10,7 +10,17 @@ import java.util.List;
 @WebService
 public interface PhotoCommentManager extends GenericManager<PhotoComment, Integer> {
 
+    /**
+     *
+     * @param query
+     * @return
+     */
     List<PhotoComment> list(PhotoCommentQuery query);
 
+    /**
+     *
+     * @param query
+     * @return
+     */
     Page<PhotoComment> search(PhotoCommentQuery query);
 }

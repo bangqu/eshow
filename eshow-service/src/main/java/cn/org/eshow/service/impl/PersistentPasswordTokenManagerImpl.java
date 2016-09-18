@@ -92,9 +92,7 @@ public class PersistentPasswordTokenManagerImpl implements PasswordTokenManager 
     }
 
     protected boolean isRecoveryTokenPersisted(final User user, final String token) {
-        Number count = jdbcTemplate.queryForObject(
-                selectTokenSql,
-                new Object[] { user.getUsername(), token }, Integer.class);
+        Number count = jdbcTemplate.queryForObject(selectTokenSql, new Object[] { user.getUsername(), token }, Integer.class);
         return count != null && count.intValue() == 1;
     }
 

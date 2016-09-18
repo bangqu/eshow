@@ -11,10 +11,25 @@ import java.util.List;
 @WebService
 public interface ProductManager extends GenericManager<Product, Integer> {
 
+	/**
+	 *
+	 * @param query
+	 * @return
+     */
 	List<Product> list(ProductQuery query);
 
+	/**
+	 *
+	 * @param query
+	 * @return
+     */
 	Page<Product> search(ProductQuery query);
 
+	/**
+	 *
+	 * @param query
+	 * @return
+     */
     Product check(ProductQuery query);
 
 	/**

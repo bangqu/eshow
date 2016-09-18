@@ -1,6 +1,5 @@
 package cn.org.eshow.service;
 
-
 import cn.org.eshow.model.User;
 
 public interface PasswordTokenManager {
@@ -15,5 +14,10 @@ public interface PasswordTokenManager {
      */
     boolean isRecoveryTokenValid(User user, String token);
 
+    /**
+     *
+     * @param user
+     * @param token
+     */
     void invalidateRecoveryToken(User user, String token);
 }

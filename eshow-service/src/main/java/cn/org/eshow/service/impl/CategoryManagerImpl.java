@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 @WebService(serviceName = "CategoryService", endpointInterface = "cn.org.eshow.service.CategoryManager")
 @Service
 public class CategoryManagerImpl extends GenericManagerImpl<Category, Integer> implements CategoryManager {
+
 	@Autowired
 	CategoryDao categoryDao;
 

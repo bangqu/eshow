@@ -16,8 +16,8 @@ import org.springframework.stereotype.Service;
 
 @WebService(serviceName = "PhotoCommentService", endpointInterface = "cn.org.eshow.service.PhotoCommentManager")
 @Service
-public class PhotoCommentManagerImpl extends GenericManagerImpl<PhotoComment, Integer> implements
-		PhotoCommentManager {
+public class PhotoCommentManagerImpl extends GenericManagerImpl<PhotoComment, Integer> implements PhotoCommentManager {
+
 	@Autowired
 	PhotoCommentDao photoCommentDao;
 

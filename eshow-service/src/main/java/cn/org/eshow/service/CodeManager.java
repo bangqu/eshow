@@ -33,6 +33,13 @@ public interface CodeManager extends GenericManager<Code, Integer> {
     Code password(User user);
 
     /**
+     *  返回用户的验证手机号的CODE
+     * @param mobile
+     * @return
+     */
+    Code phone(String mobile);
+
+    /**
      *
      * @param query
      * @return
@@ -64,6 +71,15 @@ public interface CodeManager extends GenericManager<Code, Integer> {
      * @return
      */
     Code save(String type, String code, String email, User user);
+
+    /**
+     *
+     * @param type
+     * @param code
+     * @param mobile
+     * @return
+     */
+    Code save(String type, String code, String mobile);
 
     /**
      * 修改编码状态

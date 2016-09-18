@@ -32,7 +32,8 @@ public interface GenericManager<T, PK extends Serializable> {
      * ObjectRetrievalFailureException Runtime Exception is thrown if
      * nothing is found.
      *
-     * @param id the identifier (primary key) of the object to get
+     * @param object
+     * @param value
      * @return a populated object
      * @see org.springframework.orm.ObjectRetrievalFailureException
      */

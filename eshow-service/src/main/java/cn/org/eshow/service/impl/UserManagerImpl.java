@@ -61,6 +61,10 @@ public class UserManagerImpl extends GenericManagerImpl<User, Integer> implement
 		return userDao.get(userId);
 	}
 
+
+	public  List<User> list(UserQuery query){
+		return userDao.list(query);
+	}
     /**
      * {@inheritDoc}
      */
@@ -164,6 +168,7 @@ public class UserManagerImpl extends GenericManagerImpl<User, Integer> implement
 		return false;
 	}
 
+
 	/**
 	 * {@inheritDoc}
 	 */
@@ -208,5 +213,13 @@ public class UserManagerImpl extends GenericManagerImpl<User, Integer> implement
 			}
 		}
 		return false;
+	}
+
+	public User check(UserQuery query){
+		List<User> users = list(query);
+		if (!users.isEmpty()){
+			return users.get(0);
+		}
+		return null;
 	}
 }

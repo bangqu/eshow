@@ -133,6 +133,12 @@ public class UserSecurityAdvice implements MethodBeforeAdvice, AfterReturningAdv
         }
     }
 
+    /**
+     *
+     * @param auth
+     * @param userManager
+     * @return
+     */
     private User getCurrentUser(Authentication auth, UserManager userManager) {
         User currentUser;
         if (auth.getPrincipal() instanceof LdapUserDetails) {

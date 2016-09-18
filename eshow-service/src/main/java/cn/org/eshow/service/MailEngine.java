@@ -20,8 +20,7 @@ import javax.mail.internet.MimeMultipart;
 import java.util.Map;
 
 /**
- * Class for sending e-mail messages based on Velocity templates or with
- * attachments.
+ * Class for sending e-mail messages based on Velocity templates or with attachments.
  * 
  * @author Matt Raible
  */
