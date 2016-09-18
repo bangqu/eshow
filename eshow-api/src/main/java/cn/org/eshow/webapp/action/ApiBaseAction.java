@@ -2,9 +2,13 @@ package cn.org.eshow.webapp.action;
 
 import cn.org.eshow.Constants;
 import cn.org.eshow.common.page.Page;
+import cn.org.eshow.model.AccessToken;
+import cn.org.eshow.model.User;
+import cn.org.eshow.service.AccessTokenManager;
 import cn.org.eshow.service.MailEngine;
 import cn.org.eshow.service.RoleManager;
 import cn.org.eshow.service.UserManager;
+import cn.org.eshow.util.DateUtil;
 import cn.org.eshow.util.JacksonUtil;
 import cn.org.eshow.webapp.util.Struts2Utils;
 import com.opensymphony.xwork2.ActionSupport;
@@ -16,10 +20,7 @@ import org.springframework.mail.SimpleMailMessage;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Implementation of <strong>ActionSupport</strong> that contains convenience
@@ -158,14 +159,36 @@ public class ApiBaseAction<T> extends ActionSupport {
 	 * 返回失败信息
 	 */
 	public void failure() {
+		Struts2Utils.renderText("{\"status\":\"-5\"}");
+	}
+
+	/**
+	 * 返回失败
+	 */
+	public void failure(String msg) {
+		Struts2Utils.renderText("{\"status\":\"-5\",\"msg\":\"" + msg + "\"}");
+	}
+
+	/**
+	 * 没有数据
+	 */
+	public void noData() {
 		Struts2Utils.renderText("{\"status\":\"0\"}");
 	}
 
 	/**
-	 * 返回失败信息及提示
+	 * 没有数据
 	 */
-	public void failure(String msg) {
+	public void noData(String msg) {
 		Struts2Utils.renderText("{\"status\":\"0\",\"msg\":\"" + msg + "\"}");
+	}
+
+
+	/**
+	 * 缺少参数
+	 */
+	public void errorParame(String msg) {
+		Struts2Utils.renderText("{\"status\":\"-1\",\"msg\":\"" + msg + "\"}");
 	}
 
     /**
@@ -174,12 +197,14 @@ public class ApiBaseAction<T> extends ActionSupport {
     public void expires() {
         Struts2Utils.renderText("{\"status\":\"-9\",\"msg\":\"用户信息过期，请重新登录\"}");
     }
+
+
 	/**
 	 * 输出列表JSONArray
 	 */
 	public void list(String name, String msg, List<T> list) {
 		if (list.isEmpty()) {
-			failure("没有数据");
+			noData("没有数据");
 		} else {
 			Struts2Utils.renderText("{\"status\":\"1\",\"msg\":\"" + msg + "\",\"" + name + "\":" + JacksonUtil.toJson(list) + "}");
 		}
@@ -197,7 +222,7 @@ public class ApiBaseAction<T> extends ActionSupport {
 	 */
 	public void search(String name, String msg, Page<T> page) {
 		if (page.getDataList().isEmpty()) {
-			failure("没有数据");
+			noData("没有数据");
 		} else {
 			Struts2Utils.renderText("{\"status\":\"1\",\"msg\":\"" + msg + "\",\"total\":" + page.getTotal() + ",\"totalPage\":" + page.getTotalPage() + ",\"pageSize\":" + page.getPageSize() + ",\"" + name + "\":" + JacksonUtil.toJson(page.getDataList()) + "}");
 		}
@@ -209,23 +234,23 @@ public class ApiBaseAction<T> extends ActionSupport {
 	 * @param accessToken
 	 * @return User
 	 */
-//	public User isValid(String accessToken, AccessTokenManager accessTokenManager) {
-//		if (accessToken == null) {
-//			return null;
-//		}
-//		AccessToken at = accessTokenManager.getBy("accessToken", accessToken);
-//		if (at != null) {
-//			long timeNow = DateUtil.dateToLong(new Date());// 当前时间
-//			long timeEnd = DateUtil.dateToLong(at.getUpdateTime());// 最后登录时间
-//			if (timeNow - timeEnd > at.getExpiresIn()) {
-//				return null;
-//			} else {
-//				return at.getUser();
-//			}
-//		} else {
-//			return null;
-//		}
-//	}
+	public User isValid(String accessToken, AccessTokenManager accessTokenManager) {
+		if (accessToken == null) {
+			return null;
+		}
+		AccessToken at = accessTokenManager.getBy("accessToken", accessToken);
+		if (at != null) {
+			long timeNow = DateUtil.dateToLong(new Date());// 当前时间
+			long timeEnd = DateUtil.dateToLong(at.getUpdateTime());// 最后登录时间
+			if (timeNow - timeEnd > at.getExpiresIn()) {
+				return null;
+			} else {
+				return at.getUser();
+			}
+		} else {
+			return null;
+		}
+	}
 
     protected void saveMessage(String msg) {
         List<String> messages = (List<String>) getRequest().getSession().getAttribute("messages");

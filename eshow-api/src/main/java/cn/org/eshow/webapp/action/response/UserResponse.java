@@ -1,9 +1,11 @@
 package cn.org.eshow.webapp.action.response;
 
+import cn.org.eshow.model.User;
+
 import java.util.*;
 
 /**
- * 用户表
+ * 用户返回对象
  *
  * @author leida
  */
@@ -29,6 +31,9 @@ public class UserResponse {
     private Short marital;// 婚姻状况
     private String intro;// 自我介绍
     private String website;// 网站
+    private String clientId;//个推clientId
+    private String deviceToken;//设备推送Token
+    private String easemobId;//环信用户ID
     private boolean accountExpired;// 帐号是否过期
     private boolean accountLocked;// 帐号是否锁住
     private boolean credentialsExpired;// 凭证是否过期
@@ -40,21 +45,20 @@ public class UserResponse {
         this.addTime = user.getAddTime();
         this.updateTime = user.getUpdateTime();
         this.username = user.getUsername();
-        this.nickname = user.getNickName() == null ? "" : user.getNickName();
         this.age = user.getAge() == null ? 0 : user.getAge();
         this.photo = user.getPhoto() == null ? "" : user.getPhoto();
         this.realname = user.getRealname() == null ? "" : user.getRealname();
         this.male = user.getMale();
         this.birthday = user.getBirthday();
         this.constellation = user.getConstellation() == null ? 0 : user.getConstellation();
-        this.birthAttrib = user.getBirthAttrib() == null ? 0 : getBirthAttrib();
+        this.birthAttrib = user.getBirthAttrib() == null ? 0 : user.getBirthAttrib();
         this.bloodType = user.getBloodType() == null ? 0 : user.getBloodType();
         this.marital = user.getMarital() == null ? 0 : user.getMarital();
         this.intro = user.getIntro();
         this.website = user.getWebsite();
-        this.accountExpired = user.getAccountExpired();
-        this.accountLocked = user.getAccountLocked();
-        this.credentialsExpired = user.getCredentialsExpired();
+        this.clientId = user.getClientId() == null ? "" : user.getClientId();
+        this.deviceToken = user.getDeviceToken() == null ? "" : user.getDeviceToken();
+        this.easemobId = user.getEasemobId() == null ? "" : user.getEasemobId();
     }
 
 
@@ -201,6 +205,30 @@ public class UserResponse {
 
     public void setWebsite(String website) {
         this.website = website;
+    }
+
+    public String getClientId() {
+        return clientId;
+    }
+
+    public void setClientId(String clientId) {
+        this.clientId = clientId;
+    }
+
+    public String getDeviceToken() {
+        return deviceToken;
+    }
+
+    public void setDeviceToken(String deviceToken) {
+        this.deviceToken = deviceToken;
+    }
+
+    public String getEasemobId() {
+        return easemobId;
+    }
+
+    public void setEasemobId(String easemobId) {
+        this.easemobId = easemobId;
     }
 
     public boolean isAccountExpired() {

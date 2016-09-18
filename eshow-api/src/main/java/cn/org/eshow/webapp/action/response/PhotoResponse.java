@@ -1,9 +1,11 @@
 package cn.org.eshow.webapp.action.response;
 
+import cn.org.eshow.model.Photo;
+
 import java.util.Date;
 
 /**
- * 图片表
+ * 图片返回对象
  *
  * @author leida
  */

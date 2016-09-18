@@ -1,9 +1,11 @@
 package cn.org.eshow.webapp.action.response;
 
+import cn.org.eshow.model.Category;
+
 import java.util.Date;
 
 /**
- * 博文分类表
+ * 博文分类返回对象
  *
  * @author leida
  */

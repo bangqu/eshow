@@ -5,7 +5,7 @@ import cn.org.eshow.model.Board;
 import java.util.Date;
 
 /**
- * 话题板块表
+ * 话题板块返回对象
  *
  * @author leida
  */
@@ -22,12 +22,14 @@ public class BoardResponse {
 
 
     public BoardResponse(Board board) {
-        this.id = board.getId();
-        this.addTime = board.getAddTime();
-        this.name = board.getName();
-        this.description = board.getDescription();
-        this.sequence = board.getSequence();
-        this.website = board.getWebsite();
+        if (board!=null) {
+            this.id = board.getId();
+            this.addTime = board.getAddTime();
+            this.name = board.getName();
+            this.description = board.getDescription();
+            this.sequence = board.getSequence();
+            this.website = board.getWebsite();
+        }
     }
 
     public Integer getId() {

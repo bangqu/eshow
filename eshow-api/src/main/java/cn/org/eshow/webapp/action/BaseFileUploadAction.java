@@ -1,6 +1,6 @@
 package cn.org.eshow.webapp.action;
 
-import com.yinwan.Constants;
+import cn.org.eshow.Constants;
 import org.apache.struts2.ServletActionContext;
 
 import java.io.*;

@@ -1,15 +1,15 @@
 package cn.org.eshow.webapp.action.response;
 
+import cn.org.eshow.model.Topic;
+
 import java.util.Date;
 
 /**
- * 主题表
+ * 主题返回对象
  *
  * @author leida
  */
-
 public class TopicResponse {
-
 
     private Integer id;//主题ID
     private UserResponse user;//用户
@@ -18,24 +18,27 @@ public class TopicResponse {
     private Date updateTime;//更新时间
     private String title;//标题
     private String content;//内容
-    private Integer commentSize; // 回复次数
     private Integer count; // 浏览次数
-    private Integer tip; //
-    private Integer state; // 0未审核,1已通过,2未通过
+    private Integer commentSize; // 回复次数
+    private Integer recommendSize; // 推荐次数
+    private Boolean top; //是否置顶
     private String website;//网站
 
     public TopicResponse(Topic topic) {
         this.id = topic.getId();
-        this.user = new UserResponse(topic.getUser());
-        this.board = new BoardResponse(topic.getBoard());
+        if (topic.getUser() != null) {
+            this.user = new UserResponse(topic.getUser());
+        }
+        if (topic.getBoard() != null) {
+            this.board = new BoardResponse(topic.getBoard());
+        }
         this.addTime = topic.getAddTime();
         this.updateTime = topic.getUpdateTime();
         this.title = topic.getTitle();
         this.content = topic.getContent();
         this.commentSize = topic.getCommentSize();
         this.count = topic.getCount();
-        this.tip = topic.getTip();
-        this.state = topic.getState();
+        this.top = topic.getTop();
         this.website = topic.getWebsite();
     }
 
@@ -95,14 +98,6 @@ public class TopicResponse {
         this.content = content;
     }
 
-    public Integer getCommentSize() {
-        return commentSize;
-    }
-
-    public void setCommentSize(Integer commentSize) {
-        this.commentSize = commentSize;
-    }
-
     public Integer getCount() {
         return count;
     }
@@ -111,20 +106,28 @@ public class TopicResponse {
         this.count = count;
     }
 
-    public Integer getTip() {
-        return tip;
+    public Integer getCommentSize() {
+        return commentSize;
     }
 
-    public void setTip(Integer tip) {
-        this.tip = tip;
+    public void setCommentSize(Integer commentSize) {
+        this.commentSize = commentSize;
     }
 
-    public Integer getState() {
-        return state;
+    public Integer getRecommendSize() {
+        return recommendSize;
     }
 
-    public void setState(Integer state) {
-        this.state = state;
+    public void setRecommendSize(Integer recommendSize) {
+        this.recommendSize = recommendSize;
+    }
+
+    public Boolean getTop() {
+        return top;
+    }
+
+    public void setTop(Boolean top) {
+        this.top = top;
     }
 
     public String getWebsite() {
