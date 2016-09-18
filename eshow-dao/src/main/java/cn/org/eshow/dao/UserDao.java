@@ -9,6 +9,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 
 /**
  * User Data Access Object (GenericDao) interface.
@@ -35,6 +37,8 @@ public interface UserDao extends GenericDao<User, Integer> {
     @Transactional
     UserDetails loadUserByDomain(String domain) ;
 
+
+    List<User> list(UserQuery query);
     /**
      * Gets a list of users ordered by the uppercase version of their username.
      *

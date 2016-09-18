@@ -1,16 +1,15 @@
 package cn.org.eshow.dao.hibernate;
 
-import java.util.List;
-
-import org.hibernate.criterion.Restrictions;
-import org.springframework.stereotype.Repository;
-
 import cn.org.eshow.bean.query.BoardQuery;
 import cn.org.eshow.common.dao.EnhancedRule;
 import cn.org.eshow.common.page.Page;
 import cn.org.eshow.dao.BoardDao;
-import cn.org.eshow.dao.hibernate.GenericDaoHibernate;
 import cn.org.eshow.model.Board;
+import org.hibernate.criterion.MatchMode;
+import org.hibernate.criterion.Restrictions;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository("boardDao")
 public class BoardDaoHibernate extends GenericDaoHibernate<Board, Integer> implements BoardDao {
@@ -48,6 +47,9 @@ public class BoardDaoHibernate extends GenericDaoHibernate<Board, Integer> imple
 			}
 			if (query.sequence != null) {
 				rule.add(Restrictions.eq("sequence", query.sequence));
+			}
+			if (query.website != null) {
+				rule.add(Restrictions.like("website", query.website, MatchMode.ANYWHERE));
 			}
 		}
 		return rule;

@@ -1,21 +1,19 @@
 package cn.org.eshow.dao.hibernate;
 
-import java.util.List;
-
-import org.hibernate.criterion.MatchMode;
-import org.hibernate.criterion.Restrictions;
-import org.springframework.stereotype.Repository;
-
 import cn.org.eshow.bean.query.PhotoCommentQuery;
 import cn.org.eshow.common.dao.EnhancedRule;
 import cn.org.eshow.common.page.Page;
 import cn.org.eshow.dao.PhotoCommentDao;
-import cn.org.eshow.dao.hibernate.GenericDaoHibernate;
 import cn.org.eshow.model.PhotoComment;
+import org.hibernate.criterion.MatchMode;
+import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Restrictions;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository("photoCommentDao")
-public class PhotoCommentDaoHibernate extends GenericDaoHibernate<PhotoComment, Integer> implements
-		PhotoCommentDao {
+public class PhotoCommentDaoHibernate extends GenericDaoHibernate<PhotoComment, Integer> implements PhotoCommentDao {
 
 	public PhotoCommentDaoHibernate() {
 		super(PhotoComment.class);
@@ -50,6 +48,9 @@ public class PhotoCommentDaoHibernate extends GenericDaoHibernate<PhotoComment, 
 			}
 			if (query.userId != null) {
 				rule.add(Restrictions.eq("user.id", query.userId));
+			}
+			if (query.getOrder() != null) {
+				rule.addOrder(query.getDesc() ? Order.desc(query.getOrder()) : Order.asc(query.getOrder()));
 			}
 		}
 		return rule;

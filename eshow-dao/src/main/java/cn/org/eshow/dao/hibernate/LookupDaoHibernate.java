@@ -1,16 +1,15 @@
 package cn.org.eshow.dao.hibernate;
 
+import cn.org.eshow.dao.LookupDao;
+import cn.org.eshow.model.Role;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import org.hibernate.Session;
-
-import cn.org.eshow.dao.LookupDao;
-import cn.org.eshow.model.Role;
 
 /**
  * Hibernate implementation of LookupDao.
@@ -24,6 +23,7 @@ public class LookupDaoHibernate implements LookupDao {
 
     /**
      * Initialize LookupDaoHibernate with Hibernate SessionFactory.
+     *
      * @param sessionFactory
      */
     @Autowired

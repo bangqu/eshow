@@ -1,18 +1,16 @@
 package cn.org.eshow.dao.hibernate;
 
-import java.util.List;
-
+import cn.org.eshow.bean.query.BlogQuery;
+import cn.org.eshow.common.dao.EnhancedRule;
+import cn.org.eshow.common.page.Page;
+import cn.org.eshow.dao.BlogDao;
+import cn.org.eshow.model.Blog;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
-import cn.org.eshow.bean.query.BlogQuery;
-import cn.org.eshow.common.dao.EnhancedRule;
-import cn.org.eshow.common.page.Page;
-import cn.org.eshow.dao.BlogDao;
-import cn.org.eshow.dao.hibernate.GenericDaoHibernate;
-import cn.org.eshow.model.Blog;
+import java.util.List;
 
 @Repository("blogDao")
 public class BlogDaoHibernate extends GenericDaoHibernate<Blog, Integer> implements BlogDao {
@@ -59,7 +57,7 @@ public class BlogDaoHibernate extends GenericDaoHibernate<Blog, Integer> impleme
             if (query.img != null) {
                 rule.add(Restrictions.like("img", query.img, MatchMode.ANYWHERE));
             }
-            if (query.hasImg!= null) {
+            if (query.hasImg != null) {
                 if (query.hasImg) {
                     rule.add(Restrictions.isNotNull("img"));
                 } else {
@@ -76,7 +74,7 @@ public class BlogDaoHibernate extends GenericDaoHibernate<Blog, Integer> impleme
                 rule.add(Restrictions.eq("category.id", query.categoryId));
             }
             if (query.website != null) {
-                rule.add(Restrictions.like("website", query.website,MatchMode.ANYWHERE));
+                rule.add(Restrictions.like("website", query.website, MatchMode.ANYWHERE));
             }
             if (query.userId != null) {
                 rule.add(Restrictions.eq("user.id", query.userId));

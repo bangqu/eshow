@@ -1,18 +1,16 @@
 package cn.org.eshow.dao.hibernate;
 
-import java.util.List;
-
+import cn.org.eshow.dao.RoleDao;
+import cn.org.eshow.model.Role;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
-import cn.org.eshow.dao.RoleDao;
-import cn.org.eshow.model.Role;
+import java.util.List;
 
 
 /**
- * This class interacts with hibernate session to save/delete and
- * retrieve Role objects.
+ * This class interacts with hibernate session to save/delete and retrieve Role objects.
  *
  * @author <a href="mailto:bwnoll@gmail.com">Bryan Noll</a>
  * @author jgarcia (updated to hibernate 4)

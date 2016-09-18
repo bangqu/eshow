@@ -1,18 +1,16 @@
 package cn.org.eshow.dao.hibernate;
 
-import java.util.List;
-
+import cn.org.eshow.bean.query.InfoQuery;
+import cn.org.eshow.common.dao.EnhancedRule;
+import cn.org.eshow.common.page.Page;
+import cn.org.eshow.dao.InfoDao;
+import cn.org.eshow.model.Info;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
-import cn.org.eshow.bean.query.InfoQuery;
-import cn.org.eshow.common.dao.EnhancedRule;
-import cn.org.eshow.common.page.Page;
-import cn.org.eshow.dao.InfoDao;
-import cn.org.eshow.dao.hibernate.GenericDaoHibernate;
-import cn.org.eshow.model.Info;
+import java.util.List;
 
 @Repository("infoDao")
 public class InfoDaoHibernate extends GenericDaoHibernate<Info, Integer> implements InfoDao {
@@ -58,10 +56,8 @@ public class InfoDaoHibernate extends GenericDaoHibernate<Info, Integer> impleme
 			if (query.enabled != null) {
 				rule.add(Restrictions.eq("enabled", query.enabled));
 			}
-
 			if (query.getOrder() != null) {
-				rule.addOrder(query.getDesc() ? Order.desc(query.getOrder()) : Order.asc(query
-						.getOrder()));
+				rule.addOrder(query.getDesc() ? Order.desc(query.getOrder()) : Order.asc(query.getOrder()));
 			}
 		}
 		return rule;

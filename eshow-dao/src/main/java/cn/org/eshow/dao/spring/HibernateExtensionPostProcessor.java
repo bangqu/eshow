@@ -16,9 +16,8 @@ import java.util.Properties;
  * within a seperate Spring configuration file in a seperate jar file. By using this extension factory developers can
  * add persistent classes to an AppFuse application without modifying any of the existing AppFuse Spring configuration
  * or jar distribution files.
- * 
- * <p>As an example consider the following Spring bean configuration:
- * 
+ * <p/>
+ * <p>As an example consider the following Spring bean configuration:<p/>
  * <pre>
  * &lt;bean class=&quot;org.appfuse.dao.spring.HibernateExtensionPostProcessor&quot;&gt;
  *     &lt;property name=&quot;mappingResources&quot;&gt;
@@ -33,7 +32,7 @@ import java.util.Properties;
  *     &lt;/property&gt;
  * &lt;/bean&gt;
  * </pre>
- * 
+ * <p/>
  * <p>The snippet will add two persistent classes to an existing Session Factory bean called &quot;sessionFactory&quot;.
  * Note that the extension can handle both annotated classes and the more traditional .hbm.xml files. Assuming that
  * these persistent classes are packaged in a jar called extension.jar which contains the Spring configuration file
@@ -53,10 +52,11 @@ public class HibernateExtensionPostProcessor implements BeanFactoryPostProcessor
 
     /**
      * Adds the annotated classes and the mapping resources to the existing Session Factory configuration.
+     *
      * @param configurableListableBeanFactory the good ol' bean factory
      */
     @SuppressWarnings("unchecked")
-    public void postProcessBeanFactory(ConfigurableListableBeanFactory configurableListableBeanFactory)  {
+    public void postProcessBeanFactory(ConfigurableListableBeanFactory configurableListableBeanFactory) {
         if (configurableListableBeanFactory.containsBean(sessionFactoryBeanName)) {
             BeanDefinition sessionFactoryBeanDefinition =
                     configurableListableBeanFactory.getBeanDefinition(sessionFactoryBeanName);

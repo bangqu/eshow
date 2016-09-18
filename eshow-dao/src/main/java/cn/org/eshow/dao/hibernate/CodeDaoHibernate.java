@@ -1,11 +1,5 @@
 package cn.org.eshow.dao.hibernate;
 
-
-/**
- * 编码代码
- * updated by vera on 2014.12.5 because of DB add mobile
- */
-
 import cn.org.eshow.bean.query.CodeQuery;
 import cn.org.eshow.common.dao.EnhancedRule;
 import cn.org.eshow.common.page.Page;
@@ -64,8 +58,7 @@ public class CodeDaoHibernate extends GenericDaoHibernate<Code, Integer> impleme
 				rule.add(Restrictions.eq("enabled", query.enabled));
 			}
 			if (query.getOrder() != null) {
-				rule.addOrder(query.getDesc() ? Order.desc(query
-                        .getOrder()) : Order.asc(query.getOrder()));
+				rule.addOrder(query.getDesc() ? Order.desc(query.getOrder()) : Order.asc(query.getOrder()));
 			}
 		}
 		return rule;
