@@ -7,6 +7,6 @@
         Copyright © 2013 Promising Promos LLC All rights reserved.<br>
         Promising Promos LLC, 3600 Red Road Suite 407, Miramar, FL 33025
     </p>
-    <a href="${promisingpromosadmin}/login" target="_blank">点击登录进入后台</a>
+    <a href="${promisingpromosadmin}/login">点击登录进入后台</a>
 </div>
 

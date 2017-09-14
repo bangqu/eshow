@@ -1,0 +1,51 @@
+.untreatedtable{border:1px solid #ddd;}
+.untreatedtable > tbody + tbody {border-top:0px;}
+.untreatedtable p{margin:0px;font-size:14px;line-height: 24px;}
+.untreatedtable .order_goods{border-right:1px solid #ddd;clear:left;height:130px; padding-top:10px;width:100%;border-bottom:1px solid #ddd;padding-right:20px;}
+.untreatedtable .order_goods a{text-decoration:none; margin-right:20px;height:130px;display:inline-block;float:left;}
+.untreatedtable .order_goods a img{float:left;border:1px solid #eee;border-radius:5px; width:80px;height:80px;}
+.untreatedtable .order_goods a i{display:block;width:100%;overflow: hidden;padding-top:5px;  font-style: normal;color:#777;}
+.untreatedtable .over1{position: relative;background: url(../images/bg_04.png) right bottom no-repeat;max-width:500px}
+.untreatedtable .over1 p{width:500px;overflow: hidden;height:110px;}
+.untreatedtable .over1:hover p{overflow: visible;height:auto; z-index: 22;box-shadow: 2px 2px 2px rgba(0,0,0,0.1);position: absolute;width:600px;border:1px solid #ddd;border-radius: 4px; padding:20px;background: #fff}
+.untreatedtable .uinfo{position:absolute; top:-10px;font-size:14px;padding:10px 16px;}
+.untreatedtable .size{padding-bottom:10px;}
+.untreatedtable .uinfo:hover{background:#fff; border:1px solid #eee;padding:9px 15px;z-index:22;border-radius:4px;box-shadow: 2px 2px 2px rgba(0,0,0,0.1);}
+.untreatedtable .uinfo .imore{display: none;}
+.untreatedtable .uinfo .imore dl dt{padding-bottom:5px;}
+.untreatedtable .uinfo .imore dl dd{padding:5px 0;font-size:12px;border:1px solid #ddd;border-left:0px;border-right: 0px;}
+.untreatedtable .btn-xs{margin-bottom:5px;}
+.untreatedtable .uinfo:hover .imore{display:block;}
+
+
+.spimg img{border:1px solid #eee;}
+.spimg a{position: relative;}
+.spimg a span{display: none;position: absolute;width:200px;height:200px;left:40px;}
+.spimg a:hover span{ display:inline-block;}
+.order_view_info{padding-bottom:10px;}
+.order_view_info dl{line-height:35px;border:1px solid #ddd;border-top:0px;}
+.order_view_info dl dt{border-top:1px solid #ddd;border-bottom:1px solid #ddd;padding:5px 15px;}
+.order_view_info dl dd{padding:15px 0;}
+.order_view_info dl dd p{color:#333;padding:5px 0;}
+.order_view_info dl dd p span{color:#888;width:100px;text-align: right;display: inline-block;padding-right:10px;}
+.order_view_info .orderstp{padding:10px 0 30px;}
+.order_view_info .orderstp li{display: inline-block;position: relative;padding:10px;border-radius:15px;text-align: center;width:250px;border:1px solid #eee;margin-right:20px;}
+.order_view_info .orderstp li span{display: block;}
+.order_view_info .orderstp li.over{border:1px solid #5cb85c;color:#5cb85c; }
+.order_view_info .orderstp li.over:after{content:" "; position:absolute;width: 0;  height: 0;  border-top: 5px solid transparent;  border-left: 10px solid #5cb85c;right:-18px;top:25px;  border-bottom:5px solid transparent;}
+
+.order_view_table{border:1px solid #ddd;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

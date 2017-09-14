@@ -292,7 +292,7 @@ function getAnaOrderid(Cname){
 	 		}else{
 	 			strtip = "新推出的射手影音播放器加入了许多新的功能和元素，而且按计划最近还会持续而猛烈的一步一步更新新的功能，因此十分需要更多用户加入测试，并提出您宝贵的意见。<br/>\
 	 			<br/>只要是常常看片，特别是用字幕看片的用户，都欢迎来帮我来找虫。有任何不稳定、不正常的情况也请及时发来。当然意见、创意也十分欢迎。 \
-	<br/><br/>如果发现任何问题都可以随时<a href='contact.html'>通过各种方式联络我</a>。";
+	<br/><br/>如果发现任何问题都可以随时<a href='contact.jsp'>通过各种方式联络我</a>。";
 	 		}
 	 		strtip += "<a href='#' class='closebutton' onclick='hidetooltip();return false;'>关闭</span>";
 	 		obt.innerHTML = strtip;

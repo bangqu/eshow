@@ -3,9 +3,13 @@ package cn.org.eshow.webapp.action;
 import cn.org.eshow.bean.query.BaseQuery;
 import cn.org.eshow.common.page.Page;
 import cn.org.eshow.component.search.SearchManager;
-import cn.org.eshow.model.*;
+import cn.org.eshow.model.Blog;
+import cn.org.eshow.model.BlogComment;
+import cn.org.eshow.model.Topic;
+import cn.org.eshow.model.User;
 import cn.org.eshow.util.PageUtil;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.struts2.convention.annotation.AllowedMethods;
 import org.apache.struts2.convention.annotation.Result;
 import org.apache.struts2.convention.annotation.Results;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +20,7 @@ import java.util.List;
 		@Result(name = "user", location = "/search/user"),
 		@Result(name = "service", location = "/search/service"),
 		@Result(name = "topic", location = "/search/topic") })
+@AllowedMethods({"list", "search", "delete", "view", "update", "save"})
 public class SearchAction extends BaseAction {
 
 	private static final long serialVersionUID = 1L;
@@ -26,6 +31,7 @@ public class SearchAction extends BaseAction {
 
 	@Autowired
 	private SearchManager searchManager;
+
 	private String keyword = "";
 	private List<Blog> blogs;
 	private List<User> users;
@@ -36,8 +42,7 @@ public class SearchAction extends BaseAction {
 
 	public String blog() throws Exception {
 		if (StringUtils.isNotEmpty(keyword)) {
-			Page<Blog> page = searchManager.search(Blog.class, keyword, query.getOffset(),
-					query.pagesize, "title", "content");
+			Page<Blog> page = searchManager.search(Blog.class, keyword, query.getOffset(), query.pagesize, "title", "content");
 			blogs = page.getDataList();
 			saveRequest("page", PageUtil.conversion(page));
 		}
@@ -46,8 +51,7 @@ public class SearchAction extends BaseAction {
 
 	public String user() throws Exception {
 		if (StringUtils.isNotEmpty(keyword)) {
-			Page<User> page = searchManager.search(User.class, keyword, query.getOffset(),
-					query.pagesize, "username", "realname", "domain", "intro", "city", "province");
+			Page<User> page = searchManager.search(User.class, keyword, query.getOffset(), query.pagesize, "username", "realname", "domain", "intro", "city", "province");
 			users = page.getDataList();
 			saveRequest("page", PageUtil.conversion(page));
 		}

@@ -2,7 +2,7 @@ package cn.org.eshow.util;
 
 import org.apache.commons.beanutils.ConvertUtils;
 import org.apache.commons.codec.binary.Base64;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -162,7 +162,6 @@ public class StringUtil {
     }
 
     /**
-     *
      * @param ASCII
      * @return
      */
@@ -171,7 +170,6 @@ public class StringUtil {
     }
 
     /**
-     *
      * @param ASCIIs
      * @return
      */
@@ -188,7 +186,7 @@ public class StringUtil {
      * MD5 加密方法
      *
      * @param str 待加密字符串
-     *            return 加密后字符串;
+     * @return 加密后字符串
      */
     public static String md5(String str) {
         char hexDigits[] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'};
@@ -209,7 +207,6 @@ public class StringUtil {
             finalValue[k++] = hexDigits[encoded >> 4 & 0xf];
             finalValue[k++] = hexDigits[encoded & 0xf];
         }
-
         return new String(finalValue);
     }
 

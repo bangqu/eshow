@@ -7,7 +7,7 @@
 <title>联系我们_到群软件</title>
 <meta name="keywords" content="联系我们，到群软件" />
 <meta name="description" content="联系我们，到群软件" />
-<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=S6mqljAtjGZzvmeVxrRR68rA"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.2&ak=S6mqljAtjGZzvmeVxrRR68rA"></script>
 <style>#allmap{width:500px;height:300px;}
 		p{margin-left:5px; font-size:14px;}</style>
     <link rel="stylesheet" href="${daoqun}/styles/style.css"/>

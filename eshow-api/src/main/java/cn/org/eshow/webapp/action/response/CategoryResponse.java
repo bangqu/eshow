@@ -6,12 +6,8 @@ import java.util.Date;
 
 /**
  * 博文分类返回对象
- *
- * @author leida
  */
-
 public class CategoryResponse {
-
 
     private Integer id;// 分类ID
     private Date addTime;// 添加时间
@@ -20,7 +16,6 @@ public class CategoryResponse {
     private String remark;// 注释
     private Integer sequence;// 序号
     private String website;// 网站
-
 
     public CategoryResponse(Category category) {
         this.id = category.getId();

@@ -45,7 +45,7 @@ public class CategoryDaoHibernate extends GenericDaoHibernate<Category, Integer>
                 rule.add(Restrictions.le("updateTime", query.updateTime));
             }
             if (query.name != null) {
-                rule.add(Restrictions.eq("name", query.name));
+                rule.add(Restrictions.like("name", query.name,MatchMode.ANYWHERE));
             }
             if (query.remark != null) {
                 rule.add(Restrictions.eq("remark", query.remark));

@@ -1,6 +1,4 @@
-<%@ page language="java" errorPage="/error.jsp" pageEncoding="UTF-8"
-         contentType="text/html;charset=utf-8" %>
-
+<%@ page language="java" errorPage="/error.jsp" pageEncoding="UTF-8" contentType="text/html;charset=utf-8" %>
 <div class="side">
     <ul class="nav nav-list ">
         <li class="nav-header">管理菜单</li>

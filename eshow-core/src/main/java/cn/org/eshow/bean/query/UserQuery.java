@@ -4,92 +4,96 @@ import java.util.Date;
 
 /**
  * User 查询Bean
- * 
+ *
  * @author leida
- * 
  */
 public class UserQuery extends BaseQuery {
 
-	public Date startAddTime;
-	public Date endAddTime;
-	public Date startUpdateTime;
-	public Date endUpdateTime;
-	public Date addTime;//
-	public Date updateTime;//
-	public String username;
-	public String email;//
-	public String nickname;//
-	public String website;//
+    public Date startAddTime;
+    public Date endAddTime;
+    public Date startUpdateTime;
+    public Date endUpdateTime;
+    public Date addTime;//
+    public Date updateTime;//
+    public String username;
+    public String email;//
+    public String nickname;//
+    public String website;//
     public String realname;//
-	public Integer age;//
-	public Boolean photo;//
-	public String easemobId;
+    public Integer age;//
+    public Boolean photo;//
+    public String easemobId;
 
-	public UserQuery(){}
+    public UserQuery() {
+    }
 
-	public Date getStartAddTime() {
-		return startAddTime;
-	}
+    public UserQuery(String username) {
+        this.username = username;
+    }
 
-	public void setStartAddTime(Date startAddTime) {
-		this.startAddTime = startAddTime;
-	}
+    public Date getStartAddTime() {
+        return startAddTime;
+    }
 
-	public Date getEndAddTime() {
-		return endAddTime;
-	}
+    public void setStartAddTime(Date startAddTime) {
+        this.startAddTime = startAddTime;
+    }
 
-	public void setEndAddTime(Date endAddTime) {
-		this.endAddTime = endAddTime;
-	}
+    public Date getEndAddTime() {
+        return endAddTime;
+    }
 
-	public Date getStartUpdateTime() {
-		return startUpdateTime;
-	}
+    public void setEndAddTime(Date endAddTime) {
+        this.endAddTime = endAddTime;
+    }
 
-	public void setStartUpdateTime(Date startUpdateTime) {
-		this.startUpdateTime = startUpdateTime;
-	}
+    public Date getStartUpdateTime() {
+        return startUpdateTime;
+    }
 
-	public Date getEndUpdateTime() {
-		return endUpdateTime;
-	}
+    public void setStartUpdateTime(Date startUpdateTime) {
+        this.startUpdateTime = startUpdateTime;
+    }
 
-	public void setEndUpdateTime(Date endUpdateTime) {
-		this.endUpdateTime = endUpdateTime;
-	}
+    public Date getEndUpdateTime() {
+        return endUpdateTime;
+    }
 
-	public Date getAddTime() {
-		return addTime;
-	}
+    public void setEndUpdateTime(Date endUpdateTime) {
+        this.endUpdateTime = endUpdateTime;
+    }
 
-	public void setAddTime(Date addTime) {
-		this.addTime = addTime;
-	}
+    public Date getAddTime() {
+        return addTime;
+    }
 
-	public Date getUpdateTime() {
-		return updateTime;
-	}
+    public void setAddTime(Date addTime) {
+        this.addTime = addTime;
+    }
 
-	public void setUpdateTime(Date updateTime) {
-		this.updateTime = updateTime;
-	}
+    public Date getUpdateTime() {
+        return updateTime;
+    }
 
-	public String getUsername() {
-		return username;
-	}
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
+    }
 
-	public void setUsername(String username) {
-		this.username = username;
-	}
+    public String getUsername() {
+        return username;
+    }
 
-	public String getEmail() {
-		return email;
-	}
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     public String getNickname() {
         return nickname;
@@ -100,28 +104,28 @@ public class UserQuery extends BaseQuery {
     }
 
     public String getRealname() {
-		return realname;
-	}
+        return realname;
+    }
 
-	public void setRealname(String realname) {
-		this.realname = realname;
-	}
+    public void setRealname(String realname) {
+        this.realname = realname;
+    }
 
-	public Integer getAge() {
-		return age;
-	}
+    public Integer getAge() {
+        return age;
+    }
 
-	public void setAge(Integer age) {
-		this.age = age;
-	}
+    public void setAge(Integer age) {
+        this.age = age;
+    }
 
-	public Boolean getPhoto() {
-		return photo;
-	}
+    public Boolean getPhoto() {
+        return photo;
+    }
 
-	public void setPhoto(Boolean photo) {
-		this.photo = photo;
-	}
+    public void setPhoto(Boolean photo) {
+        this.photo = photo;
+    }
 
     public String getWebsite() {
         return website;
@@ -131,11 +135,11 @@ public class UserQuery extends BaseQuery {
         this.website = website;
     }
 
-	public String getEasemobId() {
-		return easemobId;
-	}
+    public String getEasemobId() {
+        return easemobId;
+    }
 
-	public void setEasemobId(String easemobId) {
-		this.easemobId = easemobId;
-	}
+    public void setEasemobId(String easemobId) {
+        this.easemobId = easemobId;
+    }
 }

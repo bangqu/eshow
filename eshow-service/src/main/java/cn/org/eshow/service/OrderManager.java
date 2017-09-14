@@ -24,6 +24,11 @@ public interface OrderManager extends GenericManager<Order, Integer> {
     Page<Order> search(OrderQuery query);
 
     /**
+     * 更新订单信息
+     */
+    Order update(Order old, Order order);
+
+    /**
      * 支付业务
      *
      * @param charge

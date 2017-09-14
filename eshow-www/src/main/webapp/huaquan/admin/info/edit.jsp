@@ -1,23 +1,21 @@
-<%@ page language="java" errorPage="/error.jsp" pageEncoding="UTF-8"
-         contentType="text/html;charset=utf-8" %>
+<%@ page language="java" errorPage="/error.jsp" pageEncoding="UTF-8" contentType="text/html;charset=utf-8" %>
 <%@ include file="/common/taglibs.jsp" %>
-<%@ include file="/yinwangroup/common/path.jsp" %>
-<s:action name="info!view" id="view" executeResult="false"/>
+<%@ include file="/huaquan/common/path.jsp" %>
+<s:action name="info!view" var="view" executeResult="false"/>
 <head>
     <title>修改信息${view.info.title}</title>
-    <link rel="stylesheet" href="../../../static/bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" href="../../../static/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="${yinwangroup}/styles/admin.css">
-    <%@ include file="/common/style/umeditor.jsp" %>
+    <link rel="stylesheet" href="http://apps.bdimg.com/libs/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="${huaquan}/static/styles/admin.css">
+    <%@ include file="/huaquan/common/style/umeditor.jsp" %>
 </head>
 <body>
-<%@ include file="../header.jsp" %>
+<%@ include file="/huaquan/admin/common/header.jsp" %>
 <div class="container mt">
-    <%@ include file="../left.jsp" %>
+    <%@ include file="/huaquan/admin/include/left.jsp" %>
     <div class="cont">
         <ul class="breadcrumb">
-            <li><a href="${yinwangroupmanage}/index.jsp">首页</a>/</li>
-            <li><a href="${yinwangroupmanage}/info/index.jsp">信息页管理</a>/</li>
+            <li><a href="${huaquanmanage}/index.jsp">首页</a>/</li>
+            <li><a href="${huaquanmanage}/info/index.jsp">信息页管理</a>/</li>
             <li>修改信息</li>
         </ul>
         <div class="com">
@@ -25,7 +23,7 @@
                 <h3 class="yahei">修改信息</h3>
             </div>
             <div class="com clearfix">
-                <s:form class="form-horizontal" name="infoForm" id="infoForm" action="!update.action" namespace=""
+                <s:form class="form-horizontal" name="infoForm" id="infoForm" action="info!update.action" namespace=""
                         method="post" enctype="multipart/form-data">
 
                     <input type="hidden" name="redirect"  value="${huaquanmanage}/info/">
@@ -67,18 +65,17 @@
         </div>
     </div>
 </div>
-<%@ include file="/huaquan/admin/footer.jsp" %>
-<%@ include file="../../common/scripts.jsp" %>
-<%@ include file="../../common/script/umeditor.jsp" %>
-<%@ include file="/common/script/validform.jsp" %>
+<%@ include file="/huaquan/admin/common/footer.jsp" %>
+<%@ include file="/common/scripts.jsp" %>
+<%@ include file="/huaquan/common/script/umeditor.jsp" %>
+<%@ include file="/huaquan/common/script/validform.jsp" %>
 <script type="text/javascript">
-    var ue = UM.getEditor('content', {
-        lang: /^zh/.test(navigator.language || navigator.browserLanguage || navigator.userLanguage) ? 'zh-cn' : 'en',
-        langPath: UMEDITOR_CONFIG.UMEDITOR_HOME_URL + "lang/",
-        focus: true,
-        initialFrameWidth: 563,
-        initialFrameHeight: 600
+    var um = UM.getEditor('content', {
+        initialFrameWidth:600,
+        initialFrameHeight:600,
+        imagePath:""
     });
+
     $(document).ready(function () {
         $("#infoForm").Validform({
             tiptype: 2

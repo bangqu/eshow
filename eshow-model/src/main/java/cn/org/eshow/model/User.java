@@ -1,10 +1,9 @@
 package cn.org.eshow.model;
 
+import cn.org.eshow.common.CommonVar;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.hibernate.search.annotations.DocumentId;
-import org.hibernate.search.annotations.Field;
-import org.hibernate.search.annotations.Indexed;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -20,39 +19,99 @@ import java.util.*;
 @Entity
 @Table(name = "user", uniqueConstraints = {@UniqueConstraint(columnNames = "username")})
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-@Indexed
 public class User extends BaseObject implements Serializable, UserDetails {
 
     private static final long serialVersionUID = 1L;
 
-    @DocumentId
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;// 用户ID
-    private Integer version;// 版本号
-    private Date addTime;// 添加时间
-    private Date updateTime;// 更新时间
-    @Field
-    private String username;// 用户名
-    @Field
-    private String nickname;// 昵称
-    private String password;// 密码
-    private String confirmPassword;// 确定密码
-    private Integer age;// 年龄
-    private String photo;// 头像
-    private String realname;// 真实姓名
-    private Boolean male;// 性别
-    private Date birthday;// 生日
-    private Short constellation;// 星座
-    private Short birthAttrib;//
-    private Short bloodType;// 血型
-    private String hobby;// 爱好
-    private Short marital;// 婚姻状况
-    private String intro;// 自我介绍
-    private String website;// 网站
-    private boolean accountExpired;// 帐号是否过期
-    private boolean accountLocked;// 帐号是否锁住
-    private boolean credentialsExpired;// 凭证是否过期
-    private boolean enabled;// 是否可用
 
+    @Version
+    private Integer version;// 版本号
+
+    @Column(name = "add_time", length = 0)
+    private Date addTime = new Date();// 添加时间
+
+    @Column(name = "update_time", length = 0)
+    private Date updateTime = new Date();// 更新时间
+
+    @Column
+    private String username;// 用户名
+
+    @Column
+    private String nickname;// 昵称
+
+    @Column
+    private String password;// 密码
+
+    @Transient
+    private String confirmPassword;
+
+    @Column
+    private Integer age;// 年龄
+
+    @Column
+    private String photo = CommonVar.USER_DEFAULT_PHOTO;// 头像
+
+    @Column
+    private String realname;// 真实姓名
+
+    @Column
+    private String email;//电子邮箱
+
+    @Column
+    private Boolean male;// 性别
+
+    @Temporal(TemporalType.DATE)
+    @Column
+    private Date birthday;// 生日
+
+    @Column
+    private Short constellation;// 星座
+
+    @Column(name = "birth_attrib")
+    private Short birthAttrib;//
+
+    @Column(name = "blood_type")
+    private Short bloodType;// 血型
+
+    @Column
+    private String hobby;// 爱好
+
+    @Column
+    private Short marital;// 婚姻状况
+
+    @Column
+    private String intro;// 自我介绍
+
+    @Column
+    private String website;// 网站
+
+    @Column(name = "client_id")
+    private String clientId;//个推ClientId
+
+    @Column(name = "device_token")
+    private String deviceToken;//设备推送Token
+
+    @JsonIgnore
+    @Column(name = "account_expired")
+    private boolean accountExpired = Boolean.FALSE;// 帐号是否过期
+
+    @JsonIgnore
+    @Column(name = "account_locked")
+    private boolean accountLocked = Boolean.FALSE;// 帐号是否锁住
+
+    @JsonIgnore
+    @Column(name = "credentials_expired")
+    private boolean credentialsExpired = Boolean.FALSE;// 凭证是否过期
+
+    @JsonIgnore
+    @Column(name = "account_enabled")
+    private boolean enabled = Boolean.TRUE;// 是否可用
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "user_role", joinColumns = {@JoinColumn(name = "user_id")}, inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles = new HashSet<Role>(0);// 角色列表
 
     /**
@@ -70,8 +129,6 @@ public class User extends BaseObject implements Serializable, UserDetails {
         this.username = username;
     }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     public Integer getId() {
         return this.id;
     }
@@ -80,7 +137,6 @@ public class User extends BaseObject implements Serializable, UserDetails {
         this.id = id;
     }
 
-    @Version
     public Integer getVersion() {
         return this.version;
     }
@@ -89,7 +145,6 @@ public class User extends BaseObject implements Serializable, UserDetails {
         this.version = version;
     }
 
-    @Column(name = "addTime", nullable = false, length = 0)
     public Date getAddTime() {
         return this.addTime;
     }
@@ -98,7 +153,6 @@ public class User extends BaseObject implements Serializable, UserDetails {
         this.addTime = addTime;
     }
 
-    @Column(name = "updateTime", length = 0)
     public Date getUpdateTime() {
         return this.updateTime;
     }
@@ -107,7 +161,6 @@ public class User extends BaseObject implements Serializable, UserDetails {
         this.updateTime = updateTime;
     }
 
-    @Column(name = "username", unique = true, nullable = false, length = 50)
     public String getUsername() {
         return this.username;
     }
@@ -116,7 +169,6 @@ public class User extends BaseObject implements Serializable, UserDetails {
         this.username = username;
     }
 
-    @Column(name = "nickname", nullable = false, length = 50)
     public String getNickname() {
         return this.nickname;
     }
@@ -125,7 +177,6 @@ public class User extends BaseObject implements Serializable, UserDetails {
         this.nickname = nickname;
     }
 
-    @Column(name = "password", nullable = false, length = 60)
     public String getPassword() {
         return this.password;
     }
@@ -134,7 +185,6 @@ public class User extends BaseObject implements Serializable, UserDetails {
         this.password = password;
     }
 
-    @Transient
     public String getConfirmPassword() {
         return confirmPassword;
     }
@@ -143,7 +193,6 @@ public class User extends BaseObject implements Serializable, UserDetails {
         this.confirmPassword = confirmPassword;
     }
 
-    @Column(name = "age")
     public Integer getAge() {
         return this.age;
     }
@@ -152,7 +201,6 @@ public class User extends BaseObject implements Serializable, UserDetails {
         this.age = age;
     }
 
-    @Column(name = "photo", length = 50)
     public String getPhoto() {
         return this.photo;
     }
@@ -161,7 +209,6 @@ public class User extends BaseObject implements Serializable, UserDetails {
         this.photo = photo;
     }
 
-    @Column(name = "realname", length = 50)
     public String getRealname() {
         return this.realname;
     }
@@ -170,7 +217,14 @@ public class User extends BaseObject implements Serializable, UserDetails {
         this.realname = realname;
     }
 
-    @Column(name = "male")
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public Boolean getMale() {
         return this.male;
     }
@@ -179,8 +233,6 @@ public class User extends BaseObject implements Serializable, UserDetails {
         this.male = male;
     }
 
-    @Temporal(TemporalType.DATE)
-    @Column(name = "birthday", length = 0)
     public Date getBirthday() {
         return this.birthday;
     }
@@ -189,7 +241,6 @@ public class User extends BaseObject implements Serializable, UserDetails {
         this.birthday = birthday;
     }
 
-    @Column(name = "constellation", length = 2)
     public Short getConstellation() {
         return this.constellation;
     }
@@ -198,7 +249,6 @@ public class User extends BaseObject implements Serializable, UserDetails {
         this.constellation = constellation;
     }
 
-    @Column(name = "birthAttrib", length = 2)
     public Short getBirthAttrib() {
         return this.birthAttrib;
     }
@@ -207,7 +257,6 @@ public class User extends BaseObject implements Serializable, UserDetails {
         this.birthAttrib = birthAttrib;
     }
 
-    @Column(name = "marital", length = 1)
     public Short getMarital() {
         return this.marital;
     }
@@ -216,7 +265,6 @@ public class User extends BaseObject implements Serializable, UserDetails {
         this.marital = marital;
     }
 
-    @Column(name = "bloodType", length = 1)
     public Short getBloodType() {
         return bloodType;
     }
@@ -225,7 +273,6 @@ public class User extends BaseObject implements Serializable, UserDetails {
         this.bloodType = bloodType;
     }
 
-    @Column(name = "hobby", length = 50)
     public String getHobby() {
         return hobby;
     }
@@ -234,7 +281,6 @@ public class User extends BaseObject implements Serializable, UserDetails {
         this.hobby = hobby;
     }
 
-    @Column(name = "intro", length = 500)
     public String getIntro() {
         return this.intro;
     }
@@ -243,7 +289,30 @@ public class User extends BaseObject implements Serializable, UserDetails {
         this.intro = intro;
     }
 
-    @Column(name = "account_expired")
+    public String getWebsite() {
+        return website;
+    }
+
+    public void setWebsite(String website) {
+        this.website = website;
+    }
+
+    public String getClientId() {
+        return clientId;
+    }
+
+    public void setClientId(String clientId) {
+        this.clientId = clientId;
+    }
+
+    public String getDeviceToken() {
+        return deviceToken;
+    }
+
+    public void setDeviceToken(String deviceToken) {
+        this.deviceToken = deviceToken;
+    }
+
     public boolean isAccountExpired() {
         return this.accountExpired;
     }
@@ -260,7 +329,6 @@ public class User extends BaseObject implements Serializable, UserDetails {
         return !isAccountExpired();
     }
 
-    @Column(name = "account_locked")
     public boolean isAccountLocked() {
         return this.accountLocked;
     }
@@ -277,7 +345,6 @@ public class User extends BaseObject implements Serializable, UserDetails {
         return !isAccountLocked();
     }
 
-    @Column(name = "credentials_expired")
     public boolean isCredentialsExpired() {
         return this.credentialsExpired;
     }
@@ -294,7 +361,6 @@ public class User extends BaseObject implements Serializable, UserDetails {
         return !credentialsExpired;
     }
 
-    @Column(name = "account_enabled")
     public boolean isEnabled() {
         return enabled;
     }
@@ -303,17 +369,6 @@ public class User extends BaseObject implements Serializable, UserDetails {
         this.enabled = enabled;
     }
 
-    @Column(name = "website", length = 200)
-    public String getWebsite() {
-        return website;
-    }
-
-    public void setWebsite(String website) {
-        this.website = website;
-    }
-
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "user_role", joinColumns = {@JoinColumn(name = "user_id")}, inverseJoinColumns = @JoinColumn(name = "role_id"))
     public Set<Role> getRoles() {
         return roles;
     }
@@ -394,6 +449,8 @@ public class User extends BaseObject implements Serializable, UserDetails {
             return false;
         if (marital != null ? !marital.equals(pojo.marital) : pojo.marital != null)
             return false;
+        if (email != null ? !email.equals(pojo.email) : pojo.email != null)
+            return false;
         if (intro != null ? !intro.equals(pojo.intro) : pojo.intro != null)
             return false;
         if (website != null ? !website.equals(pojo.website) : pojo.website != null)
@@ -416,6 +473,7 @@ public class User extends BaseObject implements Serializable, UserDetails {
         result = 31 * result + (constellation != null ? constellation.hashCode() : 0);
         result = 31 * result + (birthAttrib != null ? birthAttrib.hashCode() : 0);
         result = 31 * result + (marital != null ? marital.hashCode() : 0);
+        result = 31 * result + (email != null ? email.hashCode() : 0);
         result = 31 * result + (intro != null ? intro.hashCode() : 0);
         result = 31 * result + (website != null ? website.hashCode() : 0);
         return result;
@@ -434,10 +492,12 @@ public class User extends BaseObject implements Serializable, UserDetails {
         sb.append("password").append("='").append(getPassword()).append("', ");
         sb.append("photo").append("='").append(getPhoto()).append("', ");
         sb.append("realname").append("='").append(getRealname()).append("', ");
+        sb.append("male").append("='").append(getMale()).append("', ");
         sb.append("birthday").append("='").append(getBirthday()).append("', ");
         sb.append("constellation").append("='").append(getConstellation()).append("', ");
         sb.append("birthAttrib").append("='").append(getBirthAttrib()).append("', ");
         sb.append("marital").append("='").append(getMarital()).append("', ");
+        sb.append("email").append("='").append(getEmail()).append("', ");
         sb.append("intro").append("='").append(getIntro()).append("', ");
         sb.append("website").append("='").append(getWebsite()).append("', ");
         sb.append("]");

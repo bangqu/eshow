@@ -1,12 +1,11 @@
 package cn.org.eshow.webapp.action.response;
 
-
 import cn.org.eshow.model.UserGroup;
 
 import java.util.Date;
 
 /**
- * 群组返回对象
+ * 用户群组关系返回对象
  */
 public class UserGroupResponse {
 

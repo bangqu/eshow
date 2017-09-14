@@ -9,6 +9,7 @@ import cn.org.eshow.service.PhotoCommentManager;
 import cn.org.eshow.service.PhotoManager;
 import cn.org.eshow.util.CommonUtil;
 import cn.org.eshow.util.PageUtil;
+import org.apache.struts2.convention.annotation.AllowedMethods;
 import org.apache.struts2.convention.annotation.Result;
 import org.apache.struts2.convention.annotation.Results;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,10 +17,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * 照片评论Action
+ */
 @Results({ @Result(name = "input", location = "add"),
 		@Result(name = "list", type = "redirect", location = ""),
 		@Result(name = "success", type = "redirect", location = "view/${id}"),
 		@Result(name = "redirect", type = "redirect", location = "${redirect}") })
+@AllowedMethods({"list", "search", "delete", "view", "update", "save"})
 public class PhotoCommentAction extends BaseAction {
 
 	private static final long serialVersionUID = 1L;
@@ -34,11 +39,19 @@ public class PhotoCommentAction extends BaseAction {
 	private PhotoCommentQuery query;
 	private Integer photoId;
 
+	/**
+	 *
+	 * @return
+     */
 	public String list() {
 		photoComments = photoCommentManager.list(query);
 		return LIST;
 	}
 
+	/**
+	 *
+	 * @return
+     */
 	public String search() {
 		Page<PhotoComment> page = photoCommentManager.search(query);
 		photoComments = page.getDataList();
@@ -46,6 +59,10 @@ public class PhotoCommentAction extends BaseAction {
 		return LIST;
 	}
 
+	/**
+	 *
+	 * @return
+     */
 	public String delete() {
 		PhotoComment old = photoCommentManager.get(id);
 		if (old != null) {
@@ -65,6 +82,10 @@ public class PhotoCommentAction extends BaseAction {
 		return LIST;
 	}
 
+	/**
+	 *
+	 * @return
+     */
 	public String view() {
 		if (id != null) {
 			photoComment = photoCommentManager.get(id);
@@ -74,6 +95,11 @@ public class PhotoCommentAction extends BaseAction {
 		return NONE;
 	}
 
+	/**
+	 *
+	 * @return
+	 * @throws Exception
+     */
 	public String update() throws Exception {
 		PhotoComment old = photoCommentManager.get(id);
 		old.setContent(photoComment.getContent());
@@ -82,6 +108,11 @@ public class PhotoCommentAction extends BaseAction {
 		return SUCCESS;
 	}
 
+	/**
+	 *
+	 * @return
+	 * @throws Exception
+     */
 	public String save() throws Exception {
 		photoComment.setAddTime(new Date());
 		photoComment.setUser(getSessionUser());

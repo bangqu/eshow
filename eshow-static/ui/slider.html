@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name = "viewport" content = "user-scalable=no, width=device-width">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>轮播</title>
+    <link rel="stylesheet" type="text/css" href="./dist/css/frozen.css">
+    <link rel="stylesheet" type="text/css" href="./css/demo.css">
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+</head>
+<body>
+<header class="ui-header ui-header-positive ui-border-b html-border-b">
+    <i class="ui-icon-return html-narrow" onclick="history.back()"></i>
+    <h1 class="html-btn">JS插件</h1>
+    <button class="ui-btn html-btn">回首页</button>
+</header>
+<footer class="ui-footer ui-footer-btn">
+    <ul class="ui-tiled ui-border-t html-border-t">
+        <li data-href="index.html" class="ui-border-r"><div>基础样式</div></li>
+        <li data-href="ui.html" class="ui-border-r"><div>UI组件</div></li>
+        <li data-href="js.html"><div>JS插件</div></li>
+    </ul>
+</footer>     
+<div class="clearout"></div> 
+<ul id="flexiselDemo3">
+    <li><img src="./img/1.jpg" /></li>
+    <li><img src="./img/2.jpg" /></li>
+    <li><img src="./img/3.jpg" /></li>
+    <li><img src="./img/4.jpg" /></li>
+</ul>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="./js/banner.js"></script>
+<script type="text/javascript">
+$(window).load(function() {
+    $("#flexiselDemo3").flexisel({
+        visibleItems: 5,
+        animationSpeed: 1000,
+        autoPlay: true,
+        autoPlaySpeed: 3000,            
+        pauseOnHover: true,
+        enableResponsiveBreakpoints: true,
+        responsiveBreakpoints: { 
+            portrait: { 
+                changePoint:480,
+                visibleItems: 1
+            }, 
+            landscape: { 
+                changePoint:640,
+                visibleItems: 2
+            },
+            tablet: { 
+                changePoint:768,
+                visibleItems: 3
+            }
+        }
+    });  
+});
+</script>
+    
+    
+</body>
+</html>

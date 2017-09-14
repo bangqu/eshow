@@ -6,10 +6,7 @@ import java.util.Date;
 
 /**
  * 图片返回对象
- *
- * @author leida
  */
-
 public class PhotoResponse {
 
     private Integer id;//图片
@@ -21,7 +18,6 @@ public class PhotoResponse {
     private String img;//图片
     private Integer commentSize;//评论次数
     private String website;//网站
-
 
     public PhotoResponse(Photo photo) {
         this.id = photo.getId();

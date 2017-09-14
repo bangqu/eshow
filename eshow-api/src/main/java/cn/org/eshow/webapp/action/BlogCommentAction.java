@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 
 /**
- * 接口
+ * 博文评论API接口
  */
 @AllowedMethods({"check", "login", "singup", "third", "mobile", "password", "update", "cancel", "view"})
 public class BlogCommentAction extends ApiBaseAction<BlogComment> {
@@ -26,8 +26,6 @@ public class BlogCommentAction extends ApiBaseAction<BlogComment> {
 	private BlogComment blogComment;
 	private BlogCommentQuery query;
 	private Integer blogId;
-
-
 
 	public List<BlogComment> getBlogComments() {
 		return blogComments;

@@ -6,8 +6,6 @@ import java.util.Date;
 
 /**
  * 主题返回对象
- *
- * @author leida
  */
 public class TopicResponse {
 

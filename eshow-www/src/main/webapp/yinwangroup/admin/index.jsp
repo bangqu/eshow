@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="http://apps.bdimg.com/libs/bootstrap/3.2.0/css/bootstrap.css">
     <link rel="stylesheet" href="http://apps.bdimg.com/libs/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="${yinwangroup}/styles/admin.css"/>
+    <%@ include file="../common/website.jsp" %>
 </head>
 <body>
 <%@ include file="/yinwangroup/admin/common/header.jsp" %>

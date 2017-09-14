@@ -1,6 +1,5 @@
 package cn.org.eshow.webapp.action.response;
 
-
 import cn.org.eshow.model.Group;
 
 /**

@@ -3,76 +3,118 @@ package cn.org.eshow.webapp.action;
 import cn.org.eshow.bean.query.ThirdPartyQuery;
 import cn.org.eshow.model.ThirdParty;
 import cn.org.eshow.model.User;
-import cn.org.eshow.service.AccessTokenManager;
 import cn.org.eshow.service.ThirdPartyManager;
 import cn.org.eshow.util.JacksonUtil;
-import cn.org.eshow.webapp.action.response.ThirdPartyResponse;
-import cn.org.eshow.webapp.util.Struts2Utils;
+import cn.org.eshow.webapp.action.response.UserResponse;
+import cn.org.eshow.webapp.util.RenderUtil;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.struts2.convention.annotation.AllowedMethods;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
- *
+ * 第三方账户API接口
  */
-@AllowedMethods({"list", "check", "save"})
-public class ThirdPartyAction extends ApiBaseAction<ThirdParty> {
+@AllowedMethods({"mine", "check", "save", "delete", "login"})
+public class ThirdPartyAction extends ApiBaseAction {
 
     private static final long serialVersionUID = 6776558938712115191L;
 
     @Autowired
     private ThirdPartyManager thirdPartyManager;
-    @Autowired
-    private AccessTokenManager accessTokenManager;
 
-    private ThirdPartyQuery query = new ThirdPartyQuery();
+    private ThirdPartyQuery query = new ThirdPartyQuery(Boolean.TRUE);
     private ThirdParty thirdParty = new ThirdParty();
     private List<ThirdParty> thirdParties = new ArrayList<ThirdParty>();
+    private User user = new User();
 
-    public void list() {
-        thirdParties = thirdPartyManager.list(query);
-        list("thirdParty", "获取成功", thirdParties);
-    }
-
-    public void check() {
-        User old = isValid(accessToken, accessTokenManager);
-        if (old == null) {
-            expires();//用户信息过期
+    /**
+     * 我的第三方账号列表
+     */
+    public void mine() {
+        User user = accessTokenManager.isValid(accessToken);
+        if (user == null) {
+            RenderUtil.expires();//用户信息过期
             return;
         }
-        query.userId = old.getId();
+        query.setUserId(user.getId());
         thirdParties = thirdPartyManager.list(query);
-        ThirdPartyResponse thirdPartyResponse = new ThirdPartyResponse();
-        thirdPartyResponse.setUserId(old.getId());
-        if (thirdParties.size() > 0) {
-            for (ThirdParty thirdParty : thirdParties) {
-                if ("qq".equals(thirdParty.getPlatform())) {
-                    thirdPartyResponse.setQq(true);
-                } else if ("weixin".equals(thirdParty.getPlatform())) {
-                    thirdPartyResponse.setWeixin(true);
-                }
-            }
-        }
-        Struts2Utils.renderText("{\"status\":\"1\",\"msg\":\"获取成功\",\"thirdPartyResponse\":" + JacksonUtil.toJson(thirdPartyResponse) + "}");
+        RenderUtil.list("获取成功", "thirdParties", thirdParties);
     }
 
     /**
-     * 第三方绑定
+     * 添加第三方账号
      */
     public void save() {
-        User old = isValid(accessToken, accessTokenManager);
-        if (old == null) {
-            expires();//用户信息过期
+        User user = accessTokenManager.isValid(accessToken);
+        if (user == null) {
+            RenderUtil.expires();//用户信息过期
             return;
         }
-        thirdParty.setAddTime(new Date());
-        thirdParty.setUpdateTime(new Date());
-        thirdParty.setUser(old);
-        thirdPartyManager.save(thirdParty);
-        success("绑定成功");
+        if (StringUtils.isEmpty(thirdParty.getUsername()) || StringUtils.isEmpty(thirdParty.getPlatform())) {
+            RenderUtil.failure("参数不能为空");
+            return;
+        }
+        ThirdParty old = thirdPartyManager.check(new ThirdPartyQuery(thirdParty.getUsername(), thirdParty.getPlatform(), Boolean.TRUE));
+        if (old != null) {
+            old = thirdPartyManager.updateUser(old, user);
+            RenderUtil.success("绑定成功", "thirdParty", old);
+            return;
+        }
+        thirdParty = thirdPartyManager.save(thirdParty, user);
+        RenderUtil.success("绑定成功", "thirdParty", thirdParty);
+    }
+
+    /**
+     * 删除第三方账号
+     */
+    public void delete() {
+        User user = accessTokenManager.isValid(accessToken);
+        if (user == null) {
+            RenderUtil.expires();//用户信息过期
+            return;
+        }
+        if (StringUtils.isEmpty(thirdParty.getUsername()) || StringUtils.isEmpty(thirdParty.getPlatform())) {
+            RenderUtil.failure("参数不能为空");
+            return;
+        }
+        ThirdParty old = thirdPartyManager.check(new ThirdPartyQuery(user.getId(), thirdParty.getUsername(), thirdParty.getPlatform(), Boolean.TRUE));
+        if (old == null) {
+            RenderUtil.failure("第三方账号信息不存在");
+            return;
+        }
+        thirdPartyManager.enabled(old);
+        RenderUtil.success("解绑成功");
+    }
+
+    /**
+     * 第三方账号登录
+     */
+    public void login() throws Exception {
+        if (StringUtils.isEmpty(thirdParty.getUsername()) || StringUtils.isEmpty(thirdParty.getPlatform())) {
+            RenderUtil.errorParame("参数不能为空");
+            return;
+        }
+        ThirdParty old = thirdPartyManager.check(new ThirdPartyQuery(thirdParty.getUsername(), thirdParty.getPlatform(), Boolean.TRUE));
+        if (old == null) {
+            thirdPartyManager.save(thirdParty);//保存第三方登录信息
+            RenderUtil.success("等待绑定用户", "bind", "false");
+            return;
+        }
+        if (old.getUser() == null) {
+            RenderUtil.success("等待绑定用户", "bind", "false");
+            return;
+        }
+        userManager.updateGetuiInfo(old.getUser(), user);//更新个推信息
+        Map<String, String> map = new HashMap<String, String>();
+        map.put("bind", "true");
+        map.put("user", JacksonUtil.toJson(new UserResponse(old.getUser())));
+        map.put("accessToken", JacksonUtil.toJson(accessTokenManager.refresh(old.getUser())));
+        RenderUtil.result(1, "登录成功", map);
     }
 
     public ThirdPartyQuery getQuery() {
@@ -97,5 +139,13 @@ public class ThirdPartyAction extends ApiBaseAction<ThirdParty> {
 
     public void setThirdParties(List<ThirdParty> thirdParties) {
         this.thirdParties = thirdParties;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

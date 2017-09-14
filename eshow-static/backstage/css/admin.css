@@ -1,0 +1,10 @@
+.home_header{height:50px;line-height: 50px;}
+.home_header .home_text{float: left;width:220px;text-align: center}
+.home_header .home_text a{color:#fff;}
+.home_header .home_nav{float: left;}
+.home_header .home_nav a{color:#Fff;height:50px;line-height: 50px;display: inline-block;padding:0 20px;}
+.home_header .home_nav a:hover{background:#293846;}
+.home_header .user-info{float: right}
+.home_header .user-info .profile-element{width:200px;height:50px;}
+.home_header .user-info .profile-element .img-circle{width:30px;height:30px;float: left;vertical-align: middle;margin:10px 10px 0 0;}
+.home_header .user-info .profile-element .dropdown-toggle{float: left;height:50px;}

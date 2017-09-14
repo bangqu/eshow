@@ -1,5 +1,4 @@
-<%@ page language="java" errorPage="/error.jsp" pageEncoding="UTF-8"
-         contentType="text/html;charset=utf-8" %>
+<%@ page language="java" errorPage="/error.jsp" pageEncoding="UTF-8" contentType="text/html;charset=utf-8" %>
 <%@ include file="/common/taglibs.jsp" %>
 <%@ include file="common/path.jsp" %>
 <head>
@@ -13,9 +12,9 @@
 <div class="header">
     <div class="wp clearfix">
         <div class="logo pl">
-            <a href="${yinwangroup}"><img src="./images/logo.png"></a>
+            <a href="${yinwangroup}"><img src="${yinwangroup}/images/logo.png"></a>
         </div>
-        <div class="fl tss"><a href="${yinwangroup}/login.jsp">登录银湾集团网站</a></div>
+        <div class="fl tss"><a href="${yinwangroup}/login">登录银湾集团网站</a></div>
     </div>
 </div>
 <div class="container">
@@ -28,7 +27,7 @@
 </div>
 <div class="inr yahei">
     <p>银湾社区生活网 版权所有<br>
-        沪ICP备14010855号-1 Copyright2013© yinwan.com Inc. All rights reserved
+        沪ICP备14010855号-1 Copyright2013© yinwangroup.com Inc. All rights reserved
     </p>
 </div>
 </body>

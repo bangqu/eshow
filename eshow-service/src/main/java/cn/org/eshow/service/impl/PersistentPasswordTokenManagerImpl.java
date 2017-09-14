@@ -2,9 +2,9 @@ package cn.org.eshow.service.impl;
 
 import cn.org.eshow.model.User;
 import cn.org.eshow.service.PasswordTokenManager;
-import org.apache.commons.lang.RandomStringUtils;
-import org.apache.commons.lang.math.RandomUtils;
-import org.apache.commons.lang.time.DateUtils;
+import org.apache.commons.lang3.RandomStringUtils;
+import org.apache.commons.lang3.RandomUtils;
+import org.apache.commons.lang3.time.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 
@@ -14,9 +14,9 @@ import java.util.Date;
 /**
  * Provides {@link PasswordTokenManager} functionality generating and persisting
  * random tokens to the db as an extra security check.
- *
+ * <p/>
  * You will need to create a db table with the following structure:
- *
+ * <p/>
  * <pre>
  * <code>
  * create table password_reset_token (
@@ -27,7 +27,7 @@ import java.util.Date;
  * )
  * </code>
  * </pre>
- *
+ * <p/>
  * and configure this alternative PasswordTokenManager in the spring
  * BeanFactory.
  *
@@ -63,7 +63,7 @@ public class PersistentPasswordTokenManagerImpl implements PasswordTokenManager 
      */
     @Override
     public String generateRecoveryToken(final User user) {
-        int length = RandomUtils.nextInt(16) + 16;
+        int length = RandomUtils.nextInt(0, 16) + 16;
         String token = RandomStringUtils.randomAlphanumeric(length);
         persistToken(user, token);
         return token;
@@ -78,7 +78,6 @@ public class PersistentPasswordTokenManagerImpl implements PasswordTokenManager 
     }
 
     /**
-     *
      * @see cn.org.eshow.service.PasswordTokenManager#invalidateRecoveryToken(User, String)
      */
     @Override
@@ -92,7 +91,7 @@ public class PersistentPasswordTokenManagerImpl implements PasswordTokenManager 
     }
 
     protected boolean isRecoveryTokenPersisted(final User user, final String token) {
-        Number count = jdbcTemplate.queryForObject(selectTokenSql, new Object[] { user.getUsername(), token }, Integer.class);
+        Number count = jdbcTemplate.queryForObject(selectTokenSql, new Object[]{user.getUsername(), token}, Integer.class);
         return count != null && count.intValue() == 1;
     }
 

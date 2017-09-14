@@ -1,7 +1,7 @@
 package cn.org.eshow.util;
 
 import cn.org.eshow.component.http.HttpServletUitl;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.htmlparser.Node;
 import org.htmlparser.NodeFilter;
 import org.htmlparser.Parser;

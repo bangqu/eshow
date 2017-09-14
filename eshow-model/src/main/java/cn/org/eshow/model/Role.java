@@ -1,7 +1,7 @@
 package cn.org.eshow.model;
 
-import org.apache.commons.lang.builder.ToStringBuilder;
-import org.apache.commons.lang.builder.ToStringStyle;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
 import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.Column;
@@ -17,102 +17,103 @@ import java.io.Serializable;
 
 /**
  * This class is used to represent available roles in the database.
- * 
+ *
  * @author Matt Raible
  */
 @Entity
 @Table(name = "role")
-@NamedQueries( { @NamedQuery(name = "findRoleByName", query = "select r from Role r where r.name = :name ") })
+@NamedQueries({@NamedQuery(name = "findRoleByName", query = "select r from Role r where r.name = :name ")})
 public class Role extends BaseObject implements Serializable, GrantedAuthority {
 
-	private static final long serialVersionUID = 3690197650654049848L;
+    private static final long serialVersionUID = 3690197650654049848L;
 
-	private Integer id;//角色ID
-	private String name;//名称
-	private String description;//描述
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;//角色ID
 
-	/**
-	 * Default constructor - creates a new instance with no values set.
-	 */
-	public Role() {
-	}
+    @Column(length = 20)
+    private String name;//名称
 
-	/**
-	 * Create a new instance and set the name.
-	 * 
-	 * @param name  name of the role.
-	 */
-	public Role(final String name) {
-		this.name = name;
-	}
+    @Column(length = 64)
+    private String description;//描述
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	public Integer getId() {
-		return id;
-	}
+    /**
+     * Default constructor - creates a new instance with no values set.
+     */
+    public Role() {
+    }
 
-	/**
-	 * @see org.springframework.security.core.GrantedAuthority#getAuthority()
-	 * @return the name property (getAuthority required by Acegi's GrantedAuthority interface)
-	 */
-	@Transient
-	public String getAuthority() {
-		return getName();
-	}
+    /**
+     * Create a new instance and set the name.
+     *
+     * @param name name of the role.
+     */
+    public Role(final String name) {
+        this.name = name;
+    }
 
-	@Column(length = 20)
-	public String getName() {
-		return this.name;
-	}
+    public Integer getId() {
+        return id;
+    }
 
-	@Column(length = 64)
-	public String getDescription() {
-		return this.description;
-	}
+    /**
+     * @return the name property (getAuthority required by Acegi's GrantedAuthority interface)
+     * @see org.springframework.security.core.GrantedAuthority#getAuthority()
+     */
+    @Transient
+    public String getAuthority() {
+        return getName();
+    }
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+    public String getName() {
+        return this.name;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public String getDescription() {
+        return this.description;
+    }
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-	/**
-	 * {@inheritDoc}
-	 */
-	public boolean equals(Object o) {
-		if (this == o) {
-			return true;
-		}
-		if (!(o instanceof Role)) {
-			return false;
-		}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-		final Role role = (Role) o;
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
-		return !(name != null ? !name.equals(role.name) : role.name != null);
+    /**
+     * {@inheritDoc}
+     */
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Role)) {
+            return false;
+        }
 
-	}
+        final Role role = (Role) o;
 
-	/**
-	 * {@inheritDoc}
-	 */
-	public int hashCode() {
-		return (name != null ? name.hashCode() : 0);
-	}
+        return !(name != null ? !name.equals(role.name) : role.name != null);
 
-	/**
-	 * {@inheritDoc}
-	 */
-	public String toString() {
-		return new ToStringBuilder(this, ToStringStyle.SIMPLE_STYLE).append(
-				this.name).toString();
-	}
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public int hashCode() {
+        return (name != null ? name.hashCode() : 0);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public String toString() {
+        return new ToStringBuilder(this, ToStringStyle.SIMPLE_STYLE).append(this.name).toString();
+    }
 
 }

@@ -6,12 +6,8 @@ import java.util.Date;
 
 /**
  * 话题板块返回对象
- *
- * @author leida
  */
-
 public class BoardResponse {
-
 
     private Integer id;// 版块ID
     private Date addTime;// 添加时间
@@ -20,16 +16,13 @@ public class BoardResponse {
     private Integer sequence;// 序号
     private String website;// 网站
 
-
     public BoardResponse(Board board) {
-        if (board!=null) {
-            this.id = board.getId();
-            this.addTime = board.getAddTime();
-            this.name = board.getName();
-            this.description = board.getDescription();
-            this.sequence = board.getSequence();
-            this.website = board.getWebsite();
-        }
+        this.id = board.getId();
+        this.addTime = board.getAddTime();
+        this.name = board.getName();
+        this.description = board.getDescription();
+        this.sequence = board.getSequence();
+        this.website = board.getWebsite();
     }
 
     public Integer getId() {

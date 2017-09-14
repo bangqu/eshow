@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+  <meta name="format-detection" content="telephone=no">
+    <title>意见反馈</title>
+    <link rel="stylesheet" href="../../css/eshowmui.min.css">
+
+</head>
+
+<body ontouchstart>
+<form action="#">
+      <div class="eui-feedback">
+        <div class="eui-form">
+          <div class="eui-form-item eui-form-item-pure">
+            <input type="text" id="link" placeholder="请输入联系方式">
+          </div>
+          <div class="eui-form-item eui-form-item-pure">
+            <textarea id="comment" placeholder="请输入反馈内容"></textarea>
+          </div>
+        </div>
+        <div class="padding">
+          <a href="javascript:;" id="addform" class="eui-btn eui-btn-primary">提交</a>
+        </div>
+      </form>
+    </div>
+  <script src="../../js/jquery-3.2.1.min.js"></script>
+  <script src="../../js/EShowmb.min.js"></script>
+  <script>
+     $("#addform").on("click",function () {
+         var link = $("#link").val();
+         var comment = $("#comment").val();
+          if(link.length > 0  && comment.length > 0){
+              EShowmb.msg('提交成功');
+              var _html = '<p class="successtip"><span>您的反馈已经提交成功！</span></p>'
+              $(".eui-feedback").html(_html);
+          } else {
+              EShowmb.msg('请输入内容');
+              return
+          }
+     })
+  </script>
+</body>
+
+
+</html>

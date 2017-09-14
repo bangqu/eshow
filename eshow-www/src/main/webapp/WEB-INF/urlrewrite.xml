@@ -3,10 +3,6 @@
         "http://www.tuckey.org/res/dtds/urlrewrite4.0.dtd">
 
 <urlrewrite>
-	<rule>
-		<from>^/info/([A-Za-z0-9]+)/?$</from>
-		<to type="forward">/info/browse.jsp?info.url=$1</to>
-	</rule>
 
     <rule>
         <from>^/([A-Za-z0-9]+)/info/([A-Za-z0-9]+)/?$</from>
@@ -14,33 +10,13 @@
     </rule>
 
     <rule>
+        <from>^/info/([A-Za-z0-9]+)/?$</from>
+        <to type="forward">/info/browse.jsp?info.url=$1</to>
+    </rule>
+
+    <rule>
         <from>^/user/([A-Za-z0-9]+)/([A-Za-z0-9]+)/?$</from>
         <to type="forward">/user/$1?username=$2</to>
-    </rule>
-
-    <rule>
-        <from>^/([A-Za-z0-9]+)/admin/?$</from>
-        <to type="forward">/$1/admin/index.jsp</to>
-    </rule>
-
-    <rule>
-        <from>^/([A-Za-z0-9]+)/admin/([A-Za-z]+)?$</from>
-        <to type="forward">/$1/admin/$2.jsp</to>
-    </rule>
-
-    <rule>
-        <from>^/([A-Za-z0-9]+)/admin/([A-Za-z]+)/?$</from>
-        <to type="forward">/$1/admin/$2/index.jsp</to>
-    </rule>
-
-    <rule>
-        <from>^/([A-Za-z0-9]+)/admin/([A-Za-z]+)/([A-Za-z]+)?$</from>
-        <to type="forward">/$1/admin/$2/$3.jsp</to>
-    </rule>
-
-    <rule>
-        <from>^/([A-Za-z0-9]+)/admin/([A-Za-z]+)/([A-Za-z]+)/([0-9]+)/?$</from>
-        <to type="forward">/$1/admin/$2/$3.jsp?id=$4</to>
     </rule>
 
 	<rule>
@@ -71,6 +47,11 @@
     <rule>
         <from>^/([A-Za-z0-9]+)/([A-Za-z0-9]+)/([A-Za-z]+)/([0-9]+)/?$</from>
         <to type="forward">/$1/$2/$3.jsp?id=$4</to>
+    </rule>
+
+    <rule>
+        <from>^/([A-Za-z0-9]+)/admin/([A-Za-z]+)/([A-Za-z]+)/([0-9]+)/?$</from>
+        <to type="forward">/$1/admin/$2/$3.jsp?id=$4</to>
     </rule>
 
 	<!-- Override default validation.js from WebWork -->

@@ -1,0 +1,66 @@
+﻿@charset "utf-8";
+/***公共样式****/
+input{text-decoration: none;}
+body, div, span, h1, h2, h3, h4, h5, h6, p, em, img, strong, b, small, u, i, center, dl, dt, dd, ol, ul, li,  sub, sup, tt, var, del, dfn,  ins, kbd, q, s, samp,  strike, applet, object, iframe, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, blockquote, pre, a, abbr, acronym, address, big, cite, code, mark, audio, video, input, textarea, select { margin:0; padding:0;}	
+
+ol, ul{list-style:none;}
+
+html { overflow-x:hidden; -webkit-text-size-adjust:none; }
+body { font-size:12px; font-family:Microsoft YaHei, helvetica neue, arial, sans-serif; color:#666666;}
+
+/*a 链接*/
+a { text-decoration:none; outline:none;}
+a:link { color:#666666; }
+a:visited { color:#666666; }
+a:hover, a:active, a:focus { color:#;}
+
+/*图片居中*/
+.jzimg { display:table-cell; *display:block; overflow:hidden; font:0px/0px 'Arial'; text-align:center; vertical-align:middle;}
+fieldset, img { border:0; vertical-align:middle}
+
+.jzimg img,.jzimg i{vertical-align:middle; max-width:100%; max-height:100%;}
+.jzimg i{height:100%; display:inline-block;}
+/*浮动*/
+.fl {float:left; display:inline}
+.fr {float:right; display:inline}
+.clear { clear:both}
+.clearfix { *zoom:1;}
+.clearfix:after{clear:both; display:block; height:0; visibility:hidden; line-height:0; content:'\20';}
+
+/* HTML5 重置为较旧版本的浏览器 */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display:block;}
+blockquote, q{quotes:none;}
+blockquote:before, blockquote:after, q:before, q:after { content:''; content:none; }
+table { border-collapse: collapse; border-spacing: 0; }
+
+/* 按钮样式 */
+input, button, textarea, select { font-size:100%; outline:none; resize:none}
+input[type="button"]{cursor:pointer; border:0}
+input[type="submit"]{cursor:pointer; border:0}
+input[type="reset"]{cursor:pointer; border:0}
+
+
+/*删除火狐下按钮默认样式*/
+input[type="reset"]::-moz-focus-inner,
+input[type="button"]::-moz-focus-inner,
+input[type="submit"]::-moz-focus-inner,
+input[type="file"] > input[type="button"]::-moz-focus-inner{ border:none; padding:0; }
+
+
+/*字体大小、缩进*/
+.f12 { font-size:12px;}
+.f13 { font-size:13px;}
+.f14 { font-size:14px;}
+.f16 { font-size:16px;}
+.f18{ font-size:18px;}
+.f20{ font-size:20px;}
+.t2{text-indent:2em;}
+
+
+/*上下间距*/
+.mb5 { margin-bottom:5px;}
+.mb10{ margin-bottom:10px;}
+.mb15{ margin-bottom:15px;}
+.mb20{ margin-bottom:20px;}
+.mb25{ margin-bottom:25px;}
+.mt80{margin-top: 80px;}

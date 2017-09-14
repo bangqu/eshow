@@ -1,5 +1,4 @@
-<%@ page language="java" errorPage="/error.jsp" pageEncoding="UTF-8"
-	contentType="text/html;charset=utf-8"%>
+<%@ page language="java" errorPage="/error.jsp" pageEncoding="UTF-8" contentType="text/html;charset=utf-8"%>
 <option value="北京银湾">
     北京银湾
 </option>

@@ -52,7 +52,6 @@
 	<!-- =================================================================== -->
 	<bean id="mailEngine" class="cn.org.eshow.service.MailEngine">
 		<property name="mailSender" ref="mailSender" />
-		<property name="velocityEngine" ref="velocityEngine" />
 		<property name="from" value="${mail.default.from}" />
 	</bean>
 
@@ -70,19 +69,6 @@
                 mail.smtp.starttls.enable=true
             </value>
         </property>
-	</bean>
-
-	<!-- Configure Velocity for sending e-mail -->
-	<bean id="velocityEngine" class="org.springframework.ui.velocity.VelocityEngineFactoryBean">
-		<property name="velocityProperties">
-			<props>
-				<prop key="resource.loader">class</prop>
-				<prop key="class.resource.loader.class">
-					org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-				</prop>
-				<prop key="velocimacro.library"></prop>
-			</props>
-		</property>
 	</bean>
 
 	<bean id="mailMessage" class="org.springframework.mail.SimpleMailMessage" scope="prototype">

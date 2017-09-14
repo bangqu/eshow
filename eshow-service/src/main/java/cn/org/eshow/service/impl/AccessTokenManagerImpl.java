@@ -22,50 +22,55 @@ import java.util.List;
 @Service("accessTokenManager")
 public class AccessTokenManagerImpl extends GenericManagerImpl<AccessToken, Integer> implements AccessTokenManager {
 
-	@Autowired
+    @Autowired
     AccessTokenDao accessTokenDao;
 
-	public AccessTokenManagerImpl() {
-	}
+    public AccessTokenManagerImpl() {
+    }
 
-	@Autowired
-	public AccessTokenManagerImpl(AccessTokenDao accessTokenDao) {
-		super(accessTokenDao);
-		this.accessTokenDao = accessTokenDao;
-	}
+    @Autowired
+    public AccessTokenManagerImpl(AccessTokenDao accessTokenDao) {
+        super(accessTokenDao);
+        this.accessTokenDao = accessTokenDao;
+    }
 
-	@Override
-	public List<AccessToken> list(AccessTokenQuery query) {
-		return accessTokenDao.list(query);
-	}
+    @Override
+    public List<AccessToken> list(AccessTokenQuery query) {
+        return accessTokenDao.list(query);
+    }
 
-	@Override
-	public Page<AccessToken> search(AccessTokenQuery query) {
-		return accessTokenDao.search(query);
-	}
+    @Override
+    public Page<AccessToken> search(AccessTokenQuery query) {
+        return accessTokenDao.search(query);
+    }
+
+    @Override
+    public AccessToken save(User user) throws OAuthSystemException {
+        // 生成AccessToken
+        OAuthIssuer oauthIssuerImpl = new OAuthIssuerImpl(new MD5Generator());
+        String accessToken = oauthIssuerImpl.accessToken();
+        String refreshToken = oauthIssuerImpl.refreshToken();
+        return accessTokenDao.save(new AccessToken(user, accessToken, AccessToken.EXPIRES_IN, refreshToken));
+    }
 
     @Override
     public AccessToken refresh(User user) throws OAuthSystemException {
         // 获得AccessToken信息
         AccessTokenQuery accessTokenQuery = new AccessTokenQuery();
         accessTokenQuery.setUserId(user.getId());
-        List<AccessToken> accessTokens =list(accessTokenQuery);
-
-        AccessToken at =null;
-        if (!accessTokens.isEmpty()){
-             at = accessTokens.get(0);
+        List<AccessToken> accessTokens = accessTokenDao.list(accessTokenQuery);
+        AccessToken at = null;
+        if (!accessTokens.isEmpty()) {
+            at = accessTokens.get(0);
         }
         // 更换表中token信息
         OAuthIssuer oauthIssuerImpl = new OAuthIssuerImpl(new MD5Generator());
         String accessToken = oauthIssuerImpl.accessToken();
         String refreshToken = oauthIssuerImpl.refreshToken();
-        if(at == null)
-        {
+        if (at == null) {
             at = new AccessToken(user, accessToken, AccessToken.EXPIRES_IN, refreshToken);
             at = accessTokenDao.save(at);
-        }
-        else
-        {
+        } else {
             //判断accessToken是否还有1天过期
             long timeNow = DateUtil.dateToLong(new Date());// 当前时间
             long timeEnd = DateUtil.dateToLong(at.getUpdateTime());// 最后登录时间
@@ -77,5 +82,24 @@ public class AccessTokenManagerImpl extends GenericManagerImpl<AccessToken, Inte
             }
         }
         return at;
+    }
+
+    @Override
+    public User isValid(String accessToken) {
+        if (accessToken == null) {
+            return null;
+        }
+        AccessToken at = accessTokenDao.getBy("accessToken", accessToken);
+        if (at != null) {
+            long timeNow = DateUtil.dateToLong(new Date());// 当前时间
+            long timeEnd = DateUtil.dateToLong(at.getUpdateTime());// 最后登录时间
+            if (timeNow - timeEnd > at.getExpiresIn()) {
+                return null;
+            } else {
+                return at.getUser();
+            }
+        } else {
+            return null;
+        }
     }
 }

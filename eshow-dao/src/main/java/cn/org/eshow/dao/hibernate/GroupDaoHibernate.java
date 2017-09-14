@@ -5,7 +5,7 @@ import cn.org.eshow.common.dao.EnhancedRule;
 import cn.org.eshow.common.page.Page;
 import cn.org.eshow.dao.GroupDao;
 import cn.org.eshow.model.Group;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;

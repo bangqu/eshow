@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+  <meta name="format-detection" content="telephone=no">
+    <title>注册</title>
+    <link rel="stylesheet" href="../../css/eshowmui.min.css">
+
+</head>
+
+<body ontouchstart>
+  <div class="eui-user">
+      <form action="#">
+        <div class="eui-form">
+          <div class="eui-form-item  ">
+            <label for="#">手机号</label>
+            <input type="text" id="phone" value="" placeholder="请输入账号">
+          </div>
+          <div class="eui-form-item eui-form-item-send">
+            <label for="#">验证码</label>
+            <input type="text" value="" placeholder="请输入验证码">
+            <button type="button" class="send" id="send">发送</button>
+          </div>
+        </div>
+        <div class="padding">
+          <a href="javascript:;" class="eui-btn eui-btn-primary">提交</a>
+        </div>
+      </form>
+    </div>
+  <script src="../../js/jquery-3.2.1.min.js"></script>
+  <script src="../../js/EShowmb.min.js"></script>
+  <script>
+
+      $("#send").on("click",function(){
+          var partten = /^1[34578]\d{9}$/;
+          var _phone=$("#phone").val();
+          if (!partten.test(_phone)) {
+              EShowmb.msg("请输入正确手机号",2);
+              return;
+          }
+          else {
+              var ops={
+                  username:_phone,
+                  type:"register"
+              }
+              EShowmb.smsbtn(60, 'send');
+              $.ajax({
+                  url: anp.ctx+"/code!save",
+                  type: "post",
+                  data: ops,
+                  dataType:"json",
+                  success: function(data) {
+                      if (data.status == "1") {
+                          laytip("发送成功！",2);
+                          return;
+                      }
+                      if (data.status == "-5") {
+                          laytip("发送失败!请稍后再试",2);
+                          return;
+                      }
+                  }
+              })
+          }
+      })
+  </script>
+
+</body>
+
+
+</html>

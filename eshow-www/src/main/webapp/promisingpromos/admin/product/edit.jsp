@@ -19,7 +19,7 @@
     <div class="cont">
         <ul class="breadcrumb">
             <li><a href="${promisingpromosadmin}/index.jsp">首页</a></li>
-            <li><a href="${promisingpromosadmin}/product/">产品管理</a></li>
+            <li><a href="${promisingpromosadmin}/product/index.jsp">产品管理</a></li>
             <li>修改产品</li>
         </ul>
         <div class="com">
@@ -27,10 +27,9 @@
                 <h3 class="yahei">修改产品</h3>
             </div>
             <div class="com clearfix">
-                <s:form cssClass="form-horizontal" name="productForm" id="productForm" action="product!update.action"
-                        namespace="/"
+                <s:form cssClass="form-horizontal" name="productForm" id="productForm" action="product!update.action"  namespace=""
                         method="post"   enctype="multipart/form-data">
-                    <input type="hidden" name="redirect" value="/promisingpromos/admin/product/">
+                    <input type="hidden" name="redirect" value="/promisingpromos/admin/product/index.jsp">
                     <input type="hidden" name="id" value="${view.product.id}">
 
                     <div class="form-group">

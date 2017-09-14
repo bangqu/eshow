@@ -9,6 +9,7 @@ import cn.org.eshow.service.TopicCommentManager;
 import cn.org.eshow.service.TopicManager;
 import cn.org.eshow.util.CommonUtil;
 import cn.org.eshow.util.PageUtil;
+import org.apache.struts2.convention.annotation.AllowedMethods;
 import org.apache.struts2.convention.annotation.Result;
 import org.apache.struts2.convention.annotation.Results;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,10 +18,14 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+/**
+ *
+ */
 @Results({ @Result(name = "input", location = "add"),
 		@Result(name = "list", type = "redirect", location = ""),
 		@Result(name = "success", type = "redirect", location = "view/${id}"),
 		@Result(name = "redirect", type = "redirect", location = "${redirect}") })
+@AllowedMethods({"list", "search", "delete", "view", "update", "save"})
 public class TopicCommentAction extends BaseAction {
 
 	private static final long serialVersionUID = 1L;
@@ -34,14 +39,13 @@ public class TopicCommentAction extends BaseAction {
 	private TopicComment topicComment;
 	private TopicCommentQuery query;
 	private TopicQuery topicQuery;
-	private Integer topicId;
-	private Integer boardId;
+	private Integer topicId;//话题ID
+	private Integer boardId;//板块ID
 
-	public String list() {
-		topicComments = topicCommentManager.list(query);
-		return LIST;
-	}
-
+	/**
+	 *
+	 * @return
+     */
 	public String search() {
 		Page<TopicComment> page = topicCommentManager.search(query);
 		topicComments = page.getDataList();
@@ -74,6 +78,10 @@ public class TopicCommentAction extends BaseAction {
 		return LIST;
 	}
 
+	/**
+	 *
+	 * @return
+     */
 	public String delete() {
 		TopicComment old = topicCommentManager.get(id);
 		if (old.getUser().getId().equals(getSessionUser().getId())) {
@@ -88,6 +96,10 @@ public class TopicCommentAction extends BaseAction {
 		return LIST;
 	}
 
+	/**
+	 *
+	 * @return
+     */
 	public String view() {
 		if (id != null) {
 			topicComment = topicCommentManager.get(id);
@@ -97,6 +109,11 @@ public class TopicCommentAction extends BaseAction {
 		return NONE;
 	}
 
+	/**
+	 *
+	 * @return
+	 * @throws Exception
+     */
 	public String update() throws Exception {
 		TopicComment old = topicCommentManager.get(id);
 		old.setName(topicComment.getName());
@@ -106,6 +123,11 @@ public class TopicCommentAction extends BaseAction {
 		return SUCCESS;
 	}
 
+	/**
+	 *
+	 * @return
+	 * @throws Exception
+     */
 	public String save() throws Exception {
 		topicComment.setAddTime(new Date());
 		topicComment.setUser(getSessionUser());
@@ -116,7 +138,7 @@ public class TopicCommentAction extends BaseAction {
 		topicComment = topicCommentManager.save(topicComment);
 		id = topicComment.getTopic().getId();
 		saveMessage("添加成功");
-		return SUCCESS;
+		return REDIRECT;
 	}
 
 	public List<TopicComment> getTopicComments() {

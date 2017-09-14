@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+	<title>加载层中</title>
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <title>EShow-HTML5 Demo</title>
+    <link rel="stylesheet" href="./dist/css/frozen.css">
+    <link rel="stylesheet" href="./css/demo.css">
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+</head>
+<body ontouchstart>
+<header class="ui-header ui-header-positive ui-border-b html-border-b">
+    <i class="ui-icon-return html-narrow" onclick="history.back()"></i>
+    <h1 class="html-btn">加载中</h1>
+    <button class="ui-btn html-btn">回首页</button>
+</header>
+<footer class="ui-footer ui-footer-btn">
+    <ul class="ui-tiled ui-border-t html-border-t">
+        <li data-href="index.html" class="ui-border-r"><div>基础样式</div></li>
+        <li data-href="ui.html" class="ui-border-r"><div>UI组件</div></li>
+        <li data-href="js.html"><div>JS插件</div></li>
+    </ul>
+</footer>
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+<script type="text/javascript" src="./dist/lib/layer/layer.js"></script>
+<script type="text/javascript" src="./dist/lib/layer/layer.ext.js"></script>
+<script>
+layer.msg('加载中', {icon: 16});
+</script>
+
+</body>
+</html>

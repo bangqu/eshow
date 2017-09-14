@@ -1,21 +1,15 @@
 package cn.org.eshow.model;
 
-import java.util.Date;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 
 /**
- * 话题板块表
- * 
+ * 板块表
+ *
  * @author leida
  */
 @Entity
@@ -23,64 +17,70 @@ import java.io.Serializable;
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class Board extends BaseObject implements Serializable {
 
-	private static final long serialVersionUID = 6191125134212611571L;
+    private static final long serialVersionUID = 6191125134212611571L;
 
-	private Integer id;// 版块ID
-	private Date addTime;// 添加时间
-	private String name;// 版块名称
-	private String description;// 描述
-	private Integer sequence;// 序号
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;// 版块ID
+
+    @Column(name = "add_time", length = 0)
+    private Date addTime = new Date();// 添加时间
+
+    @Column(length = 100)
+    private String name;// 版块名称
+
+    @Column(length = 400)
+    private String description;// 描述
+
+    @Column
+    private Integer sequence;// 排序
+
+    @Column(length = 20)
     private String website;// 网站
-	private Boolean enabled;// 是否可用
 
+    @Column
+    private Boolean enabled = Boolean.TRUE;// 是否可用
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	public Integer getId() {
-		return this.id;
-	}
+    public Integer getId() {
+        return this.id;
+    }
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-	@Column(name = "addTime", length = 0)
-	public Date getAddTime() {
-		return this.addTime;
-	}
+    public Date getAddTime() {
+        return this.addTime;
+    }
 
-	public void setAddTime(Date addTime) {
-		this.addTime = addTime;
-	}
+    public void setAddTime(Date addTime) {
+        this.addTime = addTime;
+    }
 
-	@Column(name = "name", length = 100)
-	public String getName() {
-		return this.name;
-	}
+    public String getName() {
+        return this.name;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	@Column(name = "description", length = 400)
-	public String getDescription() {
-		return this.description;
-	}
+    public String getDescription() {
+        return this.description;
+    }
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
-	@Column(name = "sequence")
-	public Integer getSequence() {
-		return sequence;
-	}
+    public Integer getSequence() {
+        return sequence;
+    }
 
-	public void setSequence(Integer sequence) {
-		this.sequence = sequence;
-	}
+    public void setSequence(Integer sequence) {
+        this.sequence = sequence;
+    }
 
-    @Column(name = "website", length = 20)
     public String getWebsite() {
         return website;
     }
@@ -89,59 +89,56 @@ public class Board extends BaseObject implements Serializable {
         this.website = website;
     }
 
-	@Column(name = "enabled")
-	public Boolean getEnabled() {
-		return enabled;
-	}
+    public Boolean getEnabled() {
+        return enabled;
+    }
 
-	public void setEnabled(Boolean enabled) {
-		this.enabled = enabled;
-	}
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
+    }
 
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
 
+        Board pojo = (Board) o;
 
-	public boolean equals(Object o) {
-		if (this == o)
-			return true;
-		if (o == null || getClass() != o.getClass())
-			return false;
+        if (addTime != null ? !addTime.equals(pojo.addTime) : pojo.addTime != null)
+            return false;
+        if (name != null ? !name.equals(pojo.name) : pojo.name != null)
+            return false;
+        if (website != null ? !website.equals(pojo.website) : pojo.website != null)
+            return false;
+        if (description != null ? !description.equals(pojo.description) : pojo.description != null)
+            return false;
 
-		Board pojo = (Board) o;
+        return true;
+    }
 
-		if (addTime != null ? !addTime.equals(pojo.addTime) : pojo.addTime != null)
-			return false;
-		if (name != null ? !name.equals(pojo.name) : pojo.name != null)
-			return false;
-		if (website != null ? !website.equals(pojo.website) : pojo.website != null)
-			return false;
-		if (description != null ? !description.equals(pojo.description) : pojo.description != null)
-			return false;
+    public int hashCode() {
+        int result = 0;
+        result = result + (addTime != null ? addTime.hashCode() : 0);
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (website != null ? website.hashCode() : 0);
+        result = 31 * result + (description != null ? description.hashCode() : 0);
+        return result;
+    }
 
-		return true;
-	}
+    public String toString() {
+        StringBuffer sb = new StringBuffer(getClass().getSimpleName());
 
-	public int hashCode() {
-		int result = 0;
-		result = result + (addTime != null ? addTime.hashCode() : 0);
-		result = 31 * result + (name != null ? name.hashCode() : 0);
-		result = 31 * result + (website != null ? website.hashCode() : 0);
-		result = 31 * result + (description != null ? description.hashCode() : 0);
-		return result;
-	}
+        sb.append(" [");
+        sb.append("id").append("='").append(getId()).append("', ");
+        sb.append("addTime").append("='").append(getAddTime()).append("', ");
+        sb.append("name").append("='").append(getName()).append("', ");
+        sb.append("website").append("='").append(getWebsite()).append("', ");
+        sb.append("description").append("='").append(getDescription()).append("', ");
 
-	public String toString() {
-		StringBuffer sb = new StringBuffer(getClass().getSimpleName());
+        sb.append("]");
 
-		sb.append(" [");
-		sb.append("id").append("='").append(getId()).append("', ");
-		sb.append("addTime").append("='").append(getAddTime()).append("', ");
-		sb.append("name").append("='").append(getName()).append("', ");
-		sb.append("website").append("='").append(getWebsite()).append("', ");
-		sb.append("description").append("='").append(getDescription()).append("', ");
-
-		sb.append("]");
-
-		return sb.toString();
-	}
+        return sb.toString();
+    }
 
 }

@@ -1,15 +1,13 @@
 package cn.org.eshow.webapp.util;
 
-import java.io.IOException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.struts2.ServletActionContext;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
-import org.apache.commons.lang.StringUtils;
-import org.apache.struts2.ServletActionContext;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
+import java.io.IOException;
 
 /**
  * Struts2工具类.
@@ -80,8 +78,7 @@ public class Struts2Utils {
 	 * "hello", "no-cache:false"); render("text/plain", "hello", "encoding:GBK",
 	 * "no-cache:false");
 	 * 
-	 * @param headers
-	 *            可变的header数组，目前接受的值为"encoding:"或"no-cache:",默认值分别为UTF-8和true.
+	 * @param headers 可变的header数组，目前接受的值为"encoding:"或"no-cache:",默认值分别为UTF-8和true.
 	 */
 	public static void render(final String contentType, final String content,
 			final String... headers) {
@@ -124,8 +121,7 @@ public class Struts2Utils {
 	/**
 	 * 直接输出JSON.
 	 * 
-	 * @param jsonString
-	 *            json字符串.
+	 * @param jsonString json字符串.
 	 * @see #render(String, String, String...)
 	 */
 	public static void renderJson(final String jsonString, final String... headers) {
@@ -135,8 +131,7 @@ public class Struts2Utils {
 	/**
 	 * 直接输出JSON,使用Jackson转换Java对象.
 	 * 
-	 * @param data
-	 *            可以是List<POJO>, POJO[], POJO, 也可以Map名值对.
+	 * @param data 可以是List<POJO>, POJO[], POJO, 也可以Map名值对.
 	 * @see #render(String, String, String...)
 	 */
 	public static void renderJson(final Object data, final String... headers) {
@@ -151,13 +146,10 @@ public class Struts2Utils {
 	/**
 	 * 直接输出支持跨域Mashup的JSONP.
 	 * 
-	 * @param callbackName
-	 *            callback函数名.
-	 * @param object
-	 *            Java对象,可以是List<POJO>, POJO[], POJO ,也可以Map名值对, 将被转化为json字符串.
+	 * @param callbackName callback函数名.
+	 * @param object Java对象,可以是List<POJO>, POJO[], POJO ,也可以Map名值对, 将被转化为json字符串.
 	 */
-	public static void renderJsonp(final String callbackName, final Object object,
-			final String... headers) {
+	public static void renderJsonp(final String callbackName, final Object object, final String... headers) {
 		String jsonString = null;
 		try {
 			jsonString = mapper.writeValueAsString(object);
@@ -165,8 +157,7 @@ public class Struts2Utils {
 			throw new IllegalArgumentException(e);
 		}
 
-		String result = new StringBuilder().append(callbackName).append("(").append(jsonString)
-				.append(");").toString();
+		String result = new StringBuilder().append(callbackName).append("(").append(jsonString).append(");").toString();
 
 		// 渲染Content-Type为javascript的返回内容,输出结果为javascript语句,
 		// 如callback197("{html:'Hello World!!!'}");
@@ -176,8 +167,7 @@ public class Struts2Utils {
 	/**
 	 * 分析并设置contentType与headers.
 	 */
-	private static HttpServletResponse initResponseHeader(final String contentType,
-			final String... headers) {
+	private static HttpServletResponse initResponseHeader(final String contentType, final String... headers) {
 		// 分析headers参数
 		String encoding = DEFAULT_ENCODING;
 		boolean noCache = DEFAULT_NOCACHE;
@@ -211,8 +201,7 @@ public class Struts2Utils {
 	 */
 	public static String getWebSite() {
 		HttpServletRequest request = getRequest();
-		return request.getScheme() + "://" + request.getServerName() + ":"
-				+ request.getServerPort() + request.getContextPath();
+		return request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
 	}
 
 	/***

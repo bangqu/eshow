@@ -77,6 +77,9 @@ public class GenericManagerImpl<T, PK extends Serializable> implements GenericMa
      * {@inheritDoc}
      */
     public T get(PK id) {
+        if (id == null) {
+            return null;
+        }
         return dao.get(id);
     }
 

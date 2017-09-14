@@ -6,12 +6,8 @@ import java.util.Date;
 
 /**
  * 博文返回对象
- *
- * @author leida
  */
-
 public class BlogResponse {
-
 
     private Integer id;
     private UserResponse user;// 作者

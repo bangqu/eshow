@@ -42,7 +42,6 @@ public class UserDaoHibernate extends GenericDaoHibernate<User, Integer> impleme
     }
 
 
-
     public List<User> list(UserQuery query) {
         EnhancedRule rule = new EnhancedRule();
         setRule(rule, query);
@@ -87,23 +86,9 @@ public class UserDaoHibernate extends GenericDaoHibernate<User, Integer> impleme
      * {@inheritDoc}
      */
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        List<?> users = getSession().createCriteria(User.class)
-                .add(Restrictions.eq("username", username)).list();
+        List<?> users = getSession().createCriteria(User.class).add(Restrictions.eq("username", username)).list();
         if (users == null || users.isEmpty()) {
             throw new UsernameNotFoundException("user '" + username + "' not found...");
-        } else {
-            return (UserDetails) users.get(0);
-        }
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public UserDetails loadUserByDomain(String domain) {
-        List<?> users = getSession().createCriteria(User.class)
-                .add(Restrictions.eq("domain", domain)).list();
-        if (users == null || users.isEmpty()) {
-            return null;
         } else {
             return (UserDetails) users.get(0);
         }
@@ -115,7 +100,7 @@ public class UserDaoHibernate extends GenericDaoHibernate<User, Integer> impleme
     public String getUserPassword(String username) {
         JdbcTemplate jdbcTemplate = new JdbcTemplate(SessionFactoryUtils.getDataSource(getSessionFactory()));
         Table table = AnnotationUtils.findAnnotation(User.class, Table.class);
-        return jdbcTemplate.queryForObject("select password from " + table.name() + " where username=?", String.class, username);
+        return jdbcTemplate.queryForObject("select password from " + table.name() + " where username = ?", String.class, username);
     }
 
 

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>EShow-注册</title>
+	<link rel="stylesheet" type="text/css" href="../www/styles/public.css">
+	<link rel="stylesheet" type="text/css" href="../www/styles/style.css">
+	<link rel="stylesheet" type="text/css" href="../validate/validationEngine.jquery.css">
+<style>
+	body{background-color:#e1e5eb;}
+</style>
+</head>
+<body>
+<div class="log_inbox">
+	<div class="log_in">
+	<div class="log">
+		<a href="home_index(log).html">
+        <img src="../www/images/log_in.png">
+        </a>
+	</div>
+		<div class="register_ensure_bd">
+			<form id="register_ensure_form" action="home_register_success.html" method="post">
+			<p class="form_top"><span>注册账号</span></p>
+			<div class="log_inputs log_disdance">
+				<input class="input_border validate[custom[email]]" type="text" value="  请输入邮箱，例如leida@126.com" name="email"
+				onFocus="if (value =='  请输入邮箱，例如leida@126.com'){value ='';this.style.color='#59708b'}" onBlur="if (value ==''){value='  请输入邮箱，例如leida@126.com';this.style.color='#cdd3db'}"/>
+			</div>
+			<div class="log_inputs log_disdance">
+				<input class="input_border validate[minSize[6]]" type="text" value="请输入用户名" name="user"
+				onFocus="if (value =='请输入用户名'){value ='';this.style.color='#59708b'}" onBlur="if (value ==''){value='请输入用户名';this.style.color='#cdd3db'}"/>
+			</div>
+			<div class="log_inputs log_disdance">
+				<input class="input_border validate[custom[onlyLetterNumber]]" type="text" value="请输入密码" id="pass" name="pass"
+				onFocus="if (value =='请输入密码'){value ='';this.style.color='#59708b'}" onBlur="if (value ==''){value='请输入密码';this.style.color='#cdd3db'}"/>
+			</div>
+			<div class="log_inputs">
+				<input class="input_border validate[equals[pass]]" type="text" value="请确认密码" name="sure_pass"
+				onFocus="if (value =='请确认密码'){value ='';this.style.color='#59708b'}" onBlur="if (value ==''){value='  请确认密码';this.style.color='#cdd3db'}"/>
+			</div>
+			<div class="log_forget">
+				<input type="checkbox"/>
+				<span>我已阅读同意遵守《<em>EShow服务条款</em>》</span>
+			</div>
+			<p class="log_btn">
+				<a href=""><input class="btn_active input_btn" type="submit" value="登录"/></a>
+			</p>
+			<p class="form_footer reg_setline"><a href="home_log_in.html">已有账号直接登录</a></p>	
+			</form>
+		</div>
+	</div>
+	<div class="log_footer">
+	<span>Copyright © 2009 www.eshow.org.cn All rights reserved. ICP备案编号：苏ICP备10018847号</span>
+</div>
+</div>
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+<script type="text/javascript" src="../validate/jquery.validationEngine.min.js"></script>
+<script type="text/javascript" src="../validate/jquery.validationEngine-zh_CN.js"></script>
+<script>
+$('#register_ensure_form').validationEngine();
+</script>
+</body>
+</html>

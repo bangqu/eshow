@@ -31,11 +31,11 @@
                 <strong>提示!</strong> 加*为必填项.
             </div>
             <div class="com clearfix">
-                <s:form cssClass="form-horizontal" name="productForm" id="productForm" action="product!save.action"
-                        namespace="/"
+                <s:form cssClass="form-horizontal" name="productForm" id="productForm" action="product!save.action" namespace=""
                         method="post"  enctype="multipart/form-data">
-                    <input type="hidden" name="redirect" value="/promisingpromos/admin/product/">
+                    <input type="hidden" name="redirect" value="/promisingpromos/admin/product/index.jsp">
                     <input type="hidden" name="product.website" value="promisingpromos">
+
 
                     <div class="form-group">
                         <label class="col-sm-2 control-label">产品名</label>

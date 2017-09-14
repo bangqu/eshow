@@ -8,6 +8,7 @@ import cn.org.eshow.model.Topic;
 import cn.org.eshow.service.BoardManager;
 import cn.org.eshow.service.TopicManager;
 import cn.org.eshow.util.PageUtil;
+import org.apache.struts2.convention.annotation.AllowedMethods;
 import org.apache.struts2.convention.annotation.Result;
 import org.apache.struts2.convention.annotation.Results;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,10 +16,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.Date;
 import java.util.List;
 
+/**
+ *
+ */
 @Results({ @Result(name = "input", location = "add"),
 		@Result(name = "list", type = "redirect", location = ""),
 		@Result(name = "success", type = "redirect", location = "view/${id}"),
 		@Result(name = "redirect", type = "redirect", location = "${redirect}") })
+@AllowedMethods({"list", "search", "delete", "view", "update", "save"})
 public class BoardAction extends BaseAction {
 
 	private static final long serialVersionUID = 1L;
@@ -32,11 +37,19 @@ public class BoardAction extends BaseAction {
 	private Board board;
 	private BoardQuery query;
 
+	/**
+	 *
+	 * @return
+     */
 	public String list() {
 		boards = boardManager.list(query);
 		return LIST;
 	}
 
+	/**
+	 *
+	 * @return
+     */
 	public String search() {
 		Page<Board> page = boardManager.search(query);
 		boards = page.getDataList();
@@ -44,6 +57,10 @@ public class BoardAction extends BaseAction {
 		return LIST;
 	}
 
+	/**
+	 *
+	 * @return
+     */
 	public String delete() {
 		Board board = boardManager.get(id);
 		if (board != null) {
@@ -60,16 +77,24 @@ public class BoardAction extends BaseAction {
 		return LIST;
 	}
 
+	/**
+	 *
+	 * @return
+     */
 	public String view() {
 		if (id != null) {
 			board = boardManager.get(id);
 		} else {
 			return INDEX;
-
 		}
 		return NONE;
 	}
 
+	/**
+	 *
+	 * @return
+	 * @throws Exception
+     */
 	public String update() throws Exception {
 		Board old = boardManager.get(id);
 		old.setName(board.getName());
@@ -79,6 +104,11 @@ public class BoardAction extends BaseAction {
 		return LIST;
 	}
 
+	/**
+	 *
+	 * @return
+	 * @throws Exception
+     */
 	public String save() throws Exception {
 		board.setAddTime(new Date());
 		boardManager.save(board);

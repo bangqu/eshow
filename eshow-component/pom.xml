@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
     <modelVersion>4.0.0</modelVersion>
+
     <parent>
         <groupId>cn.org.eshow</groupId>
         <artifactId>eshow-parent</artifactId>
@@ -18,20 +18,33 @@
         <dependency>
             <groupId>cn.org.eshow</groupId>
             <artifactId>eshow-core</artifactId>
-            <version>3.0</version>
         </dependency>
 
         <dependency>
             <groupId>com.qiniu</groupId>
-            <artifactId>sdk</artifactId>
-            <version>6.0.0</version>
+            <artifactId>qiniu-java-sdk</artifactId>
+            <version>${qiniu.version}</version>
         </dependency>
 
+        <!--<dependency>-->
+            <!--<groupId>com.aliyun.openservices</groupId>-->
+            <!--<artifactId>aliyun-openservices</artifactId>-->
+            <!--<version>OTS-2.0.4</version>-->
+        <!--</dependency>-->
+
         <dependency>
-            <groupId>com.aliyun.openservices</groupId>
-            <artifactId>aliyun-openservices</artifactId>
-            <version>OTS-2.0.4</version>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20160212</version>
         </dependency>
+
+        <!--<dependency>-->
+            <!--<groupId>com.taobao</groupId>-->
+            <!--<artifactId>taobao</artifactId>-->
+            <!--<version>1.0</version>-->
+            <!--<scope>system</scope>-->
+            <!--<systemPath>${basedir}/src/main/lib/taobao-sdk-java-auto_1455552377940-20160311.jar</systemPath>-->
+        <!--</dependency>-->
 
     </dependencies>
 

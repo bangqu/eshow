@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+  <meta name="format-detection" content="telephone=no">
+  <title>EShowMUI Demo</title>
+<link rel="stylesheet" href="../../css/eshowmui.min.css">
+<link rel="stylesheet" href="../../css/demo.css">
+
+</head>
+
+<body ontouchstart>
+  <header class="eui-header ">
+
+  </header>
+  <section class="eui-container">
+    <div class="demo-item">
+      <div class="eui-form-hd">表单展示项</div>
+      <form action="#">
+        <div class="eui-form">
+          <div class="eui-form-item  ">
+            <label for="#">账号</label>
+            <input type="text" value="421205351" readonly="">
+          </div>
+          <div class="eui-form-item eui-form-item-show">
+            <label for="#">身份证号码</label>
+            <input type="text" value="445331199401055317">
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="demo-item">
+      <p class="eui-form-hd">链接表单项</p>
+      <div class="eui-form">
+        <div class="eui-form-item eui-form-item-link ">
+          <a href="#">展示链接</a>
+        </div>
+        <div class="eui-form-item eui-form-item-link">
+          <a href="#">展示链接</a>
+        </div>
+        <div class="eui-form-item eui-form-item-link">
+          <a href="#">展示链接</a>
+        </div>
+      </div>
+    </div>
+    <div class="demo-item">
+
+      <p class="eui-form-hd">表单输入项</p>
+      <div class="eui-form">
+        <div class="eui-form-item">
+          <label>身份证号码</label>
+          <input type="text" placeholder="18位身份证号码">
+        </div>
+        <div class="eui-form-item eui-form-item-textarea">
+          <label> 详细地址  </label>
+          <textarea placeholder="街道等详细地址"></textarea>
+        </div>
+        <div class="eui-form-item ">
+          <label class="eui-border-r">
+                           中国 +86
+                </label>
+          <input type="text" placeholder="请输入手机号码">
+          </a>
+        </div>
+
+      </div>
+    </div>
+    <div class="demo-item">
+      <div class="eui-form-hd">表单输入项3</div>
+      <div class="eui-form">
+        <div class="eui-form-item eui-form-item-pure">
+          <input type="text" placeholder="QQ号/手机号/邮箱">
+        </div>
+        <div class="eui-form-item eui-form-item-pure">
+          <input type="password" placeholder="密码">
+        </div>
+        <div class="eui-form-item eui-form-item-vcode">
+          <input type="text" placeholder="请输入验证码">
+          <!-- 若按钮不可点击则添加 disabled 类 -->
+          <button type="button" class="ui-border-l">重新发送</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-item">
+      <p class="demo-desc">表单下拉框</p>
+      <div class="eui-form">
+        <form action="#">
+          <div class="eui-form-item">
+            <label>日期</label>
+            <div class="eui-select-group">
+              <div class="eui-select">
+                <select>
+                                   <option>2014</option>
+                                   <option selected="">2015</option>
+                                   <option>2016</option>
+                               </select>
+              </div>
+              <div class="eui-select">
+                <select>
+                                   <option>03</option>
+                                   <option selected="">04</option>
+                                   <option>05</option>
+                               </select>
+              </div>
+              <div class="eui-select">
+                <select>
+                                   <option>21</option>
+                                   <option selected="">22</option>
+                                   <option>23</option>
+                               </select>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="padding">
+      <a href="javascript:;" class="eui-btn eui-btn-primary">提交</a>
+    </div>
+  </section>
+  <section class="page__ft">
+  <a href="javascript:home()">EShowMUI 2017.05</a>
+</section>
+<script src="../../js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript">
+  function home() {
+      window.location = '../index.html'
+  }
+</script>
+
+</body>
+
+</html>

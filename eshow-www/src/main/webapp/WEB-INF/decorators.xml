@@ -4,29 +4,25 @@
 		<pattern>/40*</pattern>
 		<pattern>/*ajax=true*</pattern>
 		<pattern>/struts/dojo/*</pattern>
-		<pattern>/resources/*</pattern>
-		<pattern>/ueditor/*</pattern>
-		<pattern>/static/*</pattern>
+		<pattern>/ui/*</pattern>
+		<pattern>/admin/*</pattern>
 	</excludes>
 
 	<decorator name="default" page="default.jsp">
 		<pattern>/*</pattern>
 	</decorator>
 
-	<decorator name="admin" page="admin.jsp">
-		<pattern>/admin/*</pattern>
-	</decorator>
-	
 	<decorator name="user" page="user.jsp">
 		<pattern>/user/*</pattern>
 	</decorator>
 
 	<decorator name="website" page="website.jsp">
-        <pattern>/daoqun/*</pattern>
-        <pattern>/wxdayou/*</pattern>
+		<pattern>/daoqun/*</pattern>
+		<pattern>/wxdayou/*</pattern>
 		<pattern>/huaquan/*</pattern>
 		<pattern>/promisingpromos/*</pattern>
 		<pattern>/yinwangroup/*</pattern>
-    </decorator>
-	
+		<pattern>/yinwangroupmobile/*</pattern>
+	</decorator>
+
 </decorators>

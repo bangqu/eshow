@@ -1,24 +1,14 @@
 package cn.org.eshow.model;
 
-import java.util.Date;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 
 /**
- * 主题评论表
+ * 话题评论表
  *
  * @author leida
  */
@@ -27,141 +17,146 @@ import java.io.Serializable;
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class TopicComment extends BaseObject implements Serializable {
 
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	private Integer id;//主题评论ID
-	private User user;//用户
-	private Topic topic;//主题
-	private Date addTime;//添加时间
-	private String name;//名称
-	private String content;//内容
-	private String website;//网站
-	private Boolean enabled;//是否可用
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	public Integer getId() {
-		return this.id;
-	}
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;//话题评论ID
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private User user;//用户
 
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "userId")
-	public User getUser() {
-		return this.user;
-	}
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "topic_id")
+    private Topic topic;//话题
 
-	public void setUser(User user) {
-		this.user = user;
-	}
+    @Column(name = "add_time", length = 0)
+    private Date addTime;//添加时间
 
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "topicId")
-	public Topic getTopic() {
-		return topic;
-	}
+    @Column(length = 20)
+    private String name;//名称
 
-	public void setTopic(Topic topic) {
-		this.topic = topic;
-	}
+    @Column(length = 400)
+    private String content;//内容
 
-	@Column(name = "addTime", length = 0)
-	public Date getAddTime() {
-		return this.addTime;
-	}
+    @Column(length = 20)
+    private String website;//网站
 
-	public void setAddTime(Date addTime) {
-		this.addTime = addTime;
-	}
+    @Column
+    private Boolean enabled = Boolean.TRUE;//是否可用
 
-	@Column(name = "name", length = 20)
-	public String getName() {
-		return this.name;
-	}
+    public Integer getId() {
+        return this.id;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-	@Column(name = "content", length = 400)
-	public String getContent() {
-		return this.content;
-	}
+    public User getUser() {
+        return this.user;
+    }
 
-	public void setContent(String content) {
-		this.content = content;
-	}
+    public void setUser(User user) {
+        this.user = user;
+    }
 
-	
-	@Column(name = "website", length = 20)
-	public String getWebsite() {
-		return website;
-	}
-	public void setWebsite(String website) {
-		this.website = website;
-	}
-	
-	@Column(name = "enabled")
-	public Boolean getEnabled() {
-		return enabled;
-	}
+    public Topic getTopic() {
+        return topic;
+    }
 
-	public void setEnabled(Boolean enabled) {
-		this.enabled = enabled;
-	}
-	
+    public void setTopic(Topic topic) {
+        this.topic = topic;
+    }
 
-	public boolean equals(Object o) {
-		if (this == o)
-			return true;
-		if (o == null || getClass() != o.getClass())
-			return false;
+    public Date getAddTime() {
+        return this.addTime;
+    }
 
-		TopicComment pojo = (TopicComment) o;
-		
-		if (user != null ? !user.equals(pojo.user) : pojo.user != null)
-			return false;
-		if (addTime != null ? !addTime.equals(pojo.addTime)
-				: pojo.addTime != null)
-			return false;
-		if (name != null ? !name.equals(pojo.name) : pojo.name != null)
-			return false;
-		if (content != null ? !content.equals(pojo.content)
-				: pojo.content != null)
-			return false;
-		if (website != null ? !website.equals(pojo.website) : pojo.website != null)
-			return false;
+    public void setAddTime(Date addTime) {
+        this.addTime = addTime;
+    }
 
-		return true;
-	}
+    public String getName() {
+        return this.name;
+    }
 
-	public int hashCode() {
-		int result = 0;
-		result = result + (user != null ? user.hashCode() : 0);
-		result = 31 * result + (addTime != null ? addTime.hashCode() : 0);
-		result = 31 * result + (name != null ? name.hashCode() : 0);
-		result = 31 * result + (content != null ? content.hashCode() : 0);
-		result = 31 * result + (website != null ? website.hashCode() : 0);
+    public void setName(String name) {
+        this.name = name;
+    }
 
-		return result;
-	}
+    public String getContent() {
+        return this.content;
+    }
 
-	public String toString() {
-		StringBuffer sb = new StringBuffer(getClass().getSimpleName());
+    public void setContent(String content) {
+        this.content = content;
+    }
 
-		sb.append(" [");
-		sb.append("id").append("='").append(getId()).append("', ");
-		sb.append("user").append("='").append(getUser()).append("', ");
-		sb.append("addTime").append("='").append(getAddTime()).append("', ");
-		sb.append("name").append("='").append(getName()).append("', ");
-		sb.append("content").append("='").append(getContent()).append("', ");
-		sb.append("website").append("='").append(getWebsite()).append("', ");
-		sb.append("]");
+    public String getWebsite() {
+        return website;
+    }
 
-		return sb.toString();
-	}
+    public void setWebsite(String website) {
+        this.website = website;
+    }
+
+    public Boolean getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
+
+        TopicComment pojo = (TopicComment) o;
+
+        if (user != null ? !user.equals(pojo.user) : pojo.user != null)
+            return false;
+        if (addTime != null ? !addTime.equals(pojo.addTime) : pojo.addTime != null)
+            return false;
+        if (name != null ? !name.equals(pojo.name) : pojo.name != null)
+            return false;
+        if (content != null ? !content.equals(pojo.content)
+                : pojo.content != null)
+            return false;
+        if (website != null ? !website.equals(pojo.website) : pojo.website != null)
+            return false;
+
+        return true;
+    }
+
+    public int hashCode() {
+        int result = 0;
+        result = result + (user != null ? user.hashCode() : 0);
+        result = 31 * result + (addTime != null ? addTime.hashCode() : 0);
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (content != null ? content.hashCode() : 0);
+        result = 31 * result + (website != null ? website.hashCode() : 0);
+
+        return result;
+    }
+
+    public String toString() {
+        StringBuffer sb = new StringBuffer(getClass().getSimpleName());
+
+        sb.append(" [");
+        sb.append("id").append("='").append(getId()).append("', ");
+        sb.append("user").append("='").append(getUser()).append("', ");
+        sb.append("addTime").append("='").append(getAddTime()).append("', ");
+        sb.append("name").append("='").append(getName()).append("', ");
+        sb.append("content").append("='").append(getContent()).append("', ");
+        sb.append("website").append("='").append(getWebsite()).append("', ");
+        sb.append("]");
+
+        return sb.toString();
+    }
 
 }

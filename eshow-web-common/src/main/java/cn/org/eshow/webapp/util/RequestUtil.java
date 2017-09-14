@@ -27,8 +27,7 @@ public final class RequestUtil {
      * @param value the value of the cookie
      * @param path the path to set it on
      */
-    public static void setCookie(HttpServletResponse response, String name,
-                                 String value, String path) {
+    public static void setCookie(HttpServletResponse response, String name, String value, String path) {
         if (log.isDebugEnabled()) {
             log.debug("Setting cookie '" + name + "' on path '" + path + "'");
         }
@@ -74,8 +73,7 @@ public final class RequestUtil {
      * @param cookie the cookie to delete
      * @param path the path on which the cookie was set (i.e. /appfuse)
      */
-    public static void deleteCookie(HttpServletResponse response,
-                                    Cookie cookie, String path) {
+    public static void deleteCookie(HttpServletResponse response, Cookie cookie, String path) {
         if (cookie != null) {
             // Delete the cookie by setting its maximum age to zero
             cookie.setMaxAge(0);
@@ -85,8 +83,7 @@ public final class RequestUtil {
     }
 
     /**
-     * Convenience method to get the application's URL based on request
-     * variables.
+     * Convenience method to get the application's URL based on request variables.
      * 
      * @param request the current request
      * @return URL to application

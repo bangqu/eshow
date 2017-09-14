@@ -1,21 +1,20 @@
 package cn.org.eshow.webapp.filter;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletRequestWrapper;
 import java.util.Collections;
 import java.util.Enumeration;
 import java.util.List;
 import java.util.Locale;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletRequestWrapper;
-
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-
 /**
- * HttpRequestWrapper overriding methods getLocale(), getLocales() to include
- * the user's preferred locale.
+ * HttpRequestWrapper overriding methods getLocale(), getLocales() to include the user's preferred locale.
  */
 public class LocaleRequestWrapper extends HttpServletRequestWrapper {
+
     private final transient Log log = LogFactory.getLog(LocaleRequestWrapper.class);
     private final Locale preferredLocale;
 

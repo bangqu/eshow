@@ -57,6 +57,15 @@ public class ThirdPartyDaoHibernate extends GenericDaoHibernate<ThirdParty, Inte
             if (query.platform != null) {
                 rule.add(Restrictions.eq("platform", query.platform));
             }
+            if (query.photo != null) {
+                rule.add(Restrictions.eq("photo", query.photo));
+            }
+            if (query.male != null) {
+                rule.add(Restrictions.eq("male", query.male));
+            }
+            if (query.enabled != null) {
+                rule.add(Restrictions.eq("enabled", query.enabled));
+            }
             if (query.userId != null) {
                 rule.add(Restrictions.eq("user.id", query.userId));
             }

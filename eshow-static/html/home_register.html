@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>EShow-注册账号</title>
+	<link rel="stylesheet" type="text/css" href="../www/styles/public.css">
+	<link rel="stylesheet" type="text/css" href="../www/styles/style.css">
+	<link rel="stylesheet" type="text/css" href="../validate/validationEngine.jquery.css">
+<style>
+	body{background-color:#e1e5eb;}
+</style>
+</head>
+<body>
+<div class="log_inbox">
+	<div class="log_in">
+	<div class="log">
+		<a href="home_index(log).html">
+        <img src="../www/images/log_in.png">
+        </a>
+	</div>
+		<div class="log_bd">
+			<form id="log_form" action="home_register_ensure.html" method="post">
+			<p class="form_top"><span>注册账号</span></p>
+            <div class="log_inputs log_disdance">
+            	<input class="input_border validate[required] validate[custom[phone]" type="text" value="请输入手机号" name="phone" onFocus="if (value =='请输入手机号'){value ='';this.style.color='#59708b'}" onBlur="if (value ==''){value='请输入手机号';this.style.color='#cdd3db'}"/>
+            </div>
+            <div class="log_inputs find_code-dis">
+            	<input class="find_code validate[required]" type="text" value="请输入验证码" name="validate" onFocus="if (value =='请输入验证码'){value ='';this.style.color='#59708b'}" onBlur="if (value ==''){value='请输入验证码';this.style.color='#cdd3db'}"/>
+            	<input class="find_code_img" type="button" value="获取验证码"/>
+            </div>
+            <div class="log_btn">
+				<a href=""><input class="btn_active input_btn" type="submit" value="下一步"/></a>
+			</div>
+			<div class="find_cide_line"></div>
+			<p class="form_footer"><a href="home_log_in.html">已有账号直接登录</a></p>
+			</form>
+		</div>
+	</div>
+	<div class="log_footer">
+	<span>Copyright © 2009 www.eshow.org.cn All rights reserved. ICP备案编号：苏ICP备10018847号</span>
+</div>
+</div>
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+<script type="text/javascript" src="../validate/jquery.validationEngine.min.js"></script>
+<script type="text/javascript" src="../validate/jquery.validationEngine-zh_CN.js"></script>
+<script>
+$('#log_form').validationEngine();
+</script>
+</body>
+</html>

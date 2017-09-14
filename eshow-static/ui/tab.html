@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <title>tab标签</title>
+    <link rel="stylesheet" href="./dist/css/frozen.css">
+    <link rel="stylesheet" href="./css/demo.css">
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <link rel="stylesheet" type="text/css" href="./css/tab.css">
+</head>
+<body>
+<header class="ui-header ui-header-positive ui-border-b html-border-b">
+    <i class="ui-icon-return html-narrow" onclick="history.back()"></i>
+    <h1 class="html-btn">选项卡</h1>
+    <button class="ui-btn html-btn">回首页</button>
+</header>
+<footer class="ui-footer ui-footer-btn">
+    <ul class="ui-tiled ui-border-t html-border-t">
+        <li data-href="index.html" class="ui-border-r"><div>基础样式</div></li>
+        <li data-href="ui.html" class="ui-border-r"><div>UI组件</div></li>
+        <li data-href="js.html"><div>JS插件</div></li>
+    </ul>
+</footer>
+<!-- 代码部分begin -->
+<div class="wrap">
+    <div class="tabs">
+        <a href="#" hidefocus="true" class="active">手机端</a>
+        <a href="#" hidefocus="true">选项卡</a>
+        <a href="#" hidefocus="true">切换效果</a>
+    </div>    
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+        <div class="swiper-slide">
+           <div class="content-slide">
+              tab内容一
+          </div>
+        </div>
+        <div class="swiper-slide">
+            <div class="content-slide">
+             tab内容二
+            </div>
+        </div>
+        <div class="swiper-slide">
+            <div class="content-slide">
+             tab内容三
+            </div>
+        </div>
+      </div>
+   </div>
+</div>
+<script src="http://www.lanrenzhijia.com/ajaxjs/jquery-1.10.1.min.js"></script> 
+<script src="http://www.lanrenzhijia.com/ajaxjs/idangerous.swiper.min.js"></script> 
+<script>
+var tabsSwiper = new Swiper('.swiper-container',{
+	speed:500,
+	onSlideChangeStart: function(){
+		$(".tabs .active").removeClass('active');
+		$(".tabs a").eq(tabsSwiper.activeIndex).addClass('active');
+	}
+});
+$(".tabs a").on('touchstart mousedown',function(e){
+	e.preventDefault()
+	$(".tabs .active").removeClass('active');
+	$(this).addClass('active');
+	tabsSwiper.swipeTo($(this).index());
+});
+$(".tabs a").click(function(e){
+	e.preventDefault();
+});
+</script>
+<!-- 代码部分end -->
+</body>
+</html>

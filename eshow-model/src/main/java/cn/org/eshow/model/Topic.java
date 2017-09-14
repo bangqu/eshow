@@ -1,28 +1,17 @@
 package cn.org.eshow.model;
 
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-
+import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
- * 主题表
+ * 话题表
  *
  * @author leida
  */
@@ -31,217 +20,226 @@ import java.io.Serializable;
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class Topic extends BaseObject implements Serializable {
 
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	private Integer id;//主题ID
-	private User user;//用户
-	private Board board;//板块
-	private Date addTime;//添加时间
-	private Date updateTime;//更新时间
-	private String title;//标题
-	private String content;//内容
-	private Integer commentSize; // 回复次数
-	private Integer count; // 浏览次数
-	private Integer tip; //
-	private Integer state; // 0未审核,1已通过,2未通过
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;//话题ID
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private User user;//用户
+
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
+    @JoinColumn(name = "board_id")
+    private Board board;//板块
+
+    @Column(name = "add_time")
+    private Date addTime = new Date();//添加时间
+
+    @Column(name = "update_time")
+    private Date updateTime = new Date();//更新时间
+
+    @Column
+    private String title;//标题
+
+    @Column
+    private String content;//内容
+
+    @Column
+    private Integer count = 0; // 浏览次数
+
+    @Column(name = "comment_size")
+    private Integer commentSize = 0; // 回复次数
+
+    @Column(name = "recommend_size")
+    private Integer recommendSize = 0; // 推荐次数
+
+    @Column
+    private Boolean top = Boolean.FALSE; //是否置顶
+
+    @Column(length = 20)
     private String website;//网站
-	private Boolean enabled;//是否可用
 
-	private Set<TopicComment> topicComments = new HashSet<TopicComment>(0);
+    @Column
+    private Boolean enabled = Boolean.TRUE;//是否可用
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	public Integer getId() {
-		return this.id;
-	}
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "topic")
+    private Set<TopicComment> topicComments = new HashSet<TopicComment>(0);
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+    public Integer getId() {
+        return this.id;
+    }
 
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "userId")
-	public User getUser() {
-		return this.user;
-	}
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-	public void setUser(User user) {
-		this.user = user;
-	}
+    public User getUser() {
+        return this.user;
+    }
 
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "boardId")
-	public Board getBoard() {
-		return board;
-	}
+    public void setUser(User user) {
+        this.user = user;
+    }
 
-	public void setBoard(Board board) {
-		this.board = board;
-	}
+    public Board getBoard() {
+        return board;
+    }
 
-	@Column(name = "addTime", length = 0)
-	public Date getAddTime() {
-		return this.addTime;
-	}
+    public void setBoard(Board board) {
+        this.board = board;
+    }
 
-	public void setAddTime(Date addTime) {
-		this.addTime = addTime;
-	}
+    public Date getAddTime() {
+        return this.addTime;
+    }
 
-	@Column(name = "updateTime", length = 0)
-	public Date getUpdateTime() {
-		return updateTime;
-	}
+    public void setAddTime(Date addTime) {
+        this.addTime = addTime;
+    }
 
-	public void setUpdateTime(Date updateTime) {
-		this.updateTime = updateTime;
-	}
+    public Date getUpdateTime() {
+        return updateTime;
+    }
 
-	@Column(name = "title", length = 200)
-	public String getTitle() {
-		return title;
-	}
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
+    }
 
-	public void setTitle(String title) {
-		this.title = title;
-	}
+    public String getTitle() {
+        return title;
+    }
 
-	@Column(name = "content")
-	public String getContent() {
-		return content;
-	}
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
-	public void setContent(String content) {
-		this.content = content;
-	}
+    public String getContent() {
+        return content;
+    }
 
-	@Column(name = "commentSize")
-	public Integer getCommentSize() {
-		return commentSize;
-	}
+    public void setContent(String content) {
+        this.content = content;
+    }
 
-	public void setCommentSize(Integer commentSize) {
-		this.commentSize = commentSize;
-	}
+    public Integer getCount() {
+        return count;
+    }
 
-	@Column(name = "count")
-	public Integer getCount() {
-		return count;
-	}
+    public void setCount(Integer count) {
+        this.count = count;
+    }
 
-	public void setCount(Integer count) {
-		this.count = count;
-	}
+    public Integer getCommentSize() {
+        return commentSize;
+    }
 
-	@Column(name = "state")
-	public Integer getState() {
-		return state;
-	}
+    public void setCommentSize(Integer commentSize) {
+        this.commentSize = commentSize;
+    }
 
-	public void setState(Integer state) {
-		this.state = state;
-	}
+    public Integer getRecommendSize() {
+        return recommendSize;
+    }
 
-	@Column(name = "tip")
-	public Integer getTip() {
-		return tip;
-	}
+    public void setRecommendSize(Integer recommendSize) {
+        this.recommendSize = recommendSize;
+    }
 
-	public void setTip(Integer tip) {
-		this.tip = tip;
-	}
+    public Boolean getTop() {
+        return top;
+    }
 
+    public void setTop(Boolean top) {
+        this.top = top;
+    }
 
-    @Column(name = "website",length=20)
     public String getWebsite() {
         return website;
     }
+
     public void setWebsite(String website) {
         this.website = website;
     }
 
-	@Column(name = "enabled")
-	public Boolean getEnabled() {
-		return enabled;
-	}
+    public Boolean getEnabled() {
+        return enabled;
+    }
 
-	public void setEnabled(Boolean enabled) {
-		this.enabled = enabled;
-	}
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
+    }
 
+    public Set<TopicComment> getTopicComments() {
+        return topicComments;
+    }
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "topic")
-	public Set<TopicComment> getTopicComments() {
-		return topicComments;
-	}
+    public void setTopicComments(Set<TopicComment> topicComments) {
+        this.topicComments = topicComments;
+    }
 
-	public void setTopicComments(Set<TopicComment> topicComments) {
-		this.topicComments = topicComments;
-	}
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
 
-	public boolean equals(Object o) {
-		if (this == o)
-			return true;
-		if (o == null || getClass() != o.getClass())
-			return false;
+        Topic topic = (Topic) o;
 
-		Topic pojo = (Topic) o;
+        if (id != null ? !id.equals(topic.id) : topic.id != null) return false;
+        if (user != null ? !user.equals(topic.user) : topic.user != null) return false;
+        if (board != null ? !board.equals(topic.board) : topic.board != null) return false;
+        if (addTime != null ? !addTime.equals(topic.addTime) : topic.addTime != null) return false;
+        if (updateTime != null ? !updateTime.equals(topic.updateTime) : topic.updateTime != null) return false;
+        if (title != null ? !title.equals(topic.title) : topic.title != null) return false;
+        if (content != null ? !content.equals(topic.content) : topic.content != null) return false;
+        if (count != null ? !count.equals(topic.count) : topic.count != null) return false;
+        if (commentSize != null ? !commentSize.equals(topic.commentSize) : topic.commentSize != null) return false;
+        if (recommendSize != null ? !recommendSize.equals(topic.recommendSize) : topic.recommendSize != null)
+            return false;
+        if (top != null ? !top.equals(topic.top) : topic.top != null) return false;
+        if (website != null ? !website.equals(topic.website) : topic.website != null) return false;
+        if (enabled != null ? !enabled.equals(topic.enabled) : topic.enabled != null) return false;
+        return topicComments != null ? topicComments.equals(topic.topicComments) : topic.topicComments == null;
 
-		if (user != null ? !user.equals(pojo.user) : pojo.user != null)
-			return false;
-		if (addTime != null ? !addTime.equals(pojo.addTime)
-				: pojo.addTime != null)
-			return false;
-		if (title != null ? !title.equals(pojo.title) : pojo.title != null)
-			return false;
-		if (content != null ? !content.equals(pojo.content)
-				: pojo.content != null)
-			return false;
-		if (commentSize != null ? !commentSize.equals(pojo.commentSize)
-				: pojo.commentSize != null)
-			return false;
-		if (count != null ? !count.equals(pojo.count) : pojo.count != null)
-			return false;
-		if (tip != null ? !tip.equals(pojo.tip) : pojo.tip != null)
-			return false;
-		if (website != null ? !website.equals(pojo.website) : pojo.website != null)
-			return false;
+    }
 
-		return true;
-	}
+    @Override
+    public int hashCode() {
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (user != null ? user.hashCode() : 0);
+        result = 31 * result + (board != null ? board.hashCode() : 0);
+        result = 31 * result + (addTime != null ? addTime.hashCode() : 0);
+        result = 31 * result + (updateTime != null ? updateTime.hashCode() : 0);
+        result = 31 * result + (title != null ? title.hashCode() : 0);
+        result = 31 * result + (content != null ? content.hashCode() : 0);
+        result = 31 * result + (count != null ? count.hashCode() : 0);
+        result = 31 * result + (commentSize != null ? commentSize.hashCode() : 0);
+        result = 31 * result + (recommendSize != null ? recommendSize.hashCode() : 0);
+        result = 31 * result + (top != null ? top.hashCode() : 0);
+        result = 31 * result + (website != null ? website.hashCode() : 0);
+        result = 31 * result + (enabled != null ? enabled.hashCode() : 0);
+        result = 31 * result + (topicComments != null ? topicComments.hashCode() : 0);
+        return result;
+    }
 
-	public int hashCode() {
-		int result = 0;
-		result = result + (user != null ? user.hashCode() : 0);
-		result = 31 * result + (addTime != null ? addTime.hashCode() : 0);
-		result = 31 * result + (title != null ? title.hashCode() : 0);
-		result = 31 * result + (content != null ? content.hashCode() : 0);
-		result = 31 * result
-				+ (commentSize != null ? commentSize.hashCode() : 0);
-		result = 31 * result + (count != null ? count.hashCode() : 0);
-		result = 31 * result + (tip != null ? tip.hashCode() : 0);
-		result = 31 * result + (website != null ? website.hashCode() : 0);
-
-		return result;
-	}
-
-	public String toString() {
-		StringBuffer sb = new StringBuffer(getClass().getSimpleName());
-
-		sb.append(" [");
-		sb.append("id").append("='").append(getId()).append("', ");
-		sb.append("user").append("='").append(getUser()).append("', ");
-		sb.append("addTime").append("='").append(getAddTime()).append("', ");
-		sb.append("title").append("='").append(getTitle()).append("', ");
-		sb.append("content").append("='").append(getContent()).append("', ");
-		sb.append("commentSize").append("='").append(getCommentSize()).append(
-				"', ");
-		sb.append("count").append("='").append(getCount()).append("', ");
-		sb.append("tip").append("='").append(getTip()).append("', ");
-		sb.append("website").append("='").append(getWebsite()).append("', ");
-
-		sb.append("]");
-
-		return sb.toString();
-	}
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .append("id", id)
+                .append("user", user)
+                .append("board", board)
+                .append("addTime", addTime)
+                .append("updateTime", updateTime)
+                .append("title", title)
+                .append("content", content)
+                .append("count", count)
+                .append("commentSize", commentSize)
+                .append("recommendSize", recommendSize)
+                .append("top", top)
+                .append("website", website)
+                .append("enabled", enabled)
+                .append("topicComments", topicComments)
+                .toString();
+    }
 }

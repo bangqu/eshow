@@ -1,27 +1,15 @@
 package cn.org.eshow.model;
 
-import java.util.Date;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * 博文评论表
- * 
+ *
  * @author leida
  */
 @Entity
@@ -29,66 +17,72 @@ import java.io.Serializable;
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class BlogComment extends BaseObject implements Serializable {
 
-	private static final long serialVersionUID = -5032303242094188729L;
+    private static final long serialVersionUID = -5032303242094188729L;
 
-	private Integer id;// 评论ID
-	private User user;// 用户
-	private Blog blog;// 日志
-	private Date addTime;// 添加时间
-	private String content;// 内容
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;// 博文评论ID
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private User user;// 用户
+
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
+    @JoinColumn(name = "blog_id")
+    private Blog blog;// 博文
+
+    @Column(name = "add_time", length = 0)
+    private Date addTime;// 添加时间
+
+    @Column(length = 400)
+    private String content;// 内容
+
+    @Column(length = 20)
     private String website;// 网站
-	private Boolean enabled;// 是否可用
 
+    @Column
+    private Boolean enabled = Boolean.TRUE;// 是否可用
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	public Integer getId() {
-		return this.id;
-	}
+    public Integer getId() {
+        return this.id;
+    }
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "userId")
-	public User getUser() {
-		return this.user;
-	}
+    public User getUser() {
+        return this.user;
+    }
 
-	public void setUser(User user) {
-		this.user = user;
-	}
+    public void setUser(User user) {
+        this.user = user;
+    }
 
-	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
-	@JoinColumn(name = "blogId")
-	public Blog getBlog() {
-		return blog;
-	}
+    public Blog getBlog() {
+        return blog;
+    }
 
-	public void setBlog(Blog blog) {
-		this.blog = blog;
-	}
+    public void setBlog(Blog blog) {
+        this.blog = blog;
+    }
 
-	@Column(name = "addTime", length = 0)
-	public Date getAddTime() {
-		return this.addTime;
-	}
+    public Date getAddTime() {
+        return this.addTime;
+    }
 
-	public void setAddTime(Date addTime) {
-		this.addTime = addTime;
-	}
+    public void setAddTime(Date addTime) {
+        this.addTime = addTime;
+    }
 
-	@Column(name = "content", length = 400)
-	public String getContent() {
-		return this.content;
-	}
+    public String getContent() {
+        return this.content;
+    }
 
-	public void setContent(String content) {
-		this.content = content;
-	}
+    public void setContent(String content) {
+        this.content = content;
+    }
 
-    @Column(name = "website", length = 20)
     public String getWebsite() {
         return website;
     }
@@ -97,55 +91,52 @@ public class BlogComment extends BaseObject implements Serializable {
         this.website = website;
     }
 
-	@Column(name = "enabled")
-	public Boolean getEnabled() {
-		return enabled;
-	}
+    public Boolean getEnabled() {
+        return enabled;
+    }
 
-	public void setEnabled(Boolean enabled) {
-		this.enabled = enabled;
-	}
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
+    }
 
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
 
+        BlogComment pojo = (BlogComment) o;
 
-	public boolean equals(Object o) {
-		if (this == o)
-			return true;
-		if (o == null || getClass() != o.getClass())
-			return false;
+        if (user != null ? !user.equals(pojo.user) : pojo.user != null)
+            return false;
+        if (website != null ? !website.equals(pojo.website) : pojo.website != null)
+            return false;
+        if (addTime != null ? !addTime.equals(pojo.addTime) : pojo.addTime != null)
+            return false;
+        return true;
+    }
 
-		BlogComment pojo = (BlogComment) o;
+    public int hashCode() {
+        int result = 0;
+        result = result + (user != null ? user.hashCode() : 0);
+        result = 31 * result + (addTime != null ? addTime.hashCode() : 0);
+        result = 31 * result + (content != null ? content.hashCode() : 0);
+        result = 31 * result + (website != null ? website.hashCode() : 0);
+        return result;
+    }
 
-		if (user != null ? !user.equals(pojo.user) : pojo.user != null)
-			return false;
-		if (website != null ? !website.equals(pojo.website) : pojo.website != null)
-			return false;
-		if (addTime != null ? !addTime.equals(pojo.addTime) : pojo.addTime != null)
-			return false;
-		return true;
-	}
+    public String toString() {
+        StringBuffer sb = new StringBuffer(getClass().getSimpleName());
 
-	public int hashCode() {
-		int result = 0;
-		result = result + (user != null ? user.hashCode() : 0);
-		result = 31 * result + (addTime != null ? addTime.hashCode() : 0);
-		result = 31 * result + (content != null ? content.hashCode() : 0);
-		result = 31 * result + (website != null ? website.hashCode() : 0);
-		return result;
-	}
+        sb.append(" [");
+        sb.append("id").append("='").append(getId()).append("', ");
+        sb.append("user").append("='").append(getUser()).append("', ");
+        sb.append("addTime").append("='").append(getAddTime()).append("', ");
+        sb.append("content").append("='").append(getContent()).append("', ");
+        sb.append("website").append("='").append(getWebsite()).append("', ");
+        sb.append("]");
 
-	public String toString() {
-		StringBuffer sb = new StringBuffer(getClass().getSimpleName());
-
-		sb.append(" [");
-		sb.append("id").append("='").append(getId()).append("', ");
-		sb.append("user").append("='").append(getUser()).append("', ");
-		sb.append("addTime").append("='").append(getAddTime()).append("', ");
-		sb.append("content").append("='").append(getContent()).append("', ");
-		sb.append("website").append("='").append(getWebsite()).append("', ");
-		sb.append("]");
-
-		return sb.toString();
-	}
+        return sb.toString();
+    }
 
 }

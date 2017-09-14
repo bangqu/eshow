@@ -124,7 +124,7 @@
             post: 'POST',
             formData: {
                 key: key,
-                token: "<%=cn.org.eshow.component.qiniu.QiniuUtil.uptoken("eshow")%>"
+                token: "<%=cn.org.eshow.component.qiniu.QiniuUtil.uploadToken("eshow")%>"
             },
             done: function (e, data) {
                 $("#preview-img").attr("src","http://eshow.u.qiniudn.com/" + key + "!small.jpg");

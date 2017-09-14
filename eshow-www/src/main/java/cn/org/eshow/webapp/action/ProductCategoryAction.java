@@ -6,16 +6,22 @@ import cn.org.eshow.model.ProductCategory;
 import cn.org.eshow.service.ProductCategoryManager;
 import cn.org.eshow.service.ProductManager;
 import cn.org.eshow.util.PageUtil;
+import cn.org.eshow.webapp.util.RenderUtil;
+import org.apache.struts2.convention.annotation.AllowedMethods;
 import org.apache.struts2.convention.annotation.Result;
 import org.apache.struts2.convention.annotation.Results;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
+/**
+ *
+ */
 @Results({ @Result(name = "input", location = "add"),
 		@Result(name = "list", type = "redirect", location = ""),
 		@Result(name = "success", type = "redirect", location = "view/${id}"),
 		@Result(name = "redirect", type = "redirect", location = "${redirect}") })
+@AllowedMethods({"list", "search", "delete", "view", "update", "save"})
 public class ProductCategoryAction extends BaseAction {
 
 	private static final long serialVersionUID = 1L;
@@ -29,11 +35,19 @@ public class ProductCategoryAction extends BaseAction {
 	private ProductCategory productCategory;
 	private ProductCategoryQuery query;
 
+	/**
+	 *
+	 * @return
+     */
 	public String list() {
 		productCategories = productCategoryManager.list(query);
 		return LIST;
 	}
 
+	/**
+	 *
+	 * @return
+     */
 	public String search() {
 		Page<ProductCategory> page = productCategoryManager.search(query);
 		productCategories = page.getDataList();
@@ -41,18 +55,25 @@ public class ProductCategoryAction extends BaseAction {
 		return LIST;
 	}
 
+	/**
+	 *
+	 */
 	public void delete() {
 		ProductCategory productCategory = productCategoryManager.get(id);
 		if (productCategory != null) {
 			productManager.update(productCategory.getId());// 设置原产品的分类为空
 			productCategory.setEnabled(Boolean.TRUE);
 			productCategoryManager.save(productCategory);
-			success("删除成功");
+			RenderUtil.success("删除成功");
 		} else {
-			failure("参数不正确");
+			RenderUtil.failure("参数不正确");
 		}
 	}
 
+	/**
+	 *
+	 * @return
+     */
 	public String view() {
 		if (id != null) {
 			productCategory = productCategoryManager.get(id);
@@ -60,6 +81,11 @@ public class ProductCategoryAction extends BaseAction {
 		return NONE;
 	}
 
+	/**
+	 *
+	 * @return
+	 * @throws Exception
+     */
 	public String update() throws Exception {
 		ProductCategory old = productCategoryManager.get(id);
 		old.setName(productCategory.getName());
@@ -69,6 +95,11 @@ public class ProductCategoryAction extends BaseAction {
 		return LIST;
 	}
 
+	/**
+	 *
+	 * @return
+	 * @throws Exception
+     */
 	public String save() throws Exception {
 		productCategoryManager.save(productCategory);
 		saveMessage("添加成功");

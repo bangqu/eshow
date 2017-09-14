@@ -23,6 +23,14 @@ public class BlogQuery extends BaseQuery {
     public Integer userId;//
     public Integer categoryId;//
 
+    public BlogQuery() {
+    }
+
+
+    public BlogQuery(Boolean enabled) {
+        this.enabled = enabled;
+    }
+
     public Date getAddTime() {
         return addTime;
     }

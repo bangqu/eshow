@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>EShow-重置密码</title>
+	<link rel="stylesheet" type="text/css" href="../www/styles/public.css">
+	<link rel="stylesheet" type="text/css" href="../www/styles/style.css">
+	<link rel="stylesheet" type="text/css" href="../validate/validationEngine.jquery.css">
+<style>
+	body{background-color:#e1e5eb;}
+</style>
+</head>
+<body>
+<div class="log_inbox">
+	<div class="log_in">
+	<div class="log">
+		<a href="home_index(log).html">
+        <img src="../www/images/log_in.png">
+        </a>
+	</div>
+		<div class="set_pwd_bd">
+			<form id="register_form" action="home_reset_success.html" method="post">
+			<p class="form_top"><span>重置密码</span></p>
+			 <div class="log_inputs log_disdance">
+				<input class="input_border validate[custom[onlyLetterNumber]]" type="text" value="请输入新密码" id="pass" name="newpasswod"
+				onFocus="if (value =='请输入新密码'){value ='';this.style.color='#59708b'}" onBlur="if (value ==''){value='请输入新密码';this.style.color='#cdd3db'}"/>
+			</div>
+			 <div class="log_inputs">
+				<input class="input_border validate[equals[pass]]" type="text" value="请确认新密码" name="oldpasswod"
+				onFocus="if (value =='请确认新密码'){value ='';this.style.color='#59708b'}" onBlur="if (value ==''){value='请确认新密码';this.style.color='#cdd3db'}"/>
+			</div>
+			<div class="set_pwd_tip">
+				<span>强烈建议密码同时包含字母、数字和标点符号。</span>
+			</div>
+			<div class="log_btn">
+				<a href=""><input class="btn_active input_btn" type="submit" value="下一步"/></a>
+			</div>
+			
+			</form>
+		</div>
+	</div>
+	<div class="log_footer">
+	<span>Copyright © 2009 www.eshow.org.cn All rights reserved. ICP备案编号：苏ICP备10018847号</span>
+</div>
+</div>
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+<script type="text/javascript" src="../validate/jquery.validationEngine.min.js"></script>
+<script type="text/javascript" src="../validate/jquery.validationEngine-zh_CN.js"></script>
+<script>
+$('#register_form').validationEngine();
+</script>
+</body>
+</html>

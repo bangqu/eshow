@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE urlrewrite PUBLIC "-//tuckey.org//DTD UrlRewrite 4.0//EN"
+        "http://www.tuckey.org/res/dtds/urlrewrite4.0.dtd">
+
+<urlrewrite>
+    <rule>
+        <from>^/info/([A-Za-z0-9]+)/?$</from>
+        <to type="forward">/info/browse.jsp?info.url=$1</to>
+    </rule>
+
+    <rule>
+        <from>^/([A-Za-z0-9]+)/info/([A-Za-z0-9]+)/?$</from>
+        <to type="forward">/$1/info/browse.jsp?info.url=$2</to>
+    </rule>
+    <rule>
+        <from>^/user/([A-Za-z0-9]+)/([A-Za-z0-9]+)/?$</from>
+        <to type="forward">/user/$1?username=$2</to>
+    </rule>
+
+	<rule>
+		<from>^/([A-Za-z0-9]+)/?$</from>
+		<to type="forward">/$1/index.jsp</to>
+	</rule>
+
+	<rule>
+		<from>^/([A-Za-z0-9]+)/([A-Za-z0-9]+)?$</from>
+		<to type="forward">/$1/$2.jsp</to>
+	</rule>
+
+    <rule>
+        <from>^/([A-Za-z0-9]+)/([A-Za-z0-9]+)/?$</from>
+        <to type="forward">/$1/$2/index.jsp</to>
+    </rule>
+
+    <rule>
+        <from>^/([A-Za-z0-9]+)/([A-Za-z0-9]+)/([0-9]+)/?$</from>
+        <to type="forward">/$1/$2.jsp?id=$3</to>
+    </rule>
+
+    <rule>
+        <from>^/([A-Za-z0-9]+)/([A-Za-z0-9]+)/([A-Za-z]+)?$</from>
+        <to type="forward">/$1/$2/$3.jsp</to>
+    </rule>
+
+    <rule>
+        <from>^/([A-Za-z0-9]+)/([A-Za-z0-9]+)/([A-Za-z]+)/([0-9]+)/?$</from>
+        <to type="forward">/$1/$2/$3.jsp?id=$4</to>
+    </rule>
+
+    <rule>
+        <from>^/([A-Za-z0-9]+)/admin/([A-Za-z]+)/([A-Za-z]+)/([0-9]+)/?$</from>
+        <to type="forward">/$1/admin/$2/$3.jsp?id=$4</to>
+    </rule>
+
+	<!-- Override default validation.js from WebWork -->
+	<rule>
+		<from>^/struts/css_xhtml/validation.js$</from>
+		<to type="forward">/template/css_xhtml/validation.js</to>
+	</rule>
+	
+	<!-- Remove JSESSIONID from URLs when cookies disabled -->
+	<outbound-rule encodefirst="true" match-type="regex">
+        <name>Strip URL Session ID's</name>
+        <from>^(.*?)(?:\;jsessionid=[^\?#]*)?(\?[^#]*)?(#.*)?$</from>
+        <to>$1$2$3</to>
+    </outbound-rule>
+    
+</urlrewrite>
+

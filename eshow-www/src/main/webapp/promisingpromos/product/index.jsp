@@ -32,7 +32,7 @@
 						<li>
 							<a href="http://www.promisingpromos.com/product/view/${id}"> <img src="${product.img}!small.jpg" title="${name}"/>
 								<p>
-									<span class="name str">${util:preview(name,15)}</span><br> Item# ${code}<br>
+									<span class="name str">${util:preview(name,true,15)}</span><br> Item# ${code}<br>
 									As low as <span class="price str">$${price}</span>
 								</p>
 							</a>

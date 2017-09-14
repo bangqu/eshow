@@ -6,8 +6,6 @@ import java.util.Date;
 
 /**
  * 相册返回对象
- *
- * @author leida
  */
 public class AlbumResponse {
 
@@ -21,7 +19,6 @@ public class AlbumResponse {
     private Integer photoSize;// 照片的总数
     private Integer count;// 访问次数
     private String website;// 网站
-
 
     public AlbumResponse(Album album) {
         this.id = album.getId();

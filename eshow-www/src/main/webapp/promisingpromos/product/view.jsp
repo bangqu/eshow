@@ -27,10 +27,10 @@
 			<%@ include file="../include/left.jsp"%>
 			<div class="main fr">
 				<div class="crumbnav yahei">
-					<a href="${promisingpromos}/">Home</a> >
-					<a href="${promisingpromos}/product/">Products</a> >
-					<a href="${promisingpromos}/product/category/${view.product.productCategory.id}">${view.product.productCategory.name}</a> >
-					<a href="${promisingpromos}/product/view/${view.product.id}">${view.product.name}</a>
+					<a href="http://www.promisingpromos.com/">Home</a> > 
+					<a href="http://www.promisingpromos.com/product/">Products</a> > 
+					<a href="http://www.promisingpromos.com/product/category/${view.product.productCategory.id}">${view.product.productCategory.name}</a> > 
+					<a href="http://www.promisingpromos.com/product/view/${view.product.id}">${view.product.name}</a>
 				</div>
 				<div class="view clearfix yahei">
 					<div class="v-pic fl">

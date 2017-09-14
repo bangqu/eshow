@@ -1,5 +1,4 @@
-<%@ page language="java" errorPage="/error.jsp" pageEncoding="UTF-8"
-         contentType="text/html;charset=utf-8" %>
+<%@ page language="java" errorPage="/error.jsp" pageEncoding="UTF-8" contentType="text/html;charset=utf-8" %>
 <%@ include file="/common/taglibs.jsp" %>
 <%@ include file="common/path.jsp" %>
 <head>
@@ -19,7 +18,7 @@
     </div>
 </div>
 <div class="container">
-    <div class="yahei t-c"> 
+    <div class="yahei t-c">
         <div class="em" style="margin:20px 0 60px">
             <img src="${yinwangroup}/images/ywj.png" style="border:1px solid #ddd;width:95%"/>
         </div>

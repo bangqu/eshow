@@ -1,0 +1,25 @@
+<decorators defaultdir="/decorators">
+
+	<excludes>
+		<pattern>/40*</pattern>
+		<pattern>/*ajax=true*</pattern>
+		<pattern>/struts/dojo/*</pattern>
+		<pattern>/ui/*</pattern>
+		<pattern>/admin/*</pattern>
+	</excludes>
+
+	<decorator name="default" page="default.jsp">
+		<pattern>/*</pattern>
+	</decorator>
+
+	<decorator name="user" page="user.jsp">
+		<pattern>/user/*</pattern>
+	</decorator>
+	<decorator name="website" page="website.jsp">
+		<pattern>/daoqun/*</pattern>
+		<pattern>/wxdayou/*</pattern>
+		<pattern>/huaquan/*</pattern>
+		<pattern>/promisingpromos/*</pattern>
+		<pattern>/yinwangroup/*</pattern>
+	</decorator>
+</decorators>

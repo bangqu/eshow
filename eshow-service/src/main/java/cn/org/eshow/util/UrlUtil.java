@@ -23,8 +23,8 @@ public class UrlUtil {
      * @return String
      */
     public static String parseUrl(String url, String key, String value, boolean isAdd) {
-        Assert.notNull(url);
-        Assert.notNull(key);
+        Assert.notNull(url, "参数不能为空");
+        Assert.notNull(key, "参数不能为空");
         boolean isExist = false;
         String[] split1 = url.split("\\?");
         String urlLeft = split1[0]; // URI
@@ -73,8 +73,8 @@ public class UrlUtil {
      * @return String
      */
     public static String addParam(String url, String key, String value) {
-        Assert.notNull(url);
-        Assert.notNull(key);
+        Assert.notNull(url, "参数不能为空");
+        Assert.notNull(key, "参数不能为空");
         if (url.indexOf("?") < 1) {
             url += "?" + key + "=" + value;
         } else {
@@ -84,14 +84,13 @@ public class UrlUtil {
     }
 
     /**
-     *
      * @param url
      * @param key
      * @return
      */
     public static String delParam(String url, String key) {
-        Assert.notNull(url);
-        Assert.notNull(key);
+        Assert.notNull(url, "参数不能为空");
+        Assert.notNull(key, "参数不能为空");
         String tempUrl = "";
         if (url.indexOf("?") >= 1) {
             String[] tempSplit = url.split("\\?");

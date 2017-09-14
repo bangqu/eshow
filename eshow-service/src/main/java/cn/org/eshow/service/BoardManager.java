@@ -10,17 +10,32 @@ import java.util.List;
 @WebService
 public interface BoardManager extends GenericManager<Board, Integer> {
 
-	/**
-	 *
-	 * @param query
-	 * @return
+    /**
+     * @param query
+     * @return
      */
-	List<Board> list(BoardQuery query);
+    List<Board> list(BoardQuery query);
 
-	/**
-	 *
-	 * @param query
-	 * @return
+    /**
+     * @param query
+     * @return
      */
-	Page<Board> search(BoardQuery query);
+    Page<Board> search(BoardQuery query);
+
+    /**
+     * 修改板块信息
+     *
+     * @param old
+     * @param board
+     * @return
+     */
+    Board updateBoard(Board old, Board board);
+
+    /**
+     * 更新板块状态
+     *
+     * @param board
+     * @return
+     */
+    Board updateEnabled(Board board);
 }

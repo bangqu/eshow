@@ -2,12 +2,7 @@ package cn.org.eshow.webapp.action;
 
 import cn.org.eshow.bean.query.GroupQuery;
 import cn.org.eshow.common.page.Page;
-import cn.org.eshow.component.easemob.api.ChatGroupAPI;
-import cn.org.eshow.component.easemob.comm.ClientContext;
-import cn.org.eshow.component.easemob.comm.EasemobRestAPIFactory;
-import cn.org.eshow.component.easemob.comm.body.ChatGroupBody;
-import cn.org.eshow.component.easemob.comm.wrapper.BodyWrapper;
-import cn.org.eshow.component.easemob.comm.wrapper.ResponseWrapper;
+import cn.org.eshow.component.easemob.api.impl.EasemobChatGroup;
 import cn.org.eshow.model.Group;
 import cn.org.eshow.model.User;
 import cn.org.eshow.model.UserGroup;
@@ -17,8 +12,10 @@ import cn.org.eshow.service.UserGroupManager;
 import cn.org.eshow.util.DateUtil;
 import cn.org.eshow.util.JacksonUtil;
 import cn.org.eshow.webapp.action.response.GroupResponse;
+import cn.org.eshow.webapp.util.RenderUtil;
 import cn.org.eshow.webapp.util.Struts2Utils;
-import org.apache.commons.lang.StringUtils;
+import io.swagger.client.model.ModifyGroup;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.struts2.convention.annotation.AllowedMethods;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,21 +27,21 @@ import java.util.List;
 /**
  * 群组API接口
  */
-@AllowedMethods({"search", "delete", "view", "update", "save","recommend","easemob"})
-public class GroupAction extends ApiBaseAction<GroupResponse> {
+@AllowedMethods({"search", "delete", "view", "update", "save", "recommend", "easemob"})
+public class GroupAction extends ApiBaseAction<Group> {
 
     private static final long serialVersionUID = 1L;
 
     @Autowired
     private GroupManager groupManager;
     @Autowired
-    private AccessTokenManager accessTokenManager;
-    @Autowired
     private UserGroupManager userGroupManager;
 
     private Group group = new Group();
     private GroupQuery query = new GroupQuery(Boolean.TRUE);
     private List<Group> groups;
+
+    private EasemobChatGroup easemobChatGroup = new EasemobChatGroup();
 
     private String userIds;//用户ids，逗号隔开
     private String easemobGroupIds;//群组环信ids
@@ -59,7 +56,7 @@ public class GroupAction extends ApiBaseAction<GroupResponse> {
         }
         Page<Group> page = groupManager.search(query);
         if (page.getDataList().isEmpty()) {
-            failure("暂无群组列表");
+            RenderUtil.failure("暂无群组列表");
             return;
         }
         query.setOrder("updateTime");
@@ -68,7 +65,7 @@ public class GroupAction extends ApiBaseAction<GroupResponse> {
         Long version = Long.valueOf(DateUtil.getDateTime("yyyyMMddHHmmss", group.getUpdateTime()));
 
         if (query.getVersion() != null && query.getVersion().equals(version)) {
-            failure("无需更新");
+            RenderUtil.failure("无需更新");
             return;
         }
 
@@ -93,7 +90,7 @@ public class GroupAction extends ApiBaseAction<GroupResponse> {
         for (Group obj : page.getDataList()) {
             responses.add(new GroupResponse(obj));
         }
-        page("groups", "获取成功", page, responses);
+        RenderUtil.page("获取成功", "groups", page, responses);
     }
 
     /**
@@ -102,7 +99,7 @@ public class GroupAction extends ApiBaseAction<GroupResponse> {
     public void view() {
         group = groupManager.get(id);
         if (group == null) {
-            failure("群组不存在");
+            RenderUtil.failure("群组不存在");
             return;
         }
         Struts2Utils.renderText("{\"status\":\"1\",\"msg\":\"获取成功\",\"group\":" + JacksonUtil.toJson(new GroupResponse(group)) + "}");
@@ -112,17 +109,17 @@ public class GroupAction extends ApiBaseAction<GroupResponse> {
      * 创建一个群组
      */
     public void save() {
-        User user = isValid(accessToken, accessTokenManager);
+        User user = accessTokenManager.isValid(accessToken);
         if (user == null) {
-            expires();//用户信息过期
+            RenderUtil.expires();//用户信息过期
             return;
         }
         if (group.getOpen() == null) {
-            failure("非法参数");
+            RenderUtil.failure("非法参数");
             return;
         }
         if (StringUtils.isEmpty(userIds)) {
-            failure("请添加群成员");
+            RenderUtil.failure("请添加群成员");
             return;
         }
 
@@ -137,7 +134,7 @@ public class GroupAction extends ApiBaseAction<GroupResponse> {
             for (int i = 0; i < len; i++) {
                 User user1 = userManager.get(Integer.parseInt(ids[i]));
                 if (user1 != null) {
-                    String easemobId = user1.getEasemobId();
+                    String easemobId = user1.getUsername();
                     if (!StringUtils.isEmpty(easemobId)) {
                         easemobIds[i] = easemobId;
                         userSize += 1;
@@ -172,38 +169,33 @@ public class GroupAction extends ApiBaseAction<GroupResponse> {
             Struts2Utils.renderText("{\"status\":\"1\",\"msg\":\"创建成功\",\"group\":" + JacksonUtil.toJson(new GroupResponse(old)) + "}");
             return;
         }
-        EasemobRestAPIFactory factory = ClientContext.getInstance().init(ClientContext.INIT_FROM_PROPERTIES).getAPIFactory();
-        ChatGroupAPI chatgroup = (ChatGroupAPI) factory.newInstance(EasemobRestAPIFactory.CHATGROUP_CLASS);
-        BodyWrapper groupBody = new ChatGroupBody(group.getName(), group.getDescription(), group.getOpen(), 2000l, group.getOpen(), user.getEasemobId(), easemobIds);
 
-        String easemobGrouponId = "";
-        ResponseWrapper result = (ResponseWrapper) chatgroup.createChatGroup(groupBody);
-        if (result == null || result.getResponseStatus() == null || result.getResponseStatus() != 200) {
-            failure("创建失败");
+        io.swagger.client.model.Group easemobGroup = new io.swagger.client.model.Group();
+        easemobGroup.groupname(group.getName()).desc(group.getDescription())._public(true).maxusers(2000).approval(false).owner(group.getUser().getUsername());
+        Object result = easemobChatGroup.createChatGroup(easemobGroup);
+
+        String easemobGrouponId = "";//环信群组ID
+        if (result == null) {
+            RenderUtil.failure("创建失败");
             return;
         }
-        String jsonBody = result.getResponseBody().toString();
         try {
-            JSONObject jsonObject = new JSONObject(jsonBody);
-            if (jsonBody == null) {
-                failure("创建失败");
-                return;
-            }
+            JSONObject jsonObject = new JSONObject(result);
             if (jsonObject.has("data")) {
                 JSONObject data = jsonObject.getJSONObject("data");
-                if (data!=null && data.has("groupid")){
-                    easemobGrouponId=data.optString("groupid");
+                if (data != null && data.has("groupid")) {
+                    easemobGrouponId = data.optString("groupid");
                 }
             }
         } catch (Exception e) {
-            failure("创建失败");
+            RenderUtil.failure("创建失败");
             return;
         }
         if (StringUtils.isEmpty(easemobGrouponId)) {
-            failure("创建失败");
+            RenderUtil.failure("创建失败");
             return;
         }
-        if (group.getMaxNumber() == null) {
+        if (easemobGroup.getMaxusers() == null) {
             group.setMaxNumber(2000);
         }
         group.setEasemobGroupId(easemobGrouponId);
@@ -246,19 +238,19 @@ public class GroupAction extends ApiBaseAction<GroupResponse> {
      * 更新群组信息
      */
     public void update() {
-        User user = isValid(accessToken, accessTokenManager);
+        User user = accessTokenManager.isValid(accessToken);
         if (user == null) {
-            expires();//用户信息过期
+            RenderUtil.expires();//用户信息过期
             return;
         }
         Group old = groupManager.get(id);
         if (old == null || old.getUser().getId() != user.getId()) {
-            failure("非法参数");
+            RenderUtil.failure("非法参数");
             return;
         }
 
         if (StringUtils.isEmpty(old.getEasemobGroupId())) {
-            failure("非法数据");
+            RenderUtil.failure("非法数据");
             return;
         }
         //修改名称、描述或者最大数量时再调用环信
@@ -267,13 +259,11 @@ public class GroupAction extends ApiBaseAction<GroupResponse> {
             String desc = group.getDescription() != null ? group.getDescription() : old.getDescription();
             Integer maxNum = group.getMaxNumber() != null ? group.getMaxNumber() : old.getMaxNumber();
 
-            EasemobRestAPIFactory factory = ClientContext.getInstance().init(ClientContext.INIT_FROM_PROPERTIES).getAPIFactory();
-            ChatGroupAPI chatgroup = (ChatGroupAPI) factory.newInstance(EasemobRestAPIFactory.CHATGROUP_CLASS);
-            BodyWrapper groupBody = new ChatGroupBody(name, desc, group.getOpen(), Long.valueOf(maxNum), null, null, null);
-            ResponseWrapper result = (ResponseWrapper) chatgroup.modifyChatGroup(old.getEasemobGroupId(), groupBody);
-
-            if (result == null || result.getResponseStatus() == null || result.getResponseStatus() != 200) {
-                failure("修改失败");
+            ModifyGroup modifyGroup = new ModifyGroup();
+            modifyGroup.description(desc).groupname(name).maxusers(maxNum);
+            Object result = easemobChatGroup.modifyChatGroup(old.getEasemobGroupId(), modifyGroup);
+            if (result == null) {
+                RenderUtil.failure("修改失败");
                 return;
             }
         }
@@ -283,40 +273,37 @@ public class GroupAction extends ApiBaseAction<GroupResponse> {
         old.setImg(group.getImg() == null ? old.getImg() : group.getImg());
         old.setNumber(group.getNumber() == null ? old.getNumber() : group.getNumber());
         old.setMaxNumber(group.getMaxNumber() == null ? old.getMaxNumber() : group.getMaxNumber());
-        old.setOpen(group.getOpen() == null ? old.getOpen() : group.getOpen());
 
         group = groupManager.save(old);
         Struts2Utils.renderText("{\"status\":\"1\",\"msg\":\"修改成功\",\"group\":" + JacksonUtil.toJson(new GroupResponse(group)) + "}");
     }
 
     public void delete() {
-        User user = isValid(accessToken, accessTokenManager);
+        User user = accessTokenManager.isValid(accessToken);
         if (user == null) {
-            expires();//用户信息过期
+            RenderUtil.expires();//用户信息过期
             return;
         }
         Group old = groupManager.get(id);
         if (old == null || old.getUser().getId() != user.getId()) {
-            failure("非法参数");
+            RenderUtil.failure("非法参数");
             return;
         }
         old.setUpdateTime(new Date());
         old.setEnabled(Boolean.FALSE);
 
         if (StringUtils.isEmpty(old.getEasemobGroupId())) {
-            failure("非法数据");
+            RenderUtil.failure("非法数据");
             return;
         }
 
-        EasemobRestAPIFactory factory = ClientContext.getInstance().init(ClientContext.INIT_FROM_PROPERTIES).getAPIFactory();
-        ChatGroupAPI chatgroup = (ChatGroupAPI) factory.newInstance(EasemobRestAPIFactory.CHATGROUP_CLASS);
-        ResponseWrapper result = (ResponseWrapper) chatgroup.deleteChatGroup(old.getEasemobGroupId());
-        if (result == null || result.getResponseStatus() == null || result.getResponseStatus() != 200) {
-            failure("删除失败");
+        Object result = easemobChatGroup.deleteChatGroup(old.getEasemobGroupId());
+        if (result == null) {
+            RenderUtil.failure("删除失败");
             return;
         }
         groupManager.save(old);
-        success("删除成功");
+        RenderUtil.success("删除成功");
 
     }
 
@@ -327,12 +314,12 @@ public class GroupAction extends ApiBaseAction<GroupResponse> {
     public void easemob() throws Exception {
 
         if (easemobGroupIds == null || accessToken == null) {
-            failure("非法参数");
+            RenderUtil.failure("非法参数");
             return;
         }
-        User user = isValid(accessToken, accessTokenManager);
+        User user = accessTokenManager.isValid(accessToken);
         if (user == null) {
-            expires();//用户信息过期
+            RenderUtil.expires();//用户信息过期
             return;
         }
         String[] easemobGroupIdList = StringUtils.split(easemobGroupIds, ",");
@@ -349,10 +336,8 @@ public class GroupAction extends ApiBaseAction<GroupResponse> {
             Struts2Utils.renderText("{\"status\":\"1\",\"msg\":\"获取成功\",\"groups\":" + JacksonUtil.toJson(respones) + "}");
             return;
         }
-        failure("群不存在");
+        RenderUtil.failure("群不存在");
     }
-
-
 
     public Group getGroup() {
         return group;

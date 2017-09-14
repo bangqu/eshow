@@ -1,21 +1,17 @@
-<%@ page language="java" errorPage="/error.jsp" pageEncoding="UTF-8"
-         contentType="text/html;charset=utf-8" %>
+<%@ page language="java" errorPage="/error.jsp" pageEncoding="UTF-8" contentType="text/html;charset=utf-8" %>
 <%@ include file="/common/taglibs.jsp" %>
-<%@ include file="/yinwangroup/common/path.jsp" %>
-<%@ include file="/huaquan/common/taglibs.jsp" %>
 <%@ include file="/huaquan/common/path.jsp" %>
-<s:action name="album!view" id="view" executeResult="false"/>
+<s:action name="album!view" var="view" executeResult="false"/>
 <head>
     <title>修改相册${view.album.name}</title>
-    <link rel="stylesheet" href="${huaquan}/static/bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" href="${huaquan}/static/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://apps.bdimg.com/libs/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="${huaquan}/styles/admin.css">
     <%@ include file="/common/style/umeditor.jsp" %>
 </head>
 <body>
-<%@ include file="../header.jsp" %>
+<%@ include file="/huaquan/admin/common/header.jsp" %>
 <div class="container mt">
-    <%@ include file="../left.jsp" %>
+    <%@ include file="/huaquan/admin/include/left.jsp" %>
     <div class="cont">
         <ul class="breadcrumb">
             <li><a href="${huaquanmanage}/">首页</a>/</li>

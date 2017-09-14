@@ -49,6 +49,11 @@ public class CommonVar {
     public final static Integer CODE_USED = Integer.valueOf(1);
 
     /**
+     * 用户默认头像
+     */
+    public final static String USER_DEFAULT_PHOTO = String.valueOf("https://qiniu.easyapi.com/user/default.jpg");
+
+    /**
      * 邮件发送列表
      */
     public static List<SimpleMailMessage> MAIL_SEND_LIST = new ArrayList<SimpleMailMessage>();

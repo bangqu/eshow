@@ -7,8 +7,8 @@ package cn.org.eshow.bean.query;
  */
 public class BaseQuery {
 
-    public String order;//
-    public Boolean desc;//
+    public String order;//排序字段
+    public Boolean desc;//是否倒序
     public int pagesize = 10;// 每页记录数
     public int begin = 1;// 开始数目
 

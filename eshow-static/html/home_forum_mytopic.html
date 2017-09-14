@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+	<title>谈论区-我的发布</title>
+	<link rel="stylesheet" type="text/css" href="../www/styles/public.css">
+	<link rel="stylesheet" type="text/css" href="../www/styles/style.css">
+</head>
+<body>
+<div class="eshow_headbox">
+	<div class="eshow_head">
+	<div class="eshow_left">
+		<a href="home_index(log).html">
+        <img src="../www/images/eshow_log.png">
+        </a>
+	</div>
+	<div class="eshow_right">
+			<ul class="nav_up">
+			<li>
+			<a class="menu" href="home_index.html">首页</a>
+			</li>
+			<li><a class="menu" href="">框架</a>
+			<div class="nav_down">
+				<a href="home_frame_web.html">EShow-Web</a>
+				<a href="home_frame_android.html">EShow-Android</a>
+				<a href="home_frame_ios.html">EShow-iOS</a>
+				<a href="home_frame_html5.html">EShow-Html5</a>
+			</div>
+			</li>
+			<li><a class="menu" href="home_case.html">案例</a></li>
+			<li><a class="menu" href="home_document.html">文档</a></li>
+			<li><a class="menu nav_active" href="">讨论区</a></li>
+			<li><span>|</span></li>
+			<li><a class="menu" href="home_log_in.html">登录</a></li>
+			<li><a class="menu" href="home_register.html">注册</a></li>
+		</ul>
+	</div>
+	</div>
+</div>
+<div class="my_topicbox">
+<div class="my_topic">
+<div class="my_tipic_hd">
+	<span>讨论区 > 我的话题</span>
+</div>
+<div class="my_topic_tab">
+	<ul>
+	    <li class="border_active tab_li"><a class="active" href="">我的发布</a></li>
+		<li class="tab_li"><a href="home_forum_replay.html" style="border-right: 1px solid #e1e5eb">我回复的</a></li>
+		<li class="li_line"></li>
+	</ul>
+	<div class="my_topic_cont">
+		<p class="topic_left"><span>EShow开源框架平台成立了</span></p>
+		<p class="topic_right">
+		<span class="editor">编辑</span>
+		<span class="delete">删除</span>
+		<em>2016-01-19 18:50</em>
+		</p>
+	</div>
+	<div class="my_topic_cont">
+		<p class="topic_left"><span>fir.im Weekly - 深度揭秘 App 启动全过程</span></p>
+		<p class="topic_right">
+		<span class="editor">编辑</span>
+		<span class="delete">删除</span>
+		<em>2016-01-19 18:50</em>
+		</p>
+	</div>
+	<div class="my_topic_cont">
+		<p class="topic_left"><span>js 根据src的数量创建img标签？</span></p>
+		<p class="topic_right">
+		<span class="editor">编辑</span>
+		<span class="delete">删除</span>
+		<em>2016-01-19 18:50</em>
+		</p>
+	</div>
+</div>	
+</div>
+</div>
+<div class="footerbox">
+	<div class="footer">
+	<ol>
+		<li><a href="home_info_about.html">关于我们</a></li>
+		<li><span>|</span></li>
+		<li><a href="home_info_team.html">团队成员</a></li>
+		<li><span>|</span></li>
+		<li><a href="home_info_bug.html">汇报Bug</a></li>
+		<li><span>|</span></li>
+		<li><a href="home_info_code.html">源码</a></li>
+		<li><span>|</span></li>
+		<li class="clear_right"><a href="home_info_link.html"> 友情链接</a></li>
+	</ol>
+		<p>Copyright © 2009 www.eshow.org.cn All rights reserved. ICP备案编号：苏ICP备10018847号</p>
+	</div>
+</div>
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+<script type="text/javascript" src="../www/scripts/js.js"></script>
+<script>
+//
+var n=0;
+n=document.title;
+if(n=="EShow-登录后"){
+	$(".forum_hd_right").show();
+}else{
+	$(".forum_hd_right").hide();
+}
+
+// $(".topic_left span").click(fucntion(){
+
+//     $(this).parent().siblings().find('span');
+	
+
+// })
+
+
+$(".topic_left").click(function(){
+	$(this).siblings().find("span").show();
+	$(this).children().css('color','#c8282e');
+}
+)
+
+//删除
+$(".delete").click(function(){
+	$(this).parent().parent().remove();
+});
+
+//编辑
+$(".editor").click(function(){
+	$("em").trigger("select");
+	
+});
+
+</script>
+</body>
+</html>

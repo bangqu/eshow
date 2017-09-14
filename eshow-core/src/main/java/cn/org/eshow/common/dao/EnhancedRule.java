@@ -8,10 +8,14 @@ import org.hibernate.criterion.Projections;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
+ * <p>
  * 增强型的规则对象,主要是包装了简单的查询条件和排序规则,可以转化成SQL查询的where条件
+ * <p>
  *
  * @author leida
  */
@@ -33,6 +37,10 @@ public class EnhancedRule implements Serializable {
      * 条件表达式
      */
     private List<Criterion> criterionList = new ArrayList<Criterion>();
+
+    private List<Criterion> criterionAlicasList = new ArrayList<Criterion>();
+
+    private Map<String, String> criterionAliasMap = new HashMap<String, String>();
 
     /**
      * 排序表达式
@@ -57,6 +65,10 @@ public class EnhancedRule implements Serializable {
         return this;
     }
 
+    public EnhancedRule createAlias(String T, String P) {
+        criterionAliasMap.put(T, P);
+        return this;
+    }
     /**
      * Add an <tt>Order</tt> to the result set.
      *
@@ -71,11 +83,11 @@ public class EnhancedRule implements Serializable {
     /**
      * Set a limit upon the number of objects to be retrieved.
      *
-     * @param pageSize the maximum number of results
+     * @param pagesize the maximum number of results
      * @return EnhancedRule
      */
-    public EnhancedRule setPageSize(int pageSize) {
-        this.pageSize = pageSize;
+    public EnhancedRule setPageSize(int pagesize) {
+        this.pageSize = pagesize;
         return this;
     }
 
@@ -112,16 +124,21 @@ public class EnhancedRule implements Serializable {
      * @return Criteria
      */
     public Criteria getCriteria(Class<?> clazz, Session session) {
-        //CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
         Criteria criteria = session.createCriteria(clazz);
         for (int i = 0; i < criterionList.size(); i++) {
             Criterion criterion = criterionList.get(i);
             criteria.add(criterion);
-            //criteriaBuilder.
         }
         for (int i = 0; i < orderList.size(); i++) {
             Order order = orderList.get(i);
             criteria.addOrder(order);
+        }
+        for (Map.Entry<String, String> entry : criterionAliasMap.entrySet()) {
+            Criteria criteriaAlias = criteria.createAlias(entry.getKey(), entry.getValue());
+            for (int i = 0; i < criterionAlicasList.size(); i++) {
+                Criterion criterion = criterionAlicasList.get(i);
+                criteriaAlias.add(criterion);
+            }
         }
         if (offset > 0) {
             criteria.setFirstResult(this.offset);
@@ -146,6 +163,13 @@ public class EnhancedRule implements Serializable {
             Criterion criterion = criterionList.get(i);
             criteria.add(criterion);
         }
+        for (Map.Entry<String, String> entry : criterionAliasMap.entrySet()) {
+            Criteria criteriaAlias = criteria.createAlias(entry.getKey(), entry.getValue());
+            for (int i = 0; i < criterionAlicasList.size(); i++) {
+                Criterion criterion = criterionAlicasList.get(i);
+                criteriaAlias.add(criterion);
+            }
+        }
         criteria.setProjection(Projections.rowCount());
         return criteria;
     }
@@ -167,7 +191,8 @@ public class EnhancedRule implements Serializable {
             Criterion criterion = criterionList.get(i);
             if (rule == null) {
                 rule = criterion.toString();
-            } else {
+            }
+            else {
                 rule += " and " + criterion.toString();
             }
         }
@@ -193,4 +218,14 @@ public class EnhancedRule implements Serializable {
     public List<Order> getOrderList() {
         return orderList;
     }
+
+    public List<Criterion> getCriterionAlicasList() {
+        return criterionAlicasList;
+    }
+
+
+    public Map<String, String> getCriterionAliasMap() {
+        return criterionAliasMap;
+    }
+
 }

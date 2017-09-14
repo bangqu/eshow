@@ -1,5 +1,4 @@
-<%@ page language="java" errorPage="/error.jsp" pageEncoding="UTF-8"
-         contentType="text/html;charset=utf-8" %>
+<%@ page language="java" errorPage="/error.jsp" pageEncoding="UTF-8" contentType="text/html;charset=utf-8" %>
 <%@ include file="/common/taglibs.jsp" %>
 <head>
     <title>登录</title>
@@ -11,11 +10,10 @@
 </head>
 <body>
 <div class="container">
-
     <div class="smbox">
         <h4>登 录</h4>
         <form method="post" class="form-horizontal" id="loginForm"
-              action="<c:url value='/j_security_check'/>"
+              action="<c:url value='/j_spring_security_check'/>"
               onsubmit="saveUsername(this);return validateForm(this)">
             <c:if test="${param.error != null}">
             <div class="alert fade in">
@@ -49,7 +47,8 @@
                 </div>
             </div>
     </div>
-    <div align="center"><%@ include file="../footer.jsp" %></div>
-
+    <div align="center">
+        <%@ include file="../common/footer.jsp" %>
+    </div>
 </div>
 </body>

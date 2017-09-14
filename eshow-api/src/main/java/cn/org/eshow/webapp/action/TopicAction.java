@@ -5,11 +5,11 @@ import cn.org.eshow.common.CommonVar;
 import cn.org.eshow.common.page.Page;
 import cn.org.eshow.model.Topic;
 import cn.org.eshow.model.User;
-import cn.org.eshow.service.AccessTokenManager;
 import cn.org.eshow.service.BoardManager;
 import cn.org.eshow.service.TopicManager;
 import cn.org.eshow.util.JacksonUtil;
 import cn.org.eshow.webapp.action.response.TopicResponse;
+import cn.org.eshow.webapp.util.RenderUtil;
 import cn.org.eshow.webapp.util.Struts2Utils;
 import org.apache.struts2.convention.annotation.AllowedMethods;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +19,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * 接口
+ * 话题API接口
  */
 @AllowedMethods({"search", "delete", "view", "update", "save"})
 public class TopicAction extends ApiBaseAction<Topic> {
@@ -30,20 +30,20 @@ public class TopicAction extends ApiBaseAction<Topic> {
     private TopicManager topicManager;
     @Autowired
     private BoardManager boardManager;
-    @Autowired
-    private AccessTokenManager accessTokenManager;
 
     private List<Topic> topics;
     private Topic topic;
     private TopicQuery query;
     private Integer boardId;
 
-
+    /**
+     *
+     */
     public void search() {
         Page<Topic> page = topicManager.search(query);
         topics = page.getDataList();
         if (topics.isEmpty()) {
-            failure("暂无数据");
+            RenderUtil.failure("暂无数据");
             return;
         }
         List<TopicResponse> responses = new ArrayList<TopicResponse>();
@@ -54,24 +54,32 @@ public class TopicAction extends ApiBaseAction<Topic> {
         Struts2Utils.renderText("{\"status\":\"1\",\"msg\":\"" + "获取成功" + "\",\"" + "topics" + "\":" + JacksonUtil.toJson(responses) + "}");
     }
 
+    /**
+     *
+     */
     public void delete() {
-        User user = isValid(accessToken, accessTokenManager);//获取当前用户
+        User user = accessTokenManager.isValid(accessToken);//获取当前用户
         Topic old = topicManager.get(id);
-        if (old.getUser().getId().equals(user.getId())) {
-            if (old.getCommentSize() == 0) {
-                topicManager.remove(id);
-                success("删除成功");
-            } else {
-                success("无权删除");
-            }
-        } else {
-            success("无权删除");
+        if (old == null) {
+            RenderUtil.failure("非法参数");
+            return;
+        }
+        if (!old.getUser().getId().equals(user.getId())) {
+            RenderUtil.failure("无权删除");
+            return;
+        }
+        if (old.getCommentSize() == 0) {
+            topicManager.remove(id);
+            RenderUtil.success("删除成功");
         }
     }
 
+    /**
+     *
+     */
     public void view() {
         if (id == null) {
-            failure("非法参数");
+            RenderUtil.failure("非法参数");
             return;
         }
         topic = topicManager.get(id);
@@ -80,6 +88,9 @@ public class TopicAction extends ApiBaseAction<Topic> {
         Struts2Utils.renderText("{\"status\":\"1\",\"msg\":\"" + "获取成功" + "\",\"" + "topic" + "\":" + JacksonUtil.toJson(new TopicResponse(topic)) + "}");
     }
 
+    /**
+     * @throws Exception
+     */
     public void update() throws Exception {
         Topic old = topicManager.get(id);
         old.setUpdateTime(new Date());
@@ -89,19 +100,21 @@ public class TopicAction extends ApiBaseAction<Topic> {
             old.setBoard(boardManager.get(boardId));
         }
         topicManager.save(old);
-        success("修改成功");
+        RenderUtil.success("修改成功");
     }
 
+    /**
+     * @throws Exception
+     */
     public void save() throws Exception {
-        User user = isValid(accessToken, accessTokenManager);//获取当前用户
+        User user = accessTokenManager.isValid(accessToken);//获取当前用户
         if (boardId != null) {
             topic.setBoard(boardManager.get(boardId));
         }
         topic.setUser(user);
         topic = topicManager.save(topic);
-        success("添加成功");
+        RenderUtil.success("添加成功");
     }
-
 
     public List<Topic> getTopics() {
         return topics;

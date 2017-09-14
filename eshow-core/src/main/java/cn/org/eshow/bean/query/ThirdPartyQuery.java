@@ -3,26 +3,56 @@ package cn.org.eshow.bean.query;
 import java.util.Date;
 
 /**
- * ThirdParty  查询Bean
+ * 第三方账号查询对象
  */
 public class ThirdPartyQuery extends BaseQuery {
 
-    public Integer id;
-    public Date startAddTime;
-    public Date endAddTime;
-    public String url;
-    public String username;
-    public String password;
-    public String nickname;
-    public String platform;
-    public Integer userId;
+    public Date startAddTime;//开始添加时间
+    public Date endAddTime;//结束添加时间
+    public String url;//网站用户URL
+    public String username;//用户名（openID）
+    public String password;//密码
+    public String nickname;//网站昵称
+    public String platform;//平台（qq，weixin）
+    public String photo;//头像
+    public Boolean male;//性别（是否男性）
+    public Boolean enabled;//是否可用
+    public Integer userId;//用户ID
 
-    public Integer getId() {
-        return id;
+    public ThirdPartyQuery() {
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public ThirdPartyQuery(Boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    public ThirdPartyQuery(String platform, Integer userId) {
+        this.platform = platform;
+        this.userId = userId;
+    }
+
+    public ThirdPartyQuery(String username, String platform) {
+        this.username = username;
+        this.platform = platform;
+    }
+
+    public ThirdPartyQuery(String username, String platform, Boolean enabled) {
+        this.username = username;
+        this.platform = platform;
+        this.enabled = enabled;
+    }
+
+    public ThirdPartyQuery(Integer userId, String platform, Boolean enabled) {
+        this.userId = userId;
+        this.platform = platform;
+        this.enabled = enabled;
+    }
+
+    public ThirdPartyQuery(Integer userId, String username, String platform, Boolean enabled) {
+        this.userId = userId;
+        this.username = username;
+        this.platform = platform;
+        this.enabled = enabled;
     }
 
     public Date getStartAddTime() {
@@ -73,12 +103,36 @@ public class ThirdPartyQuery extends BaseQuery {
         this.nickname = nickname;
     }
 
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    }
+
+    public Boolean getMale() {
+        return male;
+    }
+
+    public void setMale(Boolean male) {
+        this.male = male;
+    }
+
     public String getPlatform() {
         return platform;
     }
 
     public void setPlatform(String platform) {
         this.platform = platform;
+    }
+
+    public Boolean getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
     }
 
     public Integer getUserId() {

@@ -8,17 +8,25 @@ import cn.org.eshow.model.Category;
 import cn.org.eshow.service.BlogManager;
 import cn.org.eshow.service.CategoryManager;
 import cn.org.eshow.util.PageUtil;
-import org.apache.commons.lang.StringUtils;
+import cn.org.eshow.webapp.util.RenderUtil;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.struts2.convention.annotation.AllowedMethods;
 import org.apache.struts2.convention.annotation.Result;
 import org.apache.struts2.convention.annotation.Results;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
+/**
+ *
+ */
 @Results({@Result(name = "input", location = "add"),
         @Result(name = "list", type = "redirect", location = ""),
         @Result(name = "success", type = "redirect", location = "view/${id}"),
         @Result(name = "redirect", type = "redirect", location = "${redirect}")})
+@AllowedMethods({"list", "noRepeatedList", "search", "category", "delete", "view", "update", "save"})
 public class BlogAction extends BaseAction {
 
     private static final long serialVersionUID = 1L;
@@ -32,50 +40,66 @@ public class BlogAction extends BaseAction {
     private Blog blog;
     private BlogQuery query = new BlogQuery();
     private Integer categoryId;
-    private List<String> keywordList=new ArrayList<String>();
+    private List<String> keywordList = new ArrayList<String>();
 
+    /**
+     * 获取博文列表
+     *
+     * @return
+     */
     public String list() {
         blogs = blogManager.list(query);
         return LIST;
     }
 
+    /**
+     * 搜索博文列表
+     *
+     * @return
+     */
     public String noRepeatedList() {
         blogs = blogManager.list(query);
-       if (!blogs.isEmpty()){
-           for (Blog obj:blogs){
-               if (!keywordList.contains(obj.getKeyword())){
-                   keywordList.add(obj.getKeyword());
-               }
-           }
-       }
+        if (!blogs.isEmpty()) {
+            for (Blog obj : blogs) {
+                if (!keywordList.contains(obj.getKeyword())) {
+                    keywordList.add(obj.getKeyword());
+                }
+            }
+        }
         return LIST;
     }
 
+    /**
+     * 搜索博文列表
+     *
+     * @return
+     */
     public String search() {
         Page<Blog> page = blogManager.search(query);
         blogs = page.getDataList();
         saveRequest("page", PageUtil.conversion(page));
+        saveRequest("query", query);
         return LIST;
     }
 
-    public String category() {
-        Page<Blog> page = blogManager.search(query);
-        blogs = page.getDataList();
-        saveRequest("page", PageUtil.conversion(page));
-        return LIST;
-    }
-
+    /**
+     * 删除博文信息
+     */
     public void delete() {
         blog = blogManager.get(id);
-        if (blog != null) {
-            blog.setEnabled(Boolean.FALSE);
-            blogManager.save(blog);
-            success("删除成功");
-        } else {
-            failure("参数不正确");
+        if (blog == null) {
+            RenderUtil.failure("非法参数");
+            return;
         }
+        blogManager.updateEnabled(blog);
+        RenderUtil.success("删除成功");
     }
 
+    /**
+     * 获取博文信息
+     *
+     * @return
+     */
     public String view() {
         if (id != null) {
             blog = blogManager.get(id);
@@ -87,6 +111,12 @@ public class BlogAction extends BaseAction {
         return REDIRECT;
     }
 
+    /**
+     * 修改博文信息
+     *
+     * @return
+     * @throws Exception
+     */
     public String update() throws Exception {
         Blog old = blogManager.get(id);
         old.setUpdateTime(new Date());
@@ -97,15 +127,20 @@ public class BlogAction extends BaseAction {
         if (categoryId != null) {
             old.setCategory(categoryManager.get(categoryId));
         }
-        if(StringUtils.isEmpty(blog.getImg())){
+        if (StringUtils.isEmpty(blog.getImg())) {
             blog.setImg(null);
         }
         blogManager.save(old);
         saveMessage("修改成功");
         return REDIRECT;
-
     }
 
+    /**
+     * 保存博文信息
+     *
+     * @return
+     * @throws Exception
+     */
     public String save() throws Exception {
         blog.setAddTime(new Date());
         blog.setUpdateTime(new Date());
@@ -115,10 +150,10 @@ public class BlogAction extends BaseAction {
             Category category = categoryManager.get(categoryId);
             blog.setCategory(category);
         }
-        if(StringUtils.isEmpty(blog.getImg())){
+        if (StringUtils.isEmpty(blog.getImg())) {
             blog.setImg(null);
         }
-        blog.setTitle(blog.getTitle() );
+        blog.setTitle(blog.getTitle());
         blog.setContent(blog.getContent());
         blog.setImg(blog.getImg());
         blog.setUser(getSessionUser());
@@ -168,6 +203,5 @@ public class BlogAction extends BaseAction {
     public void setKeywordList(List<String> keywordList) {
         this.keywordList = keywordList;
     }
-
 
 }

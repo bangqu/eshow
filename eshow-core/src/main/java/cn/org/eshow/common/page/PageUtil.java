@@ -28,10 +28,7 @@ public class PageUtil implements Serializable {
      * @param isAdd 如果该参数不存在,是否添加
      * @return String
      */
-    public static String parseUrl(String url, String key, String value,
-                                  boolean isAdd) {
-        Assert.notNull(url);
-        Assert.notNull(key);
+    public static String parseUrl(String url, String key, String value, boolean isAdd) {
         boolean isExist = false;
         String[] split1 = url.split("\\?");
         String urlLeft = split1[0]; // URI
@@ -82,8 +79,6 @@ public class PageUtil implements Serializable {
      * @return String
      */
     public static String addParam(String url, String key, String value) {
-        Assert.notNull(url);
-        Assert.notNull(key);
         if (url.indexOf("?") < 1) {
             url += "?" + key + "=" + value;
         } else {
@@ -98,8 +93,6 @@ public class PageUtil implements Serializable {
      * @return
      */
     public static String delParam(String url, String key) {
-        Assert.notNull(url);
-        Assert.notNull(key);
         String tempUrl = "";
         if (url.indexOf("?") >= 1) {
             String[] tempSplit = url.split("\\?");

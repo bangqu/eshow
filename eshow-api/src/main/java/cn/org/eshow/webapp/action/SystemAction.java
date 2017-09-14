@@ -1,13 +1,16 @@
 package cn.org.eshow.webapp.action;
 
 import cn.org.eshow.common.CommonVar;
+import cn.org.eshow.component.easemob.EasemobUtil;
+import cn.org.eshow.model.User;
+import cn.org.eshow.webapp.util.RenderUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.struts2.convention.annotation.AllowedMethods;
 
 /**
  * 系统API接口
  */
-@AllowedMethods({"feedback"})
+@AllowedMethods({"feedback", "easemob"})
 public class SystemAction extends ApiBaseAction<String> {
 
     private static final long serialVersionUID = 1L;
@@ -18,7 +21,7 @@ public class SystemAction extends ApiBaseAction<String> {
     public void feedback() {
         String content = getRequest().getParameter("content");
         if (StringUtils.isEmpty(content)) {
-            failure("必须填写反馈内容");
+            RenderUtil.failure("必须填写反馈内容");
             return;
         }
         String msg = "反馈内容：" + content;
@@ -32,7 +35,7 @@ public class SystemAction extends ApiBaseAction<String> {
         if (!CommonVar.MAIL_SEND_LIST.isEmpty()) {
             log.debug("email already add in list");
         }
-        success("反馈成功");
+        RenderUtil.success("反馈成功");
     }
 
 }

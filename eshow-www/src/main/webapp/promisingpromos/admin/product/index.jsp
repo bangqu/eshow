@@ -1,5 +1,4 @@
-<%@ page language="java" errorPage="/error.jsp" pageEncoding="UTF-8"
-         contentType="text/html;charset=utf-8" %>
+<%@ page language="java" errorPage="/error.jsp" pageEncoding="UTF-8" contentType="text/html;charset=utf-8" %>
 <%@ include file="/common/taglibs.jsp" %>
 <%@ include file="../../common/path.jsp" %>
 <head>
@@ -24,7 +23,7 @@
                 <h3 class="yahei">产品管理</h3>
 
                 <p class="text-right">
-                    <a href="${promisingpromosadmin}/product/add" class="btn btn-sm btn-primary">添加</a>
+                    <a href="${promisingpromosadmin}/product/add.jsp" class="btn btn-sm btn-primary">添加</a>
                 </p>
             </div>
             <div class="com clearfix">
@@ -71,3 +70,4 @@
 <%@ include file="../common/footer.jsp" %>
 <%@ include file="../common/scripts.jsp" %>
 </body>
+

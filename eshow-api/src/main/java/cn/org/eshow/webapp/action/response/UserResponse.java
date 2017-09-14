@@ -6,38 +6,29 @@ import java.util.*;
 
 /**
  * 用户返回对象
- *
- * @author leida
  */
-
 public class UserResponse {
 
-
-    private Integer id;// 用户ID
-    private Integer version;// 版本号
-    private Date addTime;// 添加时间
-    private Date updateTime;// 更新时间
-    private String username;// 用户名
-    private String nickname;// 昵称
-    private Integer age;// 年龄
-    private String photo;// 头像
-    private String realname;// 真实姓名
-    private Boolean male;// 性别
-    private Date birthday;// 生日
-    private Short constellation;// 星座
-    private Short birthAttrib;//
-    private Short bloodType;// 血型
-    private String hobby;// 爱好
-    private Short marital;// 婚姻状况
-    private String intro;// 自我介绍
-    private String website;// 网站
-    private String clientId;//个推clientId
-    private String deviceToken;//设备推送Token
-    private String easemobId;//环信用户ID
-    private boolean accountExpired;// 帐号是否过期
-    private boolean accountLocked;// 帐号是否锁住
-    private boolean credentialsExpired;// 凭证是否过期
-
+    public Integer id;// 用户ID
+    public Integer version;// 版本号
+    public Date addTime;// 添加时间
+    public Date updateTime;// 更新时间
+    public String username;// 用户名
+    public String nickname;// 昵称
+    public Integer age;// 年龄
+    public String photo;// 头像
+    public String realname;// 真实姓名
+    public Boolean male;// 性别
+    public Date birthday;// 生日
+    public Short constellation;// 星座
+    public Short birthAttrib;//
+    public Short bloodType;// 血型
+    public String hobby;// 爱好
+    public Short marital;// 婚姻状况
+    public String intro;// 自我介绍
+    public String website;// 网站
+    public String clientId;//个推clientId
+    public String deviceToken;//设备推送Token
 
     public UserResponse(User user) {
         this.id = user.getId();
@@ -58,7 +49,6 @@ public class UserResponse {
         this.website = user.getWebsite();
         this.clientId = user.getClientId() == null ? "" : user.getClientId();
         this.deviceToken = user.getDeviceToken() == null ? "" : user.getDeviceToken();
-        this.easemobId = user.getEasemobId() == null ? "" : user.getEasemobId();
     }
 
 
@@ -223,35 +213,4 @@ public class UserResponse {
         this.deviceToken = deviceToken;
     }
 
-    public String getEasemobId() {
-        return easemobId;
-    }
-
-    public void setEasemobId(String easemobId) {
-        this.easemobId = easemobId;
-    }
-
-    public boolean isAccountExpired() {
-        return accountExpired;
-    }
-
-    public void setAccountExpired(boolean accountExpired) {
-        this.accountExpired = accountExpired;
-    }
-
-    public boolean isAccountLocked() {
-        return accountLocked;
-    }
-
-    public void setAccountLocked(boolean accountLocked) {
-        this.accountLocked = accountLocked;
-    }
-
-    public boolean isCredentialsExpired() {
-        return credentialsExpired;
-    }
-
-    public void setCredentialsExpired(boolean credentialsExpired) {
-        this.credentialsExpired = credentialsExpired;
-    }
 }

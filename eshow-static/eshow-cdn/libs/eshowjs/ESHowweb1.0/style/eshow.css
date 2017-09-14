@@ -1,0 +1,11 @@
+.ESmsg{position: fixed;width:500px;margin:0;z-index: 4444;top:100px;text-align: center;left:50%;margin-left:-250px;}
+.ESmsg span{color:#fff;display: inline-block;padding:2px 10px;border-radius: 3px;min-width: 150px;}
+.ESmsg-danger span{background:#f2dede;border:1px solid #dca7a7;color:#a94442}
+.ESmsg-success span{background:#dff0d8;border:1px solid #b2dba1;color:#2b542c}
+
+
+
+
+
+
+

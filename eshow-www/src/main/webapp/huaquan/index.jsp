@@ -1,10 +1,8 @@
-<%@ page language="java" errorPage="/error.jsp" pageEncoding="UTF-8"
-         contentType="text/html;charset=utf-8" %>
-<%@ include file="common/taglibs.jsp" %>
-<%@ include file="common/path.jsp"%>
-<%@ taglib uri="/WEB-INF/stringutil.tld" prefix="util" %>
+<%@ page language="java" errorPage="/error.jsp" pageEncoding="UTF-8" contentType="text/html;charset=utf-8" %>
+<%@ include file="/common/taglibs.jsp" %>
+<%@ include file="/huaquan/common/path.jsp"%>
 <head>
-    <title>首页</title>
+    <title>首页_江苏华权有色炉料有限公司</title>
     <meta name="description"
           content=" 江苏华权有色炉料有限公司创建于1993年3月，是一家以专业生产钒铁及销售钒铁、钼铁、铬系列、锰系列、镍板等铁合金有色金属的综合性销售公司。"/>
     <meta name="keywords"
@@ -13,7 +11,7 @@
     <link rel="stylesheet" href="static/styles/style.css" type="text/css" />
 </head>
 <body>
-<%@ include file="header.jsp" %>
+<%@ include file="/huaquan/common/header.jsp" %>
 <div id="main">
     <script src="static/scripts/swfobject_source.js" type=text/javascript></script>
     <div id=dplayer2 style="WIDTH: 960px; HEIGHT: 240px"></div>
@@ -60,7 +58,7 @@
         </div>
         <div class="bd">
             <ul class="info-list">
-                <s:action name="blog!search" id="blogHuaquanList" executeResult="false" namespace="">
+                <s:action name="blog!search" var="blogHuaquanList" executeResult="false" namespace="">
                     <s:param name="query.website">huaquan</s:param>
                     <s:param name="query.enabled">true</s:param>
                     <s:param name="query.order">addTime</s:param>
@@ -107,16 +105,16 @@
         报价中心
     </h3>
 </div>
-    <s:action name="info!browse" id="infoList" executeResult="false" namespace="">
+    <s:action name="info!browse" var="infoList" executeResult="false" namespace="">
         <s:param name="info.url">price</s:param>
         <s:param name="info.website">huaquan</s:param>
     </s:action>
-    <div id="price_lv2" style="WIDTH: 960px; HEIGHT: 569px">
-        <a href="price/">
-            <p>
-                ${infoList.info.content}
-            </p>
-        </a>
+    <div id="price_lv2" style="WIDTH: 960px; HEIGHT: 569px" >
+              <a href="price/">
+                    <p>
+                        ${infoList.info.content}
+                    </p>
+                </a>  
     </div>
 
 </div>
@@ -142,7 +140,7 @@
                     <table width="220" border="0" cellspacing="0" cellpadding="0">
                         <tr>
                             <td id="demo1">
-                                <s:action name="photo!search" id="photoList"
+                                <s:action name="photo!search" var="photoList"
                                           executeResult="false">
                                     <s:param name="queryBean.order">addTime</s:param>
                                     <s:param name="queryBean.desc">true</s:param>
@@ -303,5 +301,5 @@
     </div>
 </div>
 </div>
-<%@ include file="footer.jsp" %>
+<%@ include file="/huaquan/common/footer.jsp" %>
 </body>

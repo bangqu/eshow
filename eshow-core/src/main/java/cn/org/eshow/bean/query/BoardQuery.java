@@ -3,56 +3,56 @@ package cn.org.eshow.bean.query;
 import java.util.Date;
 
 /**
- * Board 查询Bean
- * 
- * @author leida
- * 
+ * 板块查询对象
  */
 public class BoardQuery extends BaseQuery {
 
-	public Date addTime;//
-	public String name;//
-	public String description;//
-	public Integer sequence;//
-	public String website;//
+    public Date addTime;//
+    public String name;//
+    public String description;//
+    public Integer sequence;//
+    public String website;//
 
-	public Date getAddTime() {
-		return addTime;
-	}
+    public BoardQuery() {
+    }
 
-	public void setAddTime(Date addTime) {
-		this.addTime = addTime;
-	}
+    public Date getAddTime() {
+        return addTime;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public void setAddTime(Date addTime) {
+        this.addTime = addTime;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public String getDescription() {
-		return description;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
+    public String getDescription() {
+        return description;
+    }
 
-	public Integer getSequence() {
-		return sequence;
-	}
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
-	public void setSequence(Integer sequence) {
-		this.sequence = sequence;
-	}
+    public Integer getSequence() {
+        return sequence;
+    }
 
-	public String getWebsite() {
-		return website;
-	}
+    public void setSequence(Integer sequence) {
+        this.sequence = sequence;
+    }
 
-	public void setWebsite(String website) {
-		this.website = website;
-	}
+    public String getWebsite() {
+        return website;
+    }
+
+    public void setWebsite(String website) {
+        this.website = website;
+    }
 }

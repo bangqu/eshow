@@ -20,6 +20,13 @@ public class TopicQuery extends BaseQuery {
     public Integer boardId;//
     public String website;//
 
+    public TopicQuery() {
+    }
+
+    public TopicQuery(Integer boardId) {
+        this.boardId = boardId;
+    }
+
     public Date getStartAddTime() {
         return startAddTime;
     }

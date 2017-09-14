@@ -35,22 +35,17 @@ public class AuthenticationSuccessListener implements ApplicationListener {
 
 	public void onApplicationEvent(ApplicationEvent event) {
 
-		if (event instanceof AuthenticationSuccessEvent
-				|| event instanceof InteractiveAuthenticationSuccessEvent) {
-
+		if (event instanceof AuthenticationSuccessEvent || event instanceof InteractiveAuthenticationSuccessEvent) {
 			loginSuccess((AbstractAuthenticationEvent) event);
-
 		}
 	}
 
 	public void loginSuccess(AbstractAuthenticationEvent authEvent) {
 
 		Authentication auth = authEvent.getAuthentication();
-
 		User user = (User) auth.getPrincipal();
 
 		session.setAttribute(SESSION_IS_LOGIN_IN, true);
-
 		session.setAttribute(SESSION_MYID, user.getId());
 	}
 

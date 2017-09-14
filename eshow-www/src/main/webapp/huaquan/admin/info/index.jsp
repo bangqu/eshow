@@ -1,17 +1,15 @@
-<%@ page language="java" errorPage="/error.jsp" pageEncoding="UTF-8"
-         contentType="text/html;charset=utf-8" %>
-<%@ include file="/huaquan/common/taglibs.jsp" %>
+<%@ page language="java" errorPage="/error.jsp" pageEncoding="UTF-8" contentType="text/html;charset=utf-8" %>
+<%@ include file="/common/taglibs.jsp" %>
 <%@ include file="/huaquan/common/path.jsp" %>
 <head>
     <title>信息页管理</title>
-    <link rel="stylesheet" href="${huaquan}/static/bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" href="${huaquan}/static/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://apps.bdimg.com/libs/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="${huaquan}/static/styles/admin.css">
 </head>
 <body>
-<%@ include file="../header.jsp" %>
+<%@ include file="/huaquan/admin/common/header.jsp" %>
 <div class="container mt">
-    <%@ include file="../left.jsp" %>
+    <%@ include file="/huaquan/admin/include/left.jsp" %>
     <div class="cont">
         <ul class="breadcrumb">
             <li><a href="${huaquanmanage}/">首页</a>
@@ -36,7 +34,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <s:action name="info!search" id="infoList" executeResult="false" namespace="">
+                    <s:action name="info!search" var="infoList" executeResult="false" namespace="">
                         <s:param name="query.website">huaquan</s:param>
                         <s:param name="query.enabled">true</s:param>
                     </s:action>
@@ -59,7 +57,7 @@
         </div>
     </div>
 </div>
-<%@ include file="../footer.jsp" %>
-<%@ include file="/huaquan/common/scripts.jsp" %>
+<%@ include file="/huaquan/admin/common/footer.jsp" %>
+<%@ include file="/common/scripts.jsp" %>
 </body>
 

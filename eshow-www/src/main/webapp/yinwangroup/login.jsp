@@ -1,5 +1,4 @@
-<%@ page language="java" errorPage="/error.jsp" pageEncoding="UTF-8"
-         contentType="text/html;charset=utf-8" %>
+<%@ page language="java" errorPage="/error.jsp" pageEncoding="UTF-8" contentType="text/html;charset=utf-8" %>
 <%@ include file="/common/taglibs.jsp" %>
 <%@ include file="common/path.jsp" %>
 <link rel="stylesheet" href="${yinwangroup}/styles/style.css"/>
@@ -26,10 +25,10 @@
               action="<c:url value='/user/login.jsp'/>"
               onsubmit="saveUsername(this);return validateForm(this)">
             <c:if test="${param.error != null}">
-            <div class="alert fade in">
-                <fmt:message key="errors.password.mismatch"/>
-                    <%--${sessionScope.ACEGI_SECURITY_LAST_EXCEPTION.message}--%>
-            </div>
+                <div class="alert fade in">
+                    <fmt:message key="errors.password.mismatch"/>
+                        <%--${sessionScope.ACEGI_SECURITY_LAST_EXCEPTION.message}--%>
+                </div>
             </c:if>
             <br/>
 
@@ -62,12 +61,12 @@
                            value="&nbsp;&nbsp;登&nbsp;录&nbsp;&nbsp;"/>
                 </div>
             </div>
-            </form>
+        </form>
     </div>
 </div>
 <div class="inr yahei">
     <p>银湾社区生活网 版权所有<br>
-        沪ICP备14010855号-1 Copyright2013© yinwan.com Inc. All rights reserved
+        沪ICP备14010855号-1 Copyright2013© yinwangroup.com Inc. All rights reserved
     </p>
 </div>
 </body>

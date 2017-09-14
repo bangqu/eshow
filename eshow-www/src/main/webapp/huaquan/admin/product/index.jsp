@@ -1,17 +1,15 @@
-<%@ page language="java" errorPage="/error.jsp" pageEncoding="UTF-8"
-         contentType="text/html;charset=utf-8" %>
-<%@ include file="/huaquan/common/taglibs.jsp" %>
+<%@ page language="java" errorPage="/error.jsp" pageEncoding="UTF-8" contentType="text/html;charset=utf-8" %>
+<%@ include file="/common/taglibs.jsp" %>
 <%@ include file="/huaquan/common/path.jsp" %>
 <head>
     <title>产品管理</title>
-    <link rel="stylesheet" href="${huaquan}/static/bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" href="${huaquan}/static/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://apps.bdimg.com/libs/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="${huaquan}/static/styles/admin.css">
 </head>
 <body>
-<%@ include file="../header.jsp" %>
+<%@ include file="/huaquan/admin/common/header.jsp" %>
 <div class="container mt">
-    <%@ include file="../left.jsp" %>
+    <%@ include file="/huaquan/admin/include/left.jsp" %>
     <div class="cont">
         <ul class="breadcrumb">
             <li><a href="${huaquanmanage}/">首页</a>
@@ -38,7 +36,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <s:action name="product!search" id="productList" executeResult="false" namespace="">
+                    <s:action name="product!search" var="productList" executeResult="false" namespace="">
                         <s:param name="query.website">huaquan</s:param>
                         <s:param name="query.enabled">true</s:param>
                     </s:action>
@@ -48,7 +46,7 @@
                             <td>${name}</td>
                             <td>${code}</td>
                             <td>${content}</td>
-                            <td>${price}</td>
+                            <td>${price}元</td>
                             <td><a href="${huaquanmanage}/product/edit/${id}"
                                    class="btn btn-primary btn-xs">编辑</a>
                                 <a href="javascript:;" class="btn btn-xs btn-default"
@@ -63,6 +61,6 @@
         </div>
     </div>
 </div>
-<%@ include file="../footer.jsp" %>
-<%@ include file="/huaquan/common/scripts.jsp" %>
+<%@ include file="/huaquan/admin/common/footer.jsp" %>
+<%@ include file="/common/scripts.jsp" %>
 </body>

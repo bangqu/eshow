@@ -2,22 +2,17 @@ package cn.org.eshow.webapp.action;
 
 import cn.org.eshow.bean.query.UserGroupQuery;
 import cn.org.eshow.common.page.Page;
-import cn.org.eshow.component.easemob.api.ChatGroupAPI;
-import cn.org.eshow.component.easemob.comm.ClientContext;
-import cn.org.eshow.component.easemob.comm.EasemobRestAPIFactory;
-import cn.org.eshow.component.easemob.comm.body.UserNamesBody;
-import cn.org.eshow.component.easemob.comm.wrapper.BodyWrapper;
-import cn.org.eshow.component.easemob.comm.wrapper.ResponseWrapper;
+import cn.org.eshow.component.easemob.api.impl.EasemobChatGroup;
 import cn.org.eshow.model.Group;
 import cn.org.eshow.model.User;
 import cn.org.eshow.model.UserGroup;
-import cn.org.eshow.service.AccessTokenManager;
 import cn.org.eshow.service.GroupManager;
 import cn.org.eshow.service.UserGroupManager;
 import cn.org.eshow.util.JacksonUtil;
 import cn.org.eshow.webapp.action.response.UserGroupResponse;
+import cn.org.eshow.webapp.util.RenderUtil;
 import cn.org.eshow.webapp.util.Struts2Utils;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.struts2.convention.annotation.AllowedMethods;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -28,20 +23,22 @@ import java.util.List;
 /**
  * 群组成员API接口
  */
-@AllowedMethods({"search", "delete", "view", "update", "save","mine"})
-public class UserGroupAction extends ApiBaseAction<UserGroupResponse> {
+@AllowedMethods({"search", "delete", "view", "update", "save", "mine"})
+public class UserGroupAction extends ApiBaseAction<UserGroup> {
 
     private static final long serialVersionUID = 1L;
-    @Autowired
-    private AccessTokenManager accessTokenManager;
+
     @Autowired
     private UserGroupManager userGroupManager;
     @Autowired
     private GroupManager groupManager;
 
+    private EasemobChatGroup easemobChatGroup = new EasemobChatGroup();
+
     private UserGroup userGroup = new UserGroup();
     private List<UserGroup> userGroups;
     private UserGroupQuery query = new UserGroupQuery();
+
     private String userIds;//用户ids，逗号隔开
 
     /**
@@ -49,41 +46,41 @@ public class UserGroupAction extends ApiBaseAction<UserGroupResponse> {
      */
     public void search() {
         if (query.getGroupId() == null) {
-            failure("非法参数");
+            RenderUtil.failure("非法参数");
             return;
         }
         Page<UserGroup> page = userGroupManager.search(query);
         if (page.getDataList().isEmpty()) {
-            failure("暂无群组列表");
+            RenderUtil.failure("暂无群组列表");
             return;
         }
         List<UserGroupResponse> responses = new ArrayList<UserGroupResponse>();
         for (UserGroup obj : page.getDataList()) {
             responses.add(new UserGroupResponse(obj));
         }
-        page("userGroups", "获取成功", page, responses);
+        RenderUtil.page("获取成功", "userGroups", page, responses);
     }
 
     /**
      * 搜索我的群组
      */
     public void mine() {
-        User user = isValid(accessToken, accessTokenManager);
+        User user = accessTokenManager.isValid(accessToken);
         if (user == null) {
-            expires();//用户信息过期
+            RenderUtil.expires();//用户信息过期
             return;
         }
         query.setUserId(user.getId());
         Page<UserGroup> page = userGroupManager.search(query);
         if (page.getDataList().isEmpty()) {
-            failure("暂无群组列表");
+            RenderUtil.failure("暂无群组列表");
             return;
         }
         List<UserGroupResponse> responses = new ArrayList<UserGroupResponse>();
         for (UserGroup obj : page.getDataList()) {
             responses.add(new UserGroupResponse(obj));
         }
-        page("userGroups", "获取成功", page, responses);
+        RenderUtil.page("获取成功", "userGroups", page, responses);
     }
 
     /**
@@ -92,7 +89,7 @@ public class UserGroupAction extends ApiBaseAction<UserGroupResponse> {
     public void view() {
         userGroup = userGroupManager.get(id);
         if (userGroup == null) {
-            failure("群聊不存在");
+            RenderUtil.failure("群聊不存在");
             return;
         }
         Struts2Utils.renderText("{\"status\":\"1\",\"msg\":\"获取成功\",\"userGroup\":" + JacksonUtil.toJson(new UserGroupResponse(userGroup)) + "}");
@@ -102,19 +99,19 @@ public class UserGroupAction extends ApiBaseAction<UserGroupResponse> {
      * 群组添加成员
      */
     public void save() {
-        User user = isValid(accessToken, accessTokenManager);
+        User user = accessTokenManager.isValid(accessToken);
         if (user == null) {
-            expires();//用户信息过期
+            RenderUtil.expires();//用户信息过期
             return;
         }
         if (userGroup.getGroup() == null || userGroup.getGroup().getId() == null) {
-            failure("非法参数");
+            RenderUtil.failure("非法参数");
             return;
         }
 
         Group group = groupManager.get(userGroup.getGroup().getId());
         if (group == null) {
-            failure("非法参数");
+            RenderUtil.failure("非法参数");
             return;
         }
         List<User> users = new ArrayList<User>();
@@ -134,7 +131,7 @@ public class UserGroupAction extends ApiBaseAction<UserGroupResponse> {
                         UserGroup old = userGroupManager.check(query);
                         if (old == null) {
 
-                            String easemobId = user1.getEasemobId();
+                            String easemobId = user1.getUsername();
                             if (!StringUtils.isEmpty(easemobId)) {
                                 easemobIds[i] = easemobId;
                                 userSize += 1;
@@ -147,15 +144,12 @@ public class UserGroupAction extends ApiBaseAction<UserGroupResponse> {
             }
         }
         if (userSize == 0 || users.isEmpty()) {
-            failure("非法参数");
+            RenderUtil.failure("非法参数");
             return;
         }
-        EasemobRestAPIFactory factory = ClientContext.getInstance().init(ClientContext.INIT_FROM_PROPERTIES).getAPIFactory();
-        ChatGroupAPI chatgroup = (ChatGroupAPI) factory.newInstance(EasemobRestAPIFactory.CHATGROUP_CLASS);
-        BodyWrapper userNamesBody = new UserNamesBody(easemobIds);
-        ResponseWrapper result = (ResponseWrapper) chatgroup.addBatchUsersToChatGroup(group.getEasemobGroupId(), userNamesBody);
-        if (result == null || result.getResponseStatus() == null || result.getResponseStatus() != 200) {
-            failure("添加失败");
+        Object result = easemobChatGroup.addBatchUsersToChatGroup(group.getEasemobGroupId(), easemobIds);
+        if (result == null) {
+            RenderUtil.failure("添加失败");
             return;
         }
         group.setNumber(group.getNumber() + userSize);
@@ -171,22 +165,21 @@ public class UserGroupAction extends ApiBaseAction<UserGroupResponse> {
             ug.setUser(ob);
             userGroupManager.save(ug);
         }
-
-        success("创建成功");
+        RenderUtil.success("创建成功");
     }
 
     /**
      * 修改群成员信息
      */
     public void update() {
-        User user = isValid(accessToken, accessTokenManager);
+        User user = accessTokenManager.isValid(accessToken);
         if (user == null) {
-            expires();//用户信息过期
+            RenderUtil.expires();//用户信息过期
             return;
         }
         UserGroup old = userGroupManager.get(id);
         if (old == null || userGroup == null) {
-            failure("非法参数");
+            RenderUtil.failure("非法参数");
             return;
         }
         old.setTop(userGroup.getTop() == null ? old.getTop() : userGroup.getTop());
@@ -197,21 +190,19 @@ public class UserGroupAction extends ApiBaseAction<UserGroupResponse> {
     }
 
     public void delete() {
-        User user = isValid(accessToken, accessTokenManager);
+        User user = accessTokenManager.isValid(accessToken);
         if (user == null) {
-            expires();//用户信息过期
+            RenderUtil.expires();//用户信息过期
             return;
         }
         UserGroup old = userGroupManager.get(id);
         if (old == null) {
-            failure("非法参数");
+            RenderUtil.failure("非法参数");
             return;
         }
-        EasemobRestAPIFactory factory = ClientContext.getInstance().init(ClientContext.INIT_FROM_PROPERTIES).getAPIFactory();
-        ChatGroupAPI chatgroup = (ChatGroupAPI) factory.newInstance(EasemobRestAPIFactory.CHATGROUP_CLASS);
-        ResponseWrapper result = (ResponseWrapper) chatgroup.removeSingleUserFromChatGroup(old.getGroup().getEasemobGroupId(), old.getUser().getEasemobId());
-        if (result == null || result.getResponseStatus() == null || result.getResponseStatus() != 200) {
-            failure("删除失败");
+        Object result = easemobChatGroup.removeBatchUsersFromChatGroup(old.getGroup().getEasemobGroupId(), new String[]{old.getUser().getUsername()});
+        if (result == null) {
+            RenderUtil.failure("删除失败");
             return;
         }
         Group group = old.getGroup();
@@ -219,7 +210,7 @@ public class UserGroupAction extends ApiBaseAction<UserGroupResponse> {
         groupManager.save(group);
         userGroupManager.remove(old);
 
-        success("删除成功");
+        RenderUtil.success("删除成功");
     }
 
     public UserGroup getUserGroup() {

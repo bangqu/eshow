@@ -1,0 +1,96 @@
+@import "./base/reset.less";
+
+
+//@import "./icon/weui-icon_font";
+
+
+// button
+@import "./widget/eui-button";
+@import "./widget/eui-loading";
+@import "./widget/eui-input";
+@import "./widget/eui-avatar";
+@import "./widget/eui-list";
+@import "./widget/eui-table";
+@import "./widget/eui-notice";
+
+
+.eui-user{
+  margin-top:20px;
+  .other-link{
+    padding:0 15px;
+    a{
+      color:@brandPrimary;
+    }
+  }
+  .eui-logo{
+    padding:25px 0;
+    text-align: center;
+    img{
+      width:80px;height:80px;
+    }
+  }
+}
+.eui-about{
+  text-align: center;
+  .logo{
+    padding-top:100px;
+    padding-bottom:10px;
+    img{
+      width:80px;
+      height:80px;
+    }
+    span{
+      display: block;
+      color:@gray;
+    }
+  }
+  .text{
+    text-align:left;
+    padding:20px;
+    p{
+      padding:5px 0;
+      text-indent: 25px;
+    }
+  }
+  .foot{
+    position: fixed;
+    bottom:15px;
+    left:0;right:0;
+    text-align: center;
+    font-size:11px;
+    color:#999;
+  }
+}
+
+.eui-feedback{
+  textarea{
+    min-height:80px;
+  }
+  .successtip{
+    text-align: center;
+    span{
+      display: inline-block;
+      color:@brandSuccess;
+      margin-top:100px;
+    }
+  }
+}
+
+.eui-text-page{
+  padding:15px;
+  .u-hd{
+    font-size:14px;color:@gray;
+  }
+  .u-time{
+    font-size:12px;
+    color:@grayLight;
+  }
+  .u-text{
+    line-height: 1.7;
+    p{
+      color:@grayLight;
+      margin:5px 0;
+      font-size:14px;
+    }
+  }
+}

@@ -128,7 +128,7 @@ initializeWindows = function(){
 			id: 'parametrics',
 			title: 'Window Parametrics',
 			loadMethod: 'xhr',
-			contentURL: 'plugins/parametrics/index.html',
+			contentURL: 'plugins/parametrics/index.jsp',
 			onContentLoaded: function(){
 				if ( !MochaUI.parametricsScript == true ){
 					new Request({
@@ -169,7 +169,7 @@ initializeWindows = function(){
 			title: 'Canvas Clock',
 			addClass: 'transparent',
 			loadMethod: 'xhr',
-			contentURL: 'plugins/coolclock/index.html?t=' + new Date().getTime(),
+			contentURL: 'plugins/coolclock/index.jsp?t=' + new Date().getTime(),
 			onContentLoaded: function(){
 				if ( !MochaUI.clockScript == true ){
 					new Request({
@@ -579,7 +579,7 @@ initializeWindows = function(){
 			id: 'about',
 			title: 'MochaUI',
 			loadMethod: 'xhr',
-			contentURL: 'pages/about.html',
+			contentURL: 'pages/about.jsp',
 			type: 'modal2',
 			width: 350,
 			height: 195,

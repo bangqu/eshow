@@ -6,28 +6,22 @@ import java.util.*;
 
 /**
  * 用户返回对象
- *
- * @author leida
  */
-
 public class UserSimpleResponse {
 
-
-    private Integer id;// 用户ID
-    private Integer version;// 版本号
-    private Date addTime;// 添加时间
-    private Date updateTime;// 更新时间
-    private String username;// 用户名
-    private String nickname;// 昵称
-    private Integer age;// 年龄
-    private String photo;// 头像
-    private String realname;// 真实姓名
-    private Boolean male;// 性别
-    private String intro;// 自我介绍
-    private String clientId;
-    private String deviceToken;//设备推送Token
-    private String easemobId;//环信用户ID
-
+    public Integer id;// 用户ID
+    public Integer version;// 版本号
+    public Date addTime;// 添加时间
+    public Date updateTime;// 更新时间
+    public String username;// 用户名
+    public String nickname;// 昵称
+    public Integer age;// 年龄
+    public String photo;// 头像
+    public String realname;// 真实姓名
+    public Boolean male;// 性别
+    public String intro;// 自我介绍
+    public String clientId;
+    public String deviceToken;//设备推送Token
 
     public UserSimpleResponse(User user) {
         this.id = user.getId();
@@ -42,9 +36,7 @@ public class UserSimpleResponse {
         this.intro = user.getIntro();
         this.clientId = user.getClientId() == null ? "" : user.getClientId();
         this.deviceToken = user.getDeviceToken() == null ? "" : user.getDeviceToken();
-        this.easemobId = user.getEasemobId() == null ? "" : user.getEasemobId();
     }
-
 
     public Integer getId() {
         return id;
@@ -93,7 +85,6 @@ public class UserSimpleResponse {
     public void setNickname(String nickname) {
         this.nickname = nickname;
     }
-
 
     public Integer getAge() {
         return age;
@@ -149,14 +140,6 @@ public class UserSimpleResponse {
 
     public void setDeviceToken(String deviceToken) {
         this.deviceToken = deviceToken;
-    }
-
-    public String getEasemobId() {
-        return easemobId;
-    }
-
-    public void setEasemobId(String easemobId) {
-        this.easemobId = easemobId;
     }
 
 }

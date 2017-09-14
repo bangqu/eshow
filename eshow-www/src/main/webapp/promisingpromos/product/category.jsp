@@ -1,7 +1,5 @@
-<%@ page language="java" errorPage="/error.jsp" pageEncoding="UTF-8"
-	contentType="text/html;charset=utf-8"%>
+<%@ page language="java" errorPage="/error.jsp" pageEncoding="UTF-8" contentType="text/html;charset=utf-8"%>
 <%@ include file="/common/taglibs.jsp"%>
-<%@ taglib uri="/WEB-INF/stringutil.tld" prefix="util"%>
 <s:action name="product-category!view" id="category" executeResult="false" namespace="" />
 <head>
 <title>Promisingpromos_${category.productCategory.name}</title>
@@ -35,7 +33,7 @@
 						<li>
 							<a href="http://www.promisingpromos.com/product/view/${id}"> <img src="${product.img}!small.jpg" title="${name}"/>
 								<p>
-									<span class="name str">${util:preview(name,15)}</span><br> Item# ${code}<br>
+									<span class="name str">${util:preview(name,true,15)}</span><br> Item# ${code}<br>
 									As low as <span class="price str">$${price}</span>
 								</p>
 							</a>
@@ -45,6 +43,6 @@
 				<%@ include file="/common/page.jsp"%>
 			</div>
 		</div>
-             <%@ include file="../common/footer.jsp"%>
+        <%@ include file="../common/footer.jsp"%>
 	</section>
 </body>

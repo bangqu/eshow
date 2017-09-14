@@ -29,6 +29,14 @@ public interface AccessTokenManager extends GenericManager<AccessToken, Integer>
     Page<AccessToken> search(AccessTokenQuery query);
 
     /**
+     * 添加访问令牌
+     *
+     * @param user
+     * @return
+     */
+    AccessToken save(User user) throws OAuthSystemException;
+
+    /**
      * 获取用户访问令牌
      *
      * @param user 用户
@@ -36,5 +44,13 @@ public interface AccessTokenManager extends GenericManager<AccessToken, Integer>
      * @throws OAuthSystemException
      */
     AccessToken refresh(User user) throws OAuthSystemException;
+
+    /**
+     * 判断是否有效 true有效 false无效
+     *
+     * @param accessToken
+     * @return User
+     */
+    User isValid(String accessToken);
 
 }

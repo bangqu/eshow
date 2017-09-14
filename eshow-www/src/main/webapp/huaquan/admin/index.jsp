@@ -1,22 +1,18 @@
-<%@ page language="java" errorPage="/error.jsp" pageEncoding="UTF-8"
-         contentType="text/html;charset=utf-8" %>
+<%@ page language="java" errorPage="/error.jsp" pageEncoding="UTF-8" contentType="text/html;charset=utf-8" %>
 <%@ include file="/common/taglibs.jsp" %>
-<%@ include file="/yinwangroup/common/path.jsp" %>
-<%@ include file="../common/taglibs.jsp" %>
-<%@ include file="../common/path.jsp" %>
+<%@ include file="/huaquan/common/path.jsp" %>
 <head>
     <title>华权后台管理</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="icon" href=""/>
-    <link rel="stylesheet" href="../../static/bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" href="../../static/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="${yinwangroup}/styles/admin.css"/>
+    <link rel="stylesheet" href="http://apps.bdimg.com/libs/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="${huaquan}/static/styles/admin.css"/>
 </head>
 <body>
-<%@ include file="header.jsp" %>
+<%@ include file="/huaquan/admin/common/header.jsp" %>
 <div class="container mt">
-    <%@ include file="left.jsp" %>
+    <%@ include file="/huaquan/admin/include/left.jsp" %>
     <div class="cont">
         <ul class="breadcrumb">
             <li><a href="${huaquan}/admin/">后台首页</a>
@@ -37,6 +33,6 @@
         </div>
     </div>
 </div>
-<%@ include file="footer.jsp" %>
+<%@ include file="/huaquan/admin/common/footer.jsp" %>
 </body>
 

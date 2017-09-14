@@ -2,14 +2,21 @@ package cn.org.eshow.webapp.action.response;
 
 /**
  * 第三方平台返回对象
- *
- * @author alicas
  */
 public class ThirdPartyResponse {
-    public Integer userId;
-    public Boolean qq=false;
-    public Boolean weixin=false;
 
+    public Integer userId;
+    public Boolean qq = false;
+    public Boolean weixin = false;
+
+    public ThirdPartyResponse() {
+    }
+
+    public ThirdPartyResponse(Integer userId, Boolean qq, Boolean weixin) {
+        this.userId = userId;
+        this.qq = qq;
+        this.weixin = weixin;
+    }
 
     public Integer getUserId() {
         return userId;

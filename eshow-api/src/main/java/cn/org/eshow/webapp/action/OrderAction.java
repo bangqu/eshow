@@ -3,27 +3,22 @@ package cn.org.eshow.webapp.action;
 import cn.org.eshow.bean.query.OrderQuery;
 import cn.org.eshow.model.Order;
 import cn.org.eshow.model.User;
-import cn.org.eshow.service.AccessTokenManager;
 import cn.org.eshow.service.OrderManager;
 import cn.org.eshow.util.OrderUtil;
-import cn.org.eshow.webapp.util.Struts2Utils;
+import cn.org.eshow.webapp.util.RenderUtil;
 import org.apache.struts2.convention.annotation.AllowedMethods;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 /**
- * 接口
+ * 订单API接口
  */
-@AllowedMethods({"search",  "delete", "view", "save", "update"})
+@AllowedMethods({"search", "delete", "view", "save", "update"})
 public class OrderAction extends ApiBaseAction<Order> {
 
     private static final long serialVersionUID = 4663487175099570373L;
 
-    @Autowired
-    private AccessTokenManager accessTokenManager;
     @Autowired
     private OrderManager orderManager;
 
@@ -31,10 +26,13 @@ public class OrderAction extends ApiBaseAction<Order> {
     private OrderQuery query = new OrderQuery();
     private List<Order> orders = new ArrayList<Order>();
 
+    /**
+     * 提交订单
+     */
     public void save() {
-        User old = isValid(accessToken, accessTokenManager);
+        User old = accessTokenManager.isValid(accessToken);
         if (old == null) {
-            expires();//用户信息过期
+            RenderUtil.expires();//用户信息过期
             return;
         }
         order.setAddTime(new Date());
@@ -42,7 +40,9 @@ public class OrderAction extends ApiBaseAction<Order> {
         order.setState(0);
         order.setUser(old);
         order = orderManager.save(order);
-        Struts2Utils.renderText("{\"status\":\"1\",\"msg\":\"订单保存成功\",\"no\":\"" + order.getNo() + "\"}");
+        Map<String, String> map = new HashMap<String, String>();
+        map.put("no", order.getNo());
+        RenderUtil.result(1, "订单保存成功", map);
     }
 
     public Order getOrder() {

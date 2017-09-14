@@ -7,6 +7,7 @@ import cn.org.eshow.dao.ThirdPartyDao;
 import cn.org.eshow.dao.TopicDao;
 import cn.org.eshow.model.ThirdParty;
 import cn.org.eshow.model.Topic;
+import cn.org.eshow.model.User;
 import cn.org.eshow.service.ThirdPartyManager;
 import cn.org.eshow.service.TopicManager;
 import cn.org.eshow.service.impl.GenericManagerImpl;
@@ -47,5 +48,34 @@ public class ThirdPartyManagerImpl extends GenericManagerImpl<ThirdParty, Intege
             return list.get(0);
         }
         return null;
+    }
+
+    @Override
+    public ThirdParty save(ThirdParty thirdParty, User user) {
+        ThirdParty old = this.check(new ThirdPartyQuery(thirdParty.getPlatform(), user.getId()));//该用户是否已绑定第三方账号
+        if (old != null) {
+            old.setEnabled(Boolean.FALSE);//设置之前绑定为无效
+            thirdPartyDao.save(old);
+        }
+        thirdParty.setUser(user);
+        return thirdPartyDao.save(thirdParty);
+    }
+
+    @Override
+    public ThirdParty updateUser(ThirdParty thirdParty, User user) {
+        List<ThirdParty> thirdParties = thirdPartyDao.list(new ThirdPartyQuery(thirdParty.getPlatform(), user.getId()));//该用户已绑定第三方账号列表
+        for (ThirdParty obj : thirdParties) {
+            obj.setEnabled(Boolean.FALSE);
+            thirdPartyDao.save(obj);
+        }
+        thirdParty.setUser(user);
+        thirdParty.setEnabled(Boolean.TRUE);
+        return thirdPartyDao.save(thirdParty);
+    }
+
+    @Override
+    public ThirdParty enabled(ThirdParty thirdParty) {
+        thirdParty.setEnabled(Boolean.FALSE);
+        return thirdPartyDao.save(thirdParty);
     }
 }

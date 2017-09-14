@@ -1,5 +1,4 @@
-<%@ page language="java" errorPage="/error.jsp" pageEncoding="UTF-8"
-         contentType="text/html;charset=utf-8" %>
+<%@ page language="java" errorPage="/error.jsp" pageEncoding="UTF-8" contentType="text/html;charset=utf-8" %>
 <%@ include file="/common/taglibs.jsp" %>
 <%@ include file="/yinwangroup/common/path.jsp" %>
 <head>
@@ -32,7 +31,7 @@
             </div>
             <div class="com clearfix">
                 <s:form cssClass="form-horizontal" name="blogForm" id="blogForm" action="blog!save.action" namespace=""
-                        method="post" >
+                        method="post">
                     <input type="hidden" name="redirect" value="${yinwangroupmanage}/blog/">
                     <input type="hidden" name="blog.website" value="yinwangroup">
 
@@ -56,8 +55,8 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label">发布时间</label>
                         <div class="col-sm-3">
-                        <input class="form-control" type="text" name="blog.addTime" onClick="WdatePicker()"
-                               id="blog_addTime" value=""/>
+                            <input class="form-control" type="text" name="blog.addTime" onClick="WdatePicker()"
+                                   id="blog_addTime" value=""/>
                         </div>
                     </div>
 
@@ -65,20 +64,23 @@
                         <label class="col-sm-2 control-label" for="img"><span class="red">新闻图标</span></label>
 
                         <div class="col-sm-8" id="img">
-                            <img id="preview-img" class="upimgbor" src="http://yinwan.qiniudn.com/default.jpg!small.jpg">
+                            <img id="preview-img" class="upimgbor"
+                                 src="http://yinwan.qiniudn.com/default.jpg!small.jpg">
                             <input id="upImg" type="hidden" name="blog.img">
 
                             <div class="upbox">
-                                <span class="yellow">图片格式jpg、png,<br>大小限制在3M以内</span>
+                                <span class="yellow">图片格式jpg、png,<br>大小限制在300M以内</span>
                                 <p>
-                                    <span class="btn btn-success fileinput-button">
-                                        <i class="glyphicon glyphicon-plus"></i>
-                                        <span>选择新图片</span>
-                                        <input id="imgFileupload" type="file" name="file">
-                                    </span>
+                                <span class="btn btn-success fileinput-button">
+                                    <i class="glyphicon glyphicon-plus"></i>
+                                    <span>选择新图片</span>
+                                    <input id="imgFileupload" type="file" name="file">
+                                </span>
+
                                 <div id="imgProgress" class="progress">
-                                <div class="progress-bar progress-bar-warning"></div>
-                            </div>
+
+                                    <div class="progress-bar progress-bar-warning"></div>
+                                </div>
                                 </p>
                             </div>
                         </div>
@@ -107,7 +109,7 @@
 <%@ include file="../../common/scripts.jsp" %>
 <%@ include file="../../common/script/umeditor.jsp" %>
 <%@ include file="../../common/script/valiform.jsp" %>
-<%@ include file="../../../common/script/fileupload.jsp" %>
+<%@ include file="../../common/script/fileupload.jsp" %>
 <script src="../../../static/My97DatePicker/WdatePicker.js"></script>
 <script type="text/javascript">
     var ue = UM.getEditor('content', {
@@ -135,7 +137,7 @@
             post: 'POST',
             formData: {
                 key: key,
-                token: "<%=cn.org.eshow.component.qiniu.QiniuUtil.uptoken("eshow")%>"
+                token: "<%=cn.org.eshow.component.qiniu.QiniuUtil.uploadToken("eshow")%>"
             },
             done: function (e, data) {
                 $("#preview-img").attr("src", "http://eshow.u.qiniudn.com/" + key + "!small.jpg");
@@ -143,7 +145,7 @@
             },
             progressall: function (e, data) {
                 var progress = parseInt(data.loaded / data.total * 100, 10);
-                $('#imgProgress').find(".progress-bar").css("width",progress+"%");
+                $('#imgProgress').find(".progress-bar").css("width", progress + "%");
             }
         }).prop('disabled', !$.support.fileInput)
                 .parent().addClass($.support.fileInput ? undefined : 'disabled');

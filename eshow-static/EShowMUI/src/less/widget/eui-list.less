@@ -1,0 +1,68 @@
+@import "../base/fn.less";
+
+.eui-list {
+  background: @white;
+  position: relative;
+  &:before {
+    z-index: 2;
+    .setTopLine();
+  }
+
+  &:after {
+    z-index: 2;
+    .setBottomLine();
+  }
+
+  li {
+    padding: @euiItempadding @euiItempadding @euiItempadding 0;
+    margin-left: @euiItempadding;
+    position: relative;
+    display: -webkit-box;
+-webkit-box-align: center;
+    &:before {
+      z-index: 2;
+      .setTopLine();
+    }
+
+    &:first-child {
+      &:before {
+        display: none;
+      }
+    }
+    .eui-badge{
+        display: inline-block;
+        text-align: center;
+        background: #f74c31;
+        color: #fff;
+        font-size: 11px;
+        height: 16px;
+        line-height: 16px;
+        -webkit-border-radius: 8px;
+        padding: 0 6px;
+        -webkit-background-clip: padding-box;
+        background-clip: padding-box
+   }
+    .eui-list-info{
+      -webkit-box-flex: 1;
+     display: -webkit-box;
+     -webkit-box-orient: vertical;
+     -webkit-box-pack: center;
+     padding-right: 15px
+    }
+    .eui-avatar{
+      margin:0 10px;
+    }
+    h4{
+      -webkit-box-flex: 1;
+      font-size:1.6rem;
+    }
+    p{
+      font-size:1.4rem;
+      color:@gray;
+    }
+
+  }
+
+
+
+}

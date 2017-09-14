@@ -92,6 +92,8 @@ public class PingPayManagerImpl implements PingPayManager {
             e.printStackTrace();
         } catch (ChannelException e) {
             e.printStackTrace();
+        } catch (RateLimitException e) {
+            e.printStackTrace();
         }
         RefundsUtil.refund(ch, refundMap);
     }

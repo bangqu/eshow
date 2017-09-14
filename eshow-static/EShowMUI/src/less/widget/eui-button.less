@@ -1,0 +1,172 @@
+@import "../base/fn.less";
+
+.eui-btn {
+  position: relative;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 15px;
+  padding-right:  15px;
+  box-sizing: border-box;
+  font-size: @euiBtnFontSize;
+  text-align: center;
+  text-decoration: none;
+  color: @euiBtnFontColor;
+  line-height:@euiBtnHeight;
+  border-radius: @euiBtnBorderRadius;
+  .setTapColor();
+  overflow: hidden;
+
+  &:after {
+    content: " ";
+    width: 200%;
+    height: 200%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: .1rem solid rgba(0, 0, 0, .1);
+    transform: scale(.5);
+    transform-origin: 0 0;
+    box-sizing: border-box;
+    border-radius: @euiBtnBorderRadius*2;
+  }
+}
+
+button,
+input {
+  &.eui-btn {
+    width: 100%;
+    border-width: 0;
+    outline: 0;
+    -webkit-appearance: none;
+    display: block;
+    &:focus {
+      outline: 0;
+    }
+  }
+}
+
+.eui-btn-mini {
+  display: inline-block;
+  padding: 0 1.32em;
+  line-height: @euiBtnMiniHeight;
+  font-size: @euiBtnMiniFontSize;
+}
+/*gap between btn*/
+.eui-btn + .eui-btn {
+  margin-top: @euiBtnDefaultGap;
+}
+
+.eui-btn.eui-btn-inline + .eui-btn.eui-btn-inline {
+  margin-top: auto;
+  margin-left: @euiBtnDefaultGap;
+}
+
+.eui-btn-inline {
+  display: inline-block;
+}
+
+.eui-btn-primary {
+  background-color: @euiBtnPrimaryBg;
+
+  &:not(.eui-btn-disabled):visited {
+    color: @euiBtnFontColor;
+  }
+
+  &:not(.eui-btn-disabled):active {
+    color: @euiBtnActiveFontColor;
+    background-color: @euiBtnPrimaryActiveBg;
+  }
+}
+
+.eui-btn-default {
+  color: @euiBtnDefaultFontColor;
+  background-color: @euiBtnDefaultBg;
+
+  &:not(.eui-btn-disabled):visited {
+    color: @euiBtnDefaultFontColor;
+  }
+
+  &:not(.eui-btn-disabled):active {
+    color: @euiBtnDefaultActiveFontColor;
+    background-color: @euiBtnDefaultActiveBg;
+  }
+}
+
+.eui-btn-warn {
+  background-color: @euiBtnWarnBg;
+
+  &:not(.eui-btn-disabled):visited {
+    color: @euiBtnFontColor;
+  }
+
+  &:not(.eui-btn-disabled):active {
+    color: @euiBtnActiveFontColor;
+    background-color: @euiBtnWarnActiveBg;
+  }
+}
+
+.eui-btn-disabled {
+  color: @euiBtnDisabledFontColor;
+
+  &.eui-btn-default {
+    color: @euiBtnDefaultDisabledFontColor;
+    background-color: @euiBtnDefaultDisabledBg;
+  }
+
+  &.eui-btn-primary {
+    background-color: @euiBtnPrimaryDisabledBg;
+  }
+
+  &.eui-btn-warn {
+    background-color: @euiBtnwarnDisabledBg;
+  }
+}
+
+.eui-btn-plain-primary {
+  color: @euiBtnPlainPrimaryColor;
+  border: 1px solid @euiBtnPlainPrimaryBorderColor;
+
+  &:not(.eui-btn-plain-disabled):active {
+    color: @euiBtnPlainPrimaryActiveColor;
+    border-color: @euiBtnPlainPrimaryActiveBorderColor;
+  }
+
+  &:after {
+    border-width: 0;
+  }
+}
+
+.eui-btn-plain-default {
+  color: @euiBtnPlainDefaultColor;
+  border: 1px solid @euiBtnPlainDefaultBorderColor;
+
+  &:not(.eui-btn-plain-disabled):active {
+    color: @euiBtnPlainDefaultActiveColor;
+    border-color: @euiBtnPlainDefaultActiveBorderColor;
+  }
+  &:after {
+    border-width: 0;
+  }
+}
+
+.eui-btn-plain-disabled {
+  color: rgba(0,0,0,.2);
+  border-color: rgba(0,0,0,.2);
+}
+
+
+.eui-btn-loading{
+	.eui-loading{
+		margin:-.2em .34em 0 0;
+	}
+    &.eui-btn-primary, &.weui-btn-warn {
+        color: @euiBtnActiveFontColor;
+    }
+	&.eui-btn-primary{
+        background-color: @euiBtnPrimaryActiveBg;
+	}
+	&.eui-btn-warn{
+        background-color: @euiBtnWarnActiveBg;
+	}
+}

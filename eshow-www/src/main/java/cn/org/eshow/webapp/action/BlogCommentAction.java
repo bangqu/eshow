@@ -9,6 +9,7 @@ import cn.org.eshow.service.BlogCommentManager;
 import cn.org.eshow.service.BlogManager;
 import cn.org.eshow.util.CommonUtil;
 import cn.org.eshow.util.PageUtil;
+import org.apache.struts2.convention.annotation.AllowedMethods;
 import org.apache.struts2.convention.annotation.Result;
 import org.apache.struts2.convention.annotation.Results;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,7 @@ import java.util.List;
 		@Result(name = "list", type = "redirect", location = ""),
 		@Result(name = "success", type = "redirect", location = "/blog/view/${id}"),
 		@Result(name = "redirect", type = "redirect", location = "${redirect}") })
+@AllowedMethods({"list", "search", "delete", "view", "update", "save"})
 public class BlogCommentAction extends BaseAction {
 
 	private static final long serialVersionUID = 1L;
@@ -34,11 +36,10 @@ public class BlogCommentAction extends BaseAction {
 	private BlogCommentQuery query;
 	private Integer blogId;
 
-	public String list() {
-		blogComments = blogCommentManager.list(query);
-		return LIST;
-	}
-
+	/**
+	 *
+	 * @return
+     */
 	public String search() {
 		Page<BlogComment> page = blogCommentManager.search(query);
 		blogComments = page.getDataList();
@@ -95,7 +96,7 @@ public class BlogCommentAction extends BaseAction {
 		blogCommentManager.save(blogComment);
 		id = blogId;
 		saveMessage("添加成功");
-		return SUCCESS;
+		return REDIRECT;
 	}
 
 	public List<BlogComment> getBlogComments() {
